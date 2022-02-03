@@ -1,0 +1,11 @@
+<!-- insert_before 'erb[loud]:contains("f.field_container :stock_location")' -->
+
+<fieldset data-hook="easypost_tracker" class="no-border-bottom">
+    <legend align="center">Easypost Tracker</legend>
+  <% if @return_authorization.easypost_tracker.present? %>
+    <%= render partial: 'spree/admin/return_authorizations/show_easypost_tracker.html.erb' %>
+  <% else %>
+
+    <%= render partial: 'spree/admin/return_authorizations/new_easypost_tracker.html.erb', locals: { f: f } %>
+  <% end %>
+</fieldset>
