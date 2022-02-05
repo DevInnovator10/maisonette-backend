@@ -1,0 +1,10 @@
+<!-- insert_before "[data-hook='admin_order_user_link']" -->
+<% if can?(:manage, OrderManagement::SalesOrder) && @order.forwarded? %>
+  <dt data-hook="admin-order-management-sales-order-ref">OMS Ref:</dt>
+  <dd id="order-management-sales-order-ref">
+    <% order_summary = @order.sales_order&.order_summary %>
+
+    <% oms_order = order_summary&.order_management_ref ? order_summary : @order.sales_order %>
+    <%= oms_lightning_url(oms_order, oms_order&.order_management_ref) %>
+  </dd>
+<% end %>

@@ -1,0 +1,41 @@
+<% admin_layout "full-width" %>
+
+<% admin_breadcrumb(link_to plural_resource_name(Maisonette::Sale), admin_maisonette_sales_path) %>
+<% admin_breadcrumb(link_to @sale.name, admin_maisonette_sale_sale_sku_configurations_path(@sale)) %>
+<% admin_breadcrumb('Search SKUs') %>
+
+<% content_for :table_filter do %>
+  <div class='row'>
+    <div class='col-md' data-hook="admin_maisonette_sale_sku_configurations_index_search">
+      <%= render 'search_filters' %>
+    </div>
+    <div class='col-md' data-hook="admin_maisonette_sale_sku_configuration_default_configuration_form">
+      <%= render 'default_configuration_form', sale: @sale %>
+    </div>
+  </div>
+<% end %>
+
+<%= paginate @collection, theme: "solidus_admin" if @collection.respond_to?(:total_pages) %>
+
+<% if @collection.any? %>
+  <%= render 'table', collection: @collection, bulk_edit: false, sale: @sale %>
+  <% if @collection[0].class.name.demodulize.underscore == "sale_sku_configuration" %>
+    <div class='row mb-3'>
+      <div class='col-md'>
+        <div class='float-right'>
+          <%= button_tag 'Delete All Products', class: 'btn btn-danger sales_products_delete_all_btn', disabled: true %>
+        </div>
+        <div class='float-right mr-3'>
+          <%= button_tag 'Delete Products', class: 'btn btn-danger sales_products_delete_btn', disabled: true %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="no-objects-found">
+    <%= render 'spree/admin/shared/no_objects_found',
+                  resource: Maisonette::SaleSkuConfiguration %>
+  </div>
+<% end %>
+
+<%= paginate @collection, theme: "solidus_admin" if @collection.respond_to?(:total_pages) %>

@@ -1,0 +1,24 @@
+@import 'variables';
+
+.label-created, .label-submitted {
+    color: $color-brand-success;
+}
+
+.label-creating, .label-submitting {
+  color: $color-brand-info;
+}
+
+.label-failed_creation, .label-failed_submission {
+  color: $color-brand-danger;
+}
+
+.narvar_order_payload {
+  margin-top: 20px;
+  .key {
+    font-weight: bold;
+    color: #666;
+  }
+  .value {
+    color: #282;
+  }
+}

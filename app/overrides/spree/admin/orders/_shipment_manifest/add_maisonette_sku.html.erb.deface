@@ -1,0 +1,4 @@
+<!-- insert_bottom "td.item-name"  -->
+
+<br>
+<strong>Maisonette SKU</strong> <%= item.line_item.offer_settings&.maisonette_sku %>
