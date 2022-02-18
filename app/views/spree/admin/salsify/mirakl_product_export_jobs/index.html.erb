@@ -1,0 +1,52 @@
+<% admin_layout "full-width" %>
+
+<% admin_breadcrumb(t('spree.admin.tab.salsify')) %>
+<% admin_breadcrumb(plural_resource_name(Salsify::MiraklProductExportJob)) %>
+
+<%= render 'page_actions' %>
+
+<%= paginate @mirakl_product_export_jobs, theme: "solidus_admin" %>
+
+<% if @mirakl_product_export_jobs.any? %>
+    <table class="table" id='listing_properties' data-hook>
+    <thead>
+    <tr data-hook="listing_properties_header">
+      <th><%= t('spree.id') %></th>
+      <th><%= t('file') %></th>
+      <th><%= t('spree.status') %></th>
+      <th><%= t('spree.created_at') %></th>
+      <th><%= t('executed_at') %></th>
+      <th><%= t('finished_at') %></th>
+      <th class="actions"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @mirakl_product_export_jobs.each do |mirakl_product_export_job| %>
+      <tr>
+        <td><%= mirakl_product_export_job.id %></td>
+        <td><%= mirakl_product_export_job.products_file_name %></td>
+        <td><%= mirakl_product_export_job.status %>
+          <% if mirakl_product_export_job.error_message.present? %>
+            <br>message: <%= mirakl_product_export_job.error_message %>
+          <% end %>
+        </td>
+        <td><%= mirakl_product_export_job.created_at %></td>
+        <td><%= mirakl_product_export_job.import_executed_at %></td>
+        <td><%= mirakl_product_export_job.import_finished_at %></td>
+        <td>
+          <%= link_to 'Re-Send',
+                      re_send_product_file_to_mirakl_admin_salsify_mirakl_product_export_jobs_path(id: mirakl_product_export_job),
+                      data: { confirm: 'Are you sure?' },
+                      'data-hook': "re-send-#{mirakl_product_export_job.id}" %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="no-objects-found">
+    <%= render 'spree/admin/shared/no_objects_found', resource: Salsify::MiraklProductExportJob %>
+  </div>
+<% end %>
+
+<%= paginate @mirakl_product_export_jobs, theme: "solidus_admin" %>

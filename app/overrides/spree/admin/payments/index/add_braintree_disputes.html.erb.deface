@@ -1,0 +1,36 @@
+<!-- insert_before 'erb[silent]:contains("else")' -->
+
+<% if @braintree_disputes.any? %>
+  <fieldset data-hook="payment_list" class="no-border-bottom">
+    <legend align="center">Disputes</legend>
+
+      <table class="index table-responsive" id="listing_braintree_disputes">
+        <thead>
+          <tr data-hook="braintree_disputes_headers">
+            <th><%= Reporting::Braintree::Dispute.human_attribute_name(:braintree_dispute_id) %></th>
+            <th><%= Reporting::Braintree::Dispute.human_attribute_name(:received_date) %></th>
+            <th><%= Reporting::Braintree::Dispute.human_attribute_name(:spree_payment_id) %></th>
+            <th><%= Reporting::Braintree::Dispute.human_attribute_name(:reason) %></th>
+            <th><%= Reporting::Braintree::Dispute.human_attribute_name(:status) %></th>
+            <th><%= Reporting::Braintree::Dispute.human_attribute_name(:amount) %></th>
+            <th data-hook="braintree_disputes_headers_actions" class="actions"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @braintree_disputes.each do |dispute| %>
+              <tr data-hook="braintree_disputes_rows">
+                <td><%= link_to dispute.braintree_dispute_id, admin_reporting_braintree_dispute_path(dispute) %></td>
+                <td><%= dispute.received_date %></td>
+                <td><%= dispute.spree_payment.number %></td>
+                <td><%= dispute.reason %></td>
+                <td><%= dispute.status %></td>
+                <td><%= dispute.amount %></td>
+                <td>
+                  <%= link_to_with_icon 'show', I18n.t('spree.details'), admin_reporting_braintree_dispute_path(dispute), class: 'fa fa-edit icon_link with-tip no-text', title: I18n.t('spree.details'), 'data-original-title': I18n.t('spree.details'), 'data-action': 'show' %>
+                </td>
+              </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </fieldset>
+<% end %>
