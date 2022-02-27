@@ -1,0 +1,22 @@
+<div class="table-responsive rounded bg-white">
+  <table class="table table-condensed rounded" id='easypost_tracker' data-order-id='<%= @order.number %>'>
+    <thead class="text-muted">
+      <tr data-hook="easypost_tracker_header">
+        <th><%= Easypost::Tracker.human_attribute_name(:tracking_code) %></th>
+        <th><%= Easypost::Tracker.human_attribute_name(:carrier) %></th>
+        <th><%= Easypost::Tracker.human_attribute_name(:date_shipped) %></th>
+        <th><%= Easypost::Tracker.human_attribute_name(:date_delivered) %></th>
+        <th><%= Easypost::Tracker.human_attribute_name(:status) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="easypost_tracking_code"><%= @return_authorization.easypost_tracker.tracking_code %></td>
+        <td class="easypost_carrier"><%= @return_authorization.easypost_tracker.carrier %></td>
+        <td class="easypost_date_shipped"><%= @return_authorization.easypost_tracker.date_shipped %></td>
+        <td class="easyport_date_delivered"><%= @return_authorization.easypost_tracker.date_delivered %></td>
+        <td class="easypost_tracker_status"><%= @return_authorization.easypost_tracker.status %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

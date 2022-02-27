@@ -1,0 +1,28 @@
+<% if inventory_units.any? %>
+  <tr class="bg-light">
+    <td colspan="6">
+      <div>
+        <h5><%= plural_resource_name(Spree::InventoryUnit) %></h5>
+        <table class="table bg-transparent" id="listing_pages" data-hook>
+          <thead>
+          <tr data-hook="admin_pages_index_headers">
+            <th><%= I18n.t('spree.id') %></th>
+            <th><%= I18n.t('spree.state') %></th>
+            <th><%= I18n.t('spree.sku') %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% inventory_units.each do |inventory_unit| %>
+            <tr>
+              <td><%= inventory_unit.id %></td>
+              <td><%= inventory_unit.state %></td>
+              <td><%= inventory_unit.variant.sku %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </td>
+  </tr>
+
+<% end %>
