@@ -1,0 +1,55 @@
+<% admin_layout "full-width" %>
+
+<% admin_breadcrumb(t('spree.admin.tab.reporting')) %>
+<% admin_breadcrumb(t('spree.admin.tab.braintree_disputes')) %>
+
+<%= render 'search_filters' %>
+
+<%= paginate @collection, theme: "solidus_admin" %>
+
+<% if @collection.any? %>
+  <table class="index" id="listing_braintree_disputes">
+    <thead>
+      <tr data-hook="admin_braintree_disputes_index_headers">
+        <th><%= sort_link @search, :id, Reporting::Braintree::Dispute.human_attribute_name(:id) %></th>
+        <th><%= sort_link @search, :braintree_dispute_id, Reporting::Braintree::Dispute.human_attribute_name(:braintree_dispute_id) %></th>
+        <th><%= sort_link @search, :received_date, Reporting::Braintree::Dispute.human_attribute_name(:received_date) %></th>
+        <th><%= sort_link @search, :spree_order_number, Reporting::Braintree::Dispute.human_attribute_name(:spree_order_number) %></th>
+        <th><%= sort_link @search, :spree_payment_id, Reporting::Braintree::Dispute.human_attribute_name(:spree_payment_id) %></th>
+        <th><%= sort_link @search, :transaction_code, Reporting::Braintree::Dispute.human_attribute_name(:transaction_code) %></th>
+        <th><%= sort_link @search, :reason, Reporting::Braintree::Dispute.human_attribute_name(:reason) %></th>
+        <th><%= sort_link @search, :kind, Reporting::Braintree::Dispute.human_attribute_name(:kind) %></th>
+        <th><%= sort_link @search, :status, Reporting::Braintree::Dispute.human_attribute_name(:status) %></th>
+        <th><%= sort_link @search, :amount, Reporting::Braintree::Dispute.human_attribute_name(:amount) %></th>
+        <th><%= sort_link @search, :case_number, Reporting::Braintree::Dispute.human_attribute_name(:case_number) %></th>
+        <th data-hook="admin_braintreee_disputes_index_headers_actions" class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @collection.each do |dispute| %>
+          <tr data-hook="admin_braintree_disputes_index_rows">
+            <td><%= dispute.id %></td>
+            <td><%= dispute.braintree_dispute_id %></td>
+            <td><%= dispute.received_date %></td>
+            <td><%= link_to(dispute.spree_payment.order.number, edit_admin_order_path(dispute.spree_payment.order.number)) if dispute.spree_payment %></td>
+            <td><%= dispute.spree_payment&.number %></td>
+            <td><%= dispute.transaction_code %></td>
+            <td><%= dispute.reason %></td>
+            <td><%= dispute.kind %></td>
+            <td><%= dispute.status %></td>
+            <td><%= dispute.amount %></td>
+            <td><%= dispute.case_number %></td>
+            <td>
+              <%= link_to_with_icon 'show', I18n.t('spree.details'), admin_reporting_braintree_dispute_path(dispute), class: 'fa fa-edit icon_link with-tip no-text', title: I18n.t('spree.details'), 'data-original-title': I18n.t('spree.details'), 'data-action': 'show' %>
+            </td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="no-objects-found">
+    <%= render 'spree/admin/shared/no_objects_found', resource: Reporting::Braintree::Dispute %>
+  </div>
+<% end %>
+
+<%= paginate @collection, theme: "solidus_admin" %>
