@@ -1,0 +1,73 @@
+<% content_for :table_filter_title do %>
+  <%= t('spree.search') %>
+<% end %>
+
+<% content_for :table_filter do %>
+  <div data-hook="admin_returns_customer_returns_search">
+    <%= search_form_for [:admin, @search], url: admin_returns_customer_returns_path do |f| %>
+      <div class="row">
+        <div class="col-4">
+           <div class="field">
+            <%= label_tag nil, t('spree.customer_return', number: '') %>
+            <%= f.text_field :number_start %>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="actions filter-actions">
+        <div data-hook="admin_returns_customer_return_index_search_buttons">
+          <%= button_tag t('spree.filter_results'), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+
+<%= paginate @collection, theme: "solidus_admin" %>
+
+<% if @collection.any? %>
+  <table class="index">
+    <thead>
+      <tr>
+        <th><%= Spree::CustomerReturn.human_attribute_name(:created_at) %></th>
+        <th><%= Spree::CustomerReturn.human_attribute_name(:number) %></th>
+        <th><%= Spree::CustomerReturn.human_attribute_name(:order) %></th>
+        <th><%= Spree::CustomerReturn.human_attribute_name(:reimbursement_status) %></th>
+        <th><%= Spree::CustomerReturn.human_attribute_name(:total) %></th>
+        <th><%= Spree::CustomerReturn.human_attribute_name(:pre_tax) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @collection.each do |customer_return| %>
+        <tr id="<%= spree_dom_id customer_return %>">
+          <td><%= customer_return.created_at.to_date %></td>
+          <td><%= link_to customer_return.number, spree.edit_admin_order_customer_return_path(customer_return.order, customer_return) %></td>
+          <td><%= link_to customer_return.order.number, spree.edit_admin_order_path(customer_return.order) %></td>
+          <td>
+            <% if customer_return.fully_reimbursed? %>
+              <span class="pill pill-complete"><%= t('spree.reimbursed') %></span>
+            <% else %>
+              <span class="pill pill-pending"><%= t('spree.incomplete') %></span>
+            <% end %>
+          </td>
+          <td><%= customer_return.display_total.to_html  %></td>
+          <td><%= customer_return.display_total_excluding_vat.to_html  %></td>
+          <td class="actions">
+            <% if can?(:edit, customer_return) %>
+              <%= link_to_edit customer_return, url: edit_admin_order_customer_return_path(customer_return.order.number, customer_return.id), no_text: true %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="no-objects-found">
+    <%= render 'spree/admin/shared/no_objects_found',
+                 resource: Spree::CustomerReturn %>
+  </div>
+<% end %>
