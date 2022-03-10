@@ -1,0 +1,12 @@
+<!-- insert_bottom '.row'  -->
+
+<div class="col-2">
+  <div class="field" data-hook="vendor-select">
+    <%= label_tag :q_vendor_id_eq, Spree::Price.human_attribute_name(:vendor) %>
+
+    <%= f.select :vendor_id_eq,
+                @prices.map(&:vendor).compact.uniq.map { |c| [c.name, c.id]},
+                {include_blank: true},
+                class: "custom-select fullwidth" %>
+  </div>
+</div>
