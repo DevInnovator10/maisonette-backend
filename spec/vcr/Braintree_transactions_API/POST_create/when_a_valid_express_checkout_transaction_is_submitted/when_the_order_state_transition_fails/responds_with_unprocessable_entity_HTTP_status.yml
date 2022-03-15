@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.sandbox.braintreegateway.com/merchants/hyfrbrzhzb9jzngd/customers
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <customer>
+          <payment-method-nonce>fake-paypal-billing-agreement-nonce</payment-method-nonce>
+        </customer>
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept:
+      - application/xml
+      User-Agent:
+      - Braintree Ruby Gem 2.96.0
+      X-Apiversion:
+      - '5'
+      Content-Type:
+      - application/xml
+      Authorization:
+      - "<Authorization Code>"
+  response:
+    status:
+      code: 201
+      message: ''
+    headers:
+      Date:
+      - Tue, 23 Jun 2020 13:29:24 GMT
+      Content-Type:
+      - application/xml; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Authentication:
+      - basic_auth
+      X-User:
+      - vpr2hxsd2x4rnntd
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Etag:
+      - W/"fbb447b42f57f47c2549324163c1121b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.411879'
+      X-Request-Id:
+      - d0661386-2770-44b4-b3c4-b20d3842cb5f
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      X-Broxyid:
+      - d0661386-2770-44b4-b3c4-b20d3842cb5f
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIALQD8l4AA6RUy27bMBC85ysM3Wn6laAOZKUoAhst0AAF2rTJxViJK4kuRaok5Vj++lIvO4kUoEWO3Jl9zkj+zSEToz1qw5VcedPxxBuhjBTjMll5P76vyQfvJrjwo8JYlaEOLkYjn7PgaracXE0Xi7lP3asKOjBKQVri3mkZ61Af02O43B1lwnz6HK3YMdfGEgkZjiQXK8/qAj1aQwLeQiKV5SDLXhwz4KIXzVMl+zViOPRiTxgabgf6aQSLjIAd2TLHlcfc0/IMvWA2mU3I5IrM5t+n8+vZ8nq2ePTpOaHOL3L2f/nnhKZ/fXQScxTMNCMlQoUgqis+zO+PbLO0j7++xHe7z5dfbx8Od7ffjj49c9olGLckAs1MOwZoDWV3JShzR4YoUoW0LxkVoUdpgi4cciGcSwgkGjHDRtuGu22x7QnbcmeCwYyuXKRCDZK57atRiYAQe5o2xPep0tRo7UxeWvl5uEf9l9MPkLs6DGMoRDdzqJRAkF5QLefTFjyRa0cHO5A4Zgo/NlcdO//7tIE64rlPtFlfhj/vC7aZCrZJ94/r5VO0dkPKT3/uNpflK1/U2TyDBEmhRZBam5trSsEYtGbspODSOpUSd7knKKvW1E1RS5mhTRXbCpUo2k6Wy+QG5Z5rJSvKyjglQ3VwP4dTh66nKUITaZ5b98MZMGTNseo3yiCL891Cap82zw5851fVLG5I9TuS6M4hueUV/lqZGIRx0gxRT3Xc+rVbBo3agjJWg7DgGa/GKgwSpdnbdTTu3QHqhXuwT/tf5+uYqYPAmEanbu/mZ9cGF38BAAD//wMADLSPyg8GAAA=
+    http_version:
+  recorded_at: Tue, 23 Jun 2020 13:29:24 GMT
+recorded_with: VCR 5.0.0
