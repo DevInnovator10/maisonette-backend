@@ -1,0 +1,56 @@
+<%= render partial: 'spree/shared/email/introduction' %>
+<div align="center" width="100%" bgcolor="#ffffff" style="background: #ffffff !important">
+  <table width="600" align="center" cellspacing="0" cellpadding="0" bgcolor="#ffffff" style="background: #ffffff !important">
+    <tr>
+      <td align="center" height="60" colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="75">&nbsp;</td>
+      <td align="center">
+        <font class="order-title">Item Details</font>
+      </td>
+      <td width="75">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" height="60" colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="75">&nbsp;</td>
+      <td align="center">
+        <table width="450" align="center" cellspacing="0" cellpadding="0" bgcolor="#ffffff" style="background: #ffffff !important">
+          <tr>
+            <td align="center" height="20" colspan="3" class="order-border-darker">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center" width="150">
+              <a href="<%= product_url(@product) %>">
+                <img src="<%= mail_product_image(@product) %>" width="60" height="60" style="display: block;" />
+              </a>
+            </td>
+            <td align="left">
+              <a href="<%= product_url(@product) %>" class="text__link">
+                <font class="order__product__brand"><%= @product.brand&.name %><br /></font>
+                <font class="order__product__name"><%= raw(@product.name) %><br /></font>
+                <font class="order__product__options-key">Size:</font>
+                <font class="order__product__options-value"><%= @variant.option_value('Size') %></font>
+              </a>
+            </td>
+            <td align="right">
+              <font class="order__product__price"><%= @variant.display_price.to_s %></font>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" height="20" colspan="3">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center" height="20" colspan="3" class="order-border">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center" height="40" colspan="3">&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+      <td width="75">&nbsp;</td>
+    </tr>
+  </table>
+</div>
