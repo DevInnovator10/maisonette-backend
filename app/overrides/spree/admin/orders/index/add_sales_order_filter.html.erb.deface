@@ -1,0 +1,8 @@
+<!-- insert_after '[data-hook="admin_orders_index_search"] .row .col-12.col-xl-6:last-child' -->
+
+<div class="col-12 col-xl-6">
+  <div class="field">
+    <%= f.label 'Sales Order forward status' %>
+    <%= f.select :forward_status, ::OrderManagement::SalesOrder::SALES_ORDER_FORWARD_STATUS, { include_blank: 'Show All' }, { class: 'custom-select fullwidth' }  %>
+  </div>
+</div>
