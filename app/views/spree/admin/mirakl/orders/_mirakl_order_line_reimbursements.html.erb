@@ -1,0 +1,49 @@
+<% if order_line.order_line_reimbursements.any? %>
+  <tr class="bg-light">
+    <td colspan="6">
+      <div>
+        <table class="table bg-transparent" id="listing_pages" data-hook>
+          <thead>
+          <tr data-hook="admin_pages_index_headers">
+            <th><%= I18n.t('spree.mirakl.order_line_reimbursements.id') %></th>
+            <th><%= I18n.t('spree.mirakl.order_line_reimbursements.mirakl_type') %></th>
+            <th><%= I18n.t('spree.mirakl.order_line_reimbursements.state') %></th>
+            <th><%= I18n.t('spree.mirakl.order_line_reimbursements.total') %></th>
+            <th><%= I18n.t('spree.mirakl.order_line_reimbursements.quantity') %></th>
+            <th><%= I18n.t('spree.mirakl.order_line_reimbursements.refund_reason') %></th>
+            <th><%= I18n.t('spree.mirakl.order_line_reimbursements.amount_refunded') %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% order_line.order_line_reimbursements.each do |order_line_reimbursement| %>
+            <tr>
+              <td><%= order_line_reimbursement.mirakl_reimbursement_id %></td>
+              <td><%= I18n.t("spree.mirakl.order_line_reimbursements.#{order_line_reimbursement.mirakl_type}") %></td>
+              <td>
+                <span class="label <%= "label-#{order_line_reimbursement.state&.downcase}" %>"><%= order_line_reimbursement.state %></span>
+              </td>
+              <td><%= number_to_currency(order_line_reimbursement.total) %></td>
+              <td><%= order_line_reimbursement.quantity %></td>
+              <td><%= order_line_reimbursement.refund_reason&.name %></td>
+              <td>
+                <% if order_line_reimbursement.reimbursement %>
+                  Total: <%= order_line_reimbursement.reimbursement.display_total.to_s %>
+                  <% order_line_reimbursement.reimbursement.refunds.each do |refund| %>
+                    <li><%= "Refund ID: #{refund.id} Amount: #{refund.display_amount.to_s}" %></li>
+                  <% end %>
+                  <% order_line_reimbursement.reimbursement.credits.each do |credit| %>
+                    <li><%= "Store Credit ID: #{credit.creditable.id} Amount: #{credit.display_amount.to_s}" %></li>
+                  <% end %>
+                  <% order_line_reimbursement.reimbursement.gift_card_reimbursements.each do |gift_card_reimbursement| %>
+                    <li><%= "Gift Card Code: #{gift_card_reimbursement.spree_promotion_code.value} Amount: #{gift_card_reimbursement.display_amount.to_s}" %></li>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </td>
+  </tr>
+<% end %>
