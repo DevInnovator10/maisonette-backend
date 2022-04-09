@@ -1,0 +1,12 @@
+<!-- insert_bottom '[data-hook="admin_product_form_available_on"]' -->
+
+<div data-hook="admin_product_form_available_until">
+  <%= f.field_container :available_until do %>
+    <%= f.label :available_until %>
+    <%= f.field_hint :available_until %>
+
+    <%= render "spree/admin/shared/datepicker", f: f, date_attr: :available_until %>
+
+    <%= f.error_message_on :available_until %>
+  <% end %>
+</div>

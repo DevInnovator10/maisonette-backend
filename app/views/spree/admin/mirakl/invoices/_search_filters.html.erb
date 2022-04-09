@@ -1,0 +1,67 @@
+<% content_for :table_filter do %>
+  <div>
+    <%= search_form_for [:admin, @search] do |f| %>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= label_tag :q_id_cont, I18n.t('spree.id') %>
+            <%= f.text_field :id_cont, class: 'form-control js-quick-search-target' %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="date-range-filter">
+            <%= label_tag :q_created_at_gt, I18n.t('spree.date_range') %>
+            <div class="input-group date-range-fields">
+              <input class="form-control datepicker datepicker-from" placeholder="From">
+              <div class="input-group-prepend input-group-append">
+                <span class="input-group-text range-divider">
+                  <i class="fa fa-arrow-right"></i>
+                </span>
+              </div>
+              <input class="form-control datepicker datepicker-to" placeholder="To">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= label_tag :q_invoice_id_cont, I18n.t('spree.mirakl.invoices.invoice_id') %>
+            <%= f.text_field :invoice_id_cont, class: 'form-control js-quick-search-target' %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= label_tag :q_mirakl_shop_shop_id_eq, I18n.t('spree.mirakl.shops.shop_number') %>
+            <%= f.text_field :mirakl_shop_shop_id_eq, class: 'form-control js-quick-search-target' %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= label_tag :q_mirakl_shop_name_eq, I18n.t('spree.mirakl.shops.name') %>
+            <%= f.collection_select(:mirakl_shop_name_eq, Mirakl::Shop.all, :id, :name, { include_blank: true }, class: 'select2 mirakl_shop_name_eq fullwidth') %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= label_tag :q_invoice_type_eq, I18n.t('spree.mirakl.invoices.doc_type') %>
+            <%= f.select :invoice_type_eq, Mirakl::Invoice.invoice_types, { include_blank: true }, class: 'form-control js-quick-search-target' %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= label_tag :q_issued_eq, I18n.t('spree.mirakl.invoices.issued') %>
+            <%= f.select :issued_eq, [['True', 1], ['False', 0]], { include_blank: true }, class: 'custom-select fullwidth' %>
+          </div>
+        </div>
+      </div>
+      <div class="actions filter-actions" data-hook="admin_mirakl_invoices_index_search_buttons">
+        <%= button_tag t('spree.search'), class: 'btn btn-primary' %>
+        <% if @active_search %>
+          <%= link_to 'Reset Filters', admin_mirakl_invoices_path, class: 'btn btn-secondary' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+<% end %>
