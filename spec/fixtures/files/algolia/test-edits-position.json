@@ -1,0 +1,56 @@
+{
+    "landingPages": [
+      {
+        "id": "5c7b238eb97d0717b41ffc2a",
+        "name": "All Shoes",
+        "title": "Kids Shoes - Maisonette",
+        "h1": "Kids Shoes - Maisonette",
+        "created": 1551573902,
+        "modified": 1629810417,
+        "path": "kids-shoes",
+        "conditions": [
+            {
+                "type": "facet",
+                "operator": "is",
+                "value": "",
+                "topic": "cat1"
+
+            }
+        ],
+        "operator": "and",
+        "banners": [
+            {
+                "name": "banner",
+                "conditions": [
+                    {
+                        "type": "page_type",
+                        "operator": "is",
+                        "value": "any"
+                    }
+                ],
+                "operator": "or",
+                "position": "top_of_landing_page",
+                "active": true,
+                "creativeId": "5c7b2468b97d070c2e2ee72f"
+            }
+        ],
+        "actions": {
+          "hide": [],
+          "promote": [
+            {
+              "url": "https:\/\/www.maisonette.com\/product\/new-dots-booties-white-blue"
+            },
+            {
+              "url": "https:\/\/www.maisonette.com\/product\/new-dots-booties-white-grey"
+            },
+            {
+              "url": "https:\/\/www.maisonette.com\/product\/calf-piglet-mismatched-baby-booties"
+            },
+            {
+              "url": "https:\/\/www.maisonette.com\/product\/not-exists"
+            }
+          ]
+        }
+      }
+    ]
+}
