@@ -1,0 +1,23 @@
+<!-- insert_after "[data-hook='admin_order_edit_header']" -->
+
+<div class="js-order-edit">
+  <% if @order.total_applicable_store_credit > 0 %>
+    <fieldset class="no-border-bottom">
+      <legend align="center">
+        <span>Store credits</span>
+      </legend>
+      <div class="js-edit-store-credits">
+      </div>
+    </fieldset>
+  <% end %>
+
+  <fieldset class="no-border-bottom">
+    <legend align="center">
+      <span>Gift Details</span>
+    </legend>
+    <table>
+      <tr class="js-gift-details">
+      </tr>
+    </table>
+  </fieldset>
+</div>
