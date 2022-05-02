@@ -1,0 +1,45 @@
+
+<!-- replace_contents "table"  -->
+<% if @promotion.gift_card? %>
+  <thead>
+    <th><%= Spree::PromotionCode.human_attribute_name :value %></th>
+    <th>GiftCard</th>
+    <th>Product</th>
+    <th><%= Spree::Promotion.human_attribute_name(:original_amount) %></th>
+    <th><%= Spree::Promotion.human_attribute_name(:balance) %></th>
+    <th><%= Spree::Promotion.human_attribute_name(:redeemable) %></th>
+    <th><%= Spree::Promotion.human_attribute_name(:sent_at) %></th>
+    <th><%= Spree::Promotion.human_attribute_name(:state) %></th>
+    <th><%= Spree::Promotion.human_attribute_name(:starts_at) %></th>
+    <th><%= Spree::Promotion.human_attribute_name(:expires_at) %></th>
+  </thead>
+
+  <tbody>
+    <% @promotion_codes.each do |promotion_code| %>
+      <tr>
+        <td><%= promotion_code.value %></td>
+        <% next unless promotion_code.gift_card.present? %>
+        <td><%= promotion_code.gift_card.name %></td>
+        <td><%= link_to promotion_code.gift_card.line_item.product.name, edit_admin_product_variant_path(promotion_code.gift_card.line_item.product, promotion_code.gift_card.line_item.variant) if promotion_code.gift_card.line_item %></td>
+        <td><%= promotion_code.gift_card.original_amount %></td>
+        <td><%= promotion_code.gift_card.balance %></td>
+        <td><%= promotion_code.gift_card.redeemable %></td>
+        <th><%= promotion_code.gift_card.sent_at.to_s(:long) if promotion_code.gift_card.sent_at %></th>
+        <td><%= link_to promotion_code.gift_card.state, edit_admin_gift_card_path(promotion_code.gift_card) %></td>
+        <td><%= promotion_code.gift_card.starts_at.to_s(:long) if promotion_code.gift_card.starts_at %></td>
+        <td><%= promotion_code.gift_card.expires_at.to_s(:long) if promotion_code.gift_card.expires_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+<% else %>
+  <thead>
+    <th><%= Spree::PromotionCode.human_attribute_name :value %></th>
+  </thead>
+  <tbody>
+    <% @promotion_codes.each do |promotion_code| %>
+      <tr>
+        <td><%= promotion_code.value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+<% end %>

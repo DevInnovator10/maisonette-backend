@@ -1,0 +1,36 @@
+<% content_for :page_actions do %>
+  <% if @gift_card.state == 'issued' && can?(:create, Spree::Promotion) %>
+    <li>
+      <%= link_to t('spree.admin.gift_card.send'), spree.send_gift_card_email_admin_gift_card_path(@gift_card,), class: 'btn btn-primary', method: :put %>
+    </li>
+    <li>
+      <%= link_to t('spree.admin.gift_card.confirmation'), spree.send_confirmation_email_admin_gift_card_path(@gift_card,), class: 'btn btn-primary', method: :put %>
+    </li>
+  <% end %>
+<% end %>
+
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @gift_card } %>
+
+<% if @gift_card.line_item.nil? %>
+  <% admin_breadcrumb link_to(plural_resource_name(Spree::GiftCard), spree.admin_gift_cards_path) %>
+  <% admin_breadcrumb link_to(@gift_card.id, spree.edit_admin_gift_card_path(@gift_card)) %>
+  <% admin_breadcrumb(t('spree.admin.gift_card.details')) %>
+<% else %>
+  <% admin_breadcrumb link_to(plural_resource_name(Spree::Order), spree.admin_orders_path) %>
+  <% admin_breadcrumb link_to(@gift_card.line_item.order.number, spree.edit_admin_order_path(@gift_card.line_item.order)) %>
+  <% admin_breadcrumb link_to("#{plural_resource_name(Spree::GiftCard)} #{@gift_card.id}", spree.edit_admin_gift_card_path(@gift_card)) %>
+  <% admin_breadcrumb(t('spree.admin.gift_card.details')) %>
+<% end %>
+
+<%= form_for [:admin, @gift_card] do |f| %>
+  <fieldset class="no-border-top">
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <% if can?(:update, @gift_card) %>
+      <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= button_tag t('spree.actions.update'), class: 'btn btn-primary' %>
+        <%= link_to t('spree.actions.cancel'), spree.edit_admin_order_path(@gift_card.line_item.order), class: 'button' %>
+      </div>
+    <% end %>
+  </fieldset>
+<% end %>
+

@@ -1,0 +1,22 @@
+<!-- insert_bottom '.additional-info' -->
+
+<% if @order.complete? %>
+  <% if (kustomer_entity = @order.kustomer_order).present? %>
+    <dt data-hook="admin-order-kustomer-order-view">Kustomer Order:</dt>
+    <dd id="order-kustomer-order-view">
+      <%= link_to_with_icon 'show', kustomer_entity.sync_status, admin_kustomer_entity_path(kustomer_entity.id), class: 'fa fa-eye with-tip no-text', title: I18n.t('spree.admin.kustomer.details'), 'data-original-title': I18n.t('spree.admin.kustomer.details'), 'data-action': 'show' %>
+    </dd>
+  <% else %>
+    <dt data-hook="admin-order-kustomer-order-view">Kustomer Order:</dt>
+    <dd id="order-kustomer-order-view">Not present</dd>
+  <% end %>
+  <% if (kustomer_entity = @order.kustomer_customer).present? %>
+    <dt data-hook="admin-order-kustomer-customer-view">Kustomer Customer:</dt>
+    <dd id="order-kustomer-customer-view">
+      <%= link_to_with_icon 'show', kustomer_entity.sync_status, admin_kustomer_entity_path(kustomer_entity.id), class: 'fa fa-eye with-tip no-text', title: I18n.t('spree.admin.kustomer.details'), 'data-original-title': I18n.t('spree.admin.kustomer.details'), 'data-action': 'show' %>
+    </dd>
+  <% else %>
+    <dt data-hook="admin-order-kustomer-customer-view">Kustomer Customer:</dt>
+    <dd id="order-kustomer-customer-view">Not present</dd>
+  <% end %>
+<% end %>
