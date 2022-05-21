@@ -21,6 +21,7 @@ http_interactions:
       - "<Authorization Code>"
   response:
     status:
+
       code: 200
       message: ''
     headers:
