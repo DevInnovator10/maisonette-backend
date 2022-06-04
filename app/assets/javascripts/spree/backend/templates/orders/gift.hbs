@@ -1,0 +1,41 @@
+<form>
+    <th>
+    {{ human_attribute_name "spree/order" "gift" }}
+  </th>
+  <td>
+    {{#if editing}}
+      <input value="{{gift_email}}" class="gift_email" placeholder="E-Mail"/>
+      {{#if invalid_gift_email}}
+      <span class="alert alert-danger">Gift E-Mail {{gift_email_error_message}}</span>
+      {{/if}}
+    {{else}}
+      {{#if is_gift}}
+        {{ gift_email }}
+      {{else}}
+        No gift
+      {{/if}}
+    {{/if}}
+  </td>
+  <td>
+    {{#if editing}}
+      <textarea class="gift_message" placeholder="Message">{{gift_message}}</textarea>
+    {{else}}
+      {{#if is_gift}}
+        {{ gift_message_preview }}
+      {{/if}}
+    {{/if}}
+  </td>
+</form>
+<td class="actions">
+  {{#if editing}}
+    <button class="js-save fa fa-check no-text with-tip" data-action="save" title="{{ t "actions.save" }}"></button>
+    <button class="js-cancel fa fa-cancel no-text with-tip" data-action="cancel" title="{{ t "actions.cancel" }}"></button>
+  {{else}}
+    {{#if is_gift}}
+      <button class="js-edit fa fa-edit no-text with-tip" data-action="edit" title="{{ t "actions.edit" }}"></button>
+      <button class="js-remove fa fa-trash no-text with-tip" data-action="remove" title="{{ t "actions.remove" }}"></button>
+    {{else}}
+      <button class="js-add fa fa-plus no-text with-tip" data-action="add" title="{{ t "actions.add" }}"></button>
+    {{/if}}
+  {{/if}}
+</td>
