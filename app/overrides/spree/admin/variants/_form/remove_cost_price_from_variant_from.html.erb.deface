@@ -1,0 +1,26 @@
+<!-- replace_contents "[data-hook='admin_variant_form_fields']"  -->
+
+<fieldset class="no-border-top no-border-bottom">
+    <p> <%== t('.pricing_hint') %> </p>
+
+    <div class="row">
+      <% if show_rebuild_vat_checkbox? %>
+        <div class="col-3">
+          <%= render "spree/admin/shared/rebuild_vat_prices_checkbox", form: f, model_name: "variant", wrapper_class: "field" %>
+        </div>
+      <% end %>
+
+      <div class="col-3">
+        <div class="field" data-hook="tax_category">
+          <%= f.label :tax_category %>
+          <%= f.field_hint :tax_category %>
+          <%= f.collection_select :tax_category_id,
+                                  @tax_categories,
+                                  :id,
+                                  :name,
+                                  { include_blank: t('.use_product_tax_category') },
+                                  { class: 'custom-select fullwidth' } %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
