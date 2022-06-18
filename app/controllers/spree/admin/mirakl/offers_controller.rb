@@ -2,6 +2,7 @@
 
 module Spree
   module Admin
+
     module Mirakl
       class OffersController < Spree::Admin::BaseController
         def index
