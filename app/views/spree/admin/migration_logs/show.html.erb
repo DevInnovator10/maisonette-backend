@@ -1,0 +1,144 @@
+<% admin_layout "full-width" %>
+
+<% admin_breadcrumb link_to(t('spree.admin.tab.migration_logs'), spree.admin_migration_logs_path) %>
+<% admin_breadcrumb @log.id.to_s %>
+
+<% content_for :table_filter_title do %>
+  <%= t('spree.search') %>
+<% end %>
+
+<br/>
+<div class='panel panel-default'>
+  <div class='panel-heading'>
+    <h3 class='panel-title'><%= t('spree.details') %></h1>
+  </div>
+  <div class='panel-body'>
+    <dl class="dl-horizontal">
+      <dt><%= ::Migration::Log.human_attribute_name(:id) %></dt>
+      <dd><%= @log.id %></dd>
+
+      <dt><%= ::Migration::Log.human_attribute_name(:migrable_type) %></dt>
+      <dd><%= @log.migrable_type %></dd>
+
+      <dt><%= ::Migration::Log.human_attribute_name(:status) %></dt>
+      <dd>
+        <%= pill_status(@log) %>
+        <% if @log.status == 'require_verification' %>
+          <%= link_to(t('spree.admin.migration_logs.mark_as_fixed'), spree.fixed_admin_migration_log_path, method: :put) %>
+        <% end %>
+      </dd>
+
+      <dt><%= ::Migration::Log.human_attribute_name(:legacy_id) %></dt>
+      <dd><%= @log.legacy_id %></dd>
+
+      <dt><%= ::Migration::Log.human_attribute_name(:order_number) %></dt>
+      <dd>
+        <% if !@log.failed? && @log.order_number.present? %>
+          <%= link_to(@log.order_number, edit_admin_order_path(@log.order_number)) %>
+        <% else %>
+          <%= @log.order_number %>
+        <% end %>
+      </dd>
+
+      <dt><%= ::Migration::Log.human_attribute_name(:created_at) %></dt>
+      <dd><%= l(@log.created_at, format: :long) %></dd>
+
+      <% if @log.extra.present? %>
+        <dt><%= ::Migration::Log.human_attribute_name(:extra) %></dt>
+        <dd><%= @log.extra %></dd>
+      <% end %>
+
+      <% if @log.messages.present? %>
+        <dt><%= ::Migration::Log.human_attribute_name(:messages) %></dt>
+        <dd style="font-family: monospace; white-space: pre-line"><%= @log.messages %></dd>
+      <% end %>
+
+      <% if @log.migrated.present? %>
+        <dt><%= ::Migration::Log.human_attribute_name(:migrated) %></dt>
+        <dd style="font-family: monospace; white-space: pre-line">
+          <% if @log.migrated.present? %>
+            <%= link_to(@log.migrated, url_for([:edit, :admin, @log.migrated])) rescue "Migrated entity #{@log.migrated_type}##{@log.migrated_id}" %>
+          <% end %>
+        </dd>
+      <% end %>
+    </dl>
+  </div>
+</div>
+
+<% if @related_logs.present? %>
+  <%= paginate @related_logs, theme: "solidus_admin" %>
+  <h1>Related Promotion Logs</h1>
+  <table class="index">
+    <thead>
+      <tr>
+        <th><%= ::Migration::Log.human_attribute_name(:id) %></th>
+        <th><%= ::Migration::Log.human_attribute_name(:migrable_type) %></th>
+        <th><%= ::Migration::Log.human_attribute_name(:status) %></th>
+        <th><%= ::Migration::Log.human_attribute_name(:legacy_id) %></th>
+        <th><%= ::Migration::Log.human_attribute_name(:order) %></th>
+        <th><%= ::Migration::Log.human_attribute_name(:created_at) %></th>
+        <th></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @related_logs.each do |migration_log| %>
+        <% status = migration_log.status %>
+        <tr id="<%= spree_dom_id migration_log %>">
+          <td><%= link_to migration_log.id, admin_migration_log_path(migration_log.id) %></td>
+          <td><pre><%= migration_log.migrable_type %></pre></td>
+          <td class="<%= status == 'completed' ? 'green' : ( status.include?('failed') ? 'red' : '' ) %>"><%= status %></td>
+          <td><%= migration_log.legacy_id %></td>
+          <td>
+            <% if !migration_log.failed? && migration_log.order_number.present? %>
+              <%= link_to(migration_log.order_number, spree.edit_admin_order_path(migration_log.order_number)) %>
+            <% else %>
+              <%= migration_log.order_number %>
+            <% end %>
+          </td>
+          <td><%= migration_log.created_at %></td>
+          <td style="text-align: center">
+            <% if migration_log.extra.present? %>
+              <em> <%= h(migration_log.extra) %></em>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to 'Details', spree.admin_migration_log_path(migration_log.id), class: 'btn btn-secondary btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% if @log.order? %>
+  <br/>
+  <%= paginate @collection, theme: "solidus_admin" %>
+  <% if @collection.any? %>
+    <table class="index table table-sm">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Details</th>
+          <th>Legacy entity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @collection.each do |migration_log| %>
+          <% status = migration_log.status %>
+          <tr id="<%= spree_dom_id migration_log %>">
+            <td><%= migration_log.extra %></td>
+            <td><%= migration_log.messages %></td>
+            <td>
+              <pre><%= migration_log.migrable_type != '-' ? "#{migration_log.migrable_type}##{migration_log.legacy_id}" : '-' %></pre>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="no-objects-found">
+      <%= render 'spree/admin/shared/no_objects_found', resource: ::Migration::Log %>
+    </div>
+  <% end %>
+<% end %>
