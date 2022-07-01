@@ -1,0 +1,7 @@
+<%= item.line_item.single_money.to_html %>
+<% if item.line_item.on_sale? %>
+  <div data-hook="item-on-sale"><em><strong>Sale Price</strong></em></div>
+<% end %>
+<% if item.line_item.final_sale? %>
+  <div data-hook="item-final-sale"><em><strong>Final Sale</strong></em></div>
+<% end %>
