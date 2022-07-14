@@ -1,0 +1,83 @@
+<% content_for :table_filter_title do %>
+  <%= t('spree.search') %>
+<% end %>
+
+<% content_for :table_filter do %>
+  <div data-hook="admin_returns_return_authorizations_search">
+    <%= search_form_for [:admin, @search], url: admin_returns_return_authorizations_path do |f| %>
+      <div class="row">
+        <div class="col-4">
+           <div class="field">
+            <%= label_tag nil, t('spree.order_number', number: '') %>
+            <%= f.text_field :order_number_start %>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="field">
+            <%= label_tag nil, t('spree.rma_number') %>
+            <%= f.text_field :number_start %>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="field">
+            <%= label_tag :q_state_eq, Spree::ReturnAuthorization.human_attribute_name(:state) %>
+            <%= f.select :state_eq, Spree::ReturnAuthorization.state_machines[:state].states.collect {|s| [t(s.name, scope: 'spree.return_authorization_state'), s.value]}, {include_blank: true}, class: 'custom-select fullwidth' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="actions filter-actions">
+        <div data-hook="admin_returns_return_authorizations_index_search_buttons">
+          <%= button_tag t('spree.filter_results'), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+
+<%= paginate @collection, theme: "solidus_admin" %>
+
+<% if @collection.any? %>
+  <table class="index">
+    <thead>
+      <tr>
+        <th><%= Spree::ReturnAuthorization.human_attribute_name(:created_at) %></th>
+        <th><%= Spree::ReturnAuthorization.human_attribute_name(:number) %></th>
+        <th><%= Spree::ReturnAuthorization.human_attribute_name(:order) %></th>
+        <th><%= Spree::ReturnAuthorization.human_attribute_name(:state) %></th>
+        <th><%= Spree::ReturnAuthorization.human_attribute_name(:tracking_url) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @collection.each do |return_authorization| %>
+        <tr id="<%= spree_dom_id return_authorization %>">
+          <td><%= return_authorization.created_at.to_date %></td>
+          <td><%= link_to return_authorization.number, spree.edit_admin_order_return_authorization_path(return_authorization.order, return_authorization) %></td>
+          <td><%= link_to return_authorization.order.number, spree.edit_admin_order_path(return_authorization.order) %></td>
+          <td>
+            <span class="badge badge-<%= return_authorization.state %>"><%= I18n.t("spree.return_authorization_states.#{return_authorization.state}") %></span>
+          </td>
+          <td>
+            <% if return_authorization.tracking_url %>
+              <%= link_to return_authorization.tracking_number, return_authorization.tracking_url, target: "_blank", rel: "noopener noreferrer" %>
+            <% end %>
+          </td>
+          <td class="actions">
+            <% if can?(:edit, return_authorization) %>
+              <%= link_to_edit return_authorization, url: edit_admin_order_return_authorization_path(order_id: return_authorization.order.number, id: return_authorization.id), no_text: true %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="no-objects-found">
+    <%= render 'spree/admin/shared/no_objects_found',
+                 resource: Spree::ReturnAuthorization %>
+  </div>
+<% end %>
