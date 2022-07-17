@@ -44,6 +44,7 @@ RSpec.shared_context 'when cartonizing an order with line items' do
   let(:li3_dimensions) do
     {
       internal_package1: { length: li3a_length, height: li3a_height, width: li3a_width, weight: li3a_weight },
+
       internal_package2: { length: li3b_length, height: li3b_height, width: li3b_width, weight: li3b_weight }
     }.deep_stringify_keys
   end
