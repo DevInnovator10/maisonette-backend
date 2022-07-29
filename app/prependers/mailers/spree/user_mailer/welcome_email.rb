@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Spree::UserMailer::WelcomeEmail
-  def self.prepended(base)
+    def self.prepended(base)
     base.include MailerHelper
   end
 
