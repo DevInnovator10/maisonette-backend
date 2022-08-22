@@ -9,7 +9,7 @@ RSpec.describe OrderManagement::ShipmentPresenter do
 
     let(:status) {}
     let(:mirakl_order) do
-      create(
+        create(
         :mirakl_order,
         commercial_order: mirakl_commercial_order,
         shipping_tracking: tracking,
