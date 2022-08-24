@@ -2,6 +2,7 @@
 
 module Maisonette
   def self.table_name_prefix
+
     'maisonette_'
   end
 end
