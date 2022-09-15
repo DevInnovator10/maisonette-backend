@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Spree::Order::Marketplace, type: :model do
-  let(:described_class) { Spree::Order }
+    let(:described_class) { Spree::Order }
 
   describe '#item_from_same_vendor' do
     subject { line_item.order.item_from_same_vendor(line_item, options) }
