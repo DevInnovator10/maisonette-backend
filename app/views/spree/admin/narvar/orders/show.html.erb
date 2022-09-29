@@ -1,0 +1,82 @@
+<% content_for :page_title do %>
+  <%= link_to I18n.t('spree.admin.tab.narvar_orders'), admin_narvar_orders_path %> -
+  #<%= @narvar_order.id %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= link_to(I18n.t('spree.admin.narvar.current_payload'), admin_narvar_order_path(@narvar_order.id, payload: 1), class: 'btn btn-info') %>
+  <%= link_to(I18n.t('spree.admin.narvar.fetch_data_from_narvar'), admin_narvar_order_path(@narvar_order.id, complete: 1), class: 'btn btn-info') %>
+  <%= button_to(I18n.t('spree.admin.narvar.retry_narvar_sync'), resend_admin_narvar_order_path(@narvar_order.id), class: 'btn btn-warning') if @narvar_order.retriable? %>
+<% end %>
+
+<div class='panel panel-default'>
+  <div class='panel-heading'>
+    <h3 class='panel-title'><%= I18n.t('spree.admin.narvar.details') %></h3>
+  </div>
+  <div class='panel-body'>
+    <dl class="dl-horizontal">
+      <dt><%= Narvar::Order.human_attribute_name :id %></dt>
+      <dd><%= @narvar_order.id %></dd>
+
+      <dt><%= Narvar::Order.human_attribute_name :created_at %></dt>
+      <dd><%= l(@narvar_order.created_at, format: :long) %></dd>
+
+      <dt><%= Narvar::Order.human_attribute_name :updated_at %></dt>
+      <dd><%= l(@narvar_order.updated_at, format: :long) %></dd>
+
+      <dt><%= Narvar::Order.human_attribute_name :state %></dt>
+      <dd><span class="label <%= "label-#{@narvar_order.state.downcase}" %>"><%= @narvar_order.state %></span></dd>
+
+      <dt><%= Narvar::Order.human_attribute_name :order_number %></dt>
+      <dd><%= @narvar_order.spree_order ? link_to(@narvar_order.spree_order.number, edit_admin_order_path(@narvar_order.spree_order.number)) : '-' %></dd>
+
+      <dt><%= I18n.t('spree.admin.narvar.last_result_code') %></dt>
+      <dd><%= @narvar_order.result_code %></dd>
+
+      <% unless [200, 201].include? @narvar_order.result_code %>
+        <dt><%= I18n.t('spree.admin.narvar.last_error') %></dt>
+        <dd><%= "#{@narvar_order.result_code}: #{@narvar_order.errors_list.join(', ')}" if @narvar_order.result_code.present? %></dd>
+        <dt><%= I18n.t('spree.admin.narvar.last_response') %></dt>
+        <dd><code><%= @narvar_order.error_messages %></code></dd>
+      <% end %>
+
+    </dl>
+  </div>
+</div>
+
+<% if @narvar_order_data %>
+  <hr/>
+  <h4><%= I18n.t('spree.admin.narvar.fetch_data_from_narvar') %></h4>
+  <% if @narvar_order_data[:error] %>
+    <div><%= I18n.t('spree.admin.narvar.fetch_error') %>:</div>
+    <em><%= @narvar_order_data[:error] %></em>
+  <% elsif @narvar_order_data[:body] %>
+    <% @content = '' %>
+    <div class="narvar_order_payload">
+      <pre><code><%= show_payload @narvar_order_data[:body] %></code></pre>
+    </div>
+  <% end %>
+<% else %>
+  <% if @payload %>
+    <% @content = '' %>
+    <hr/>
+    <h4>
+      <%= I18n.t('spree.admin.narvar.order_payload') %> -
+      <small><%= link_to 'payload.json', payload_order_admin_narvar_order_path(@narvar_order.id, format: :json), target: :_blank %></small>
+    </h4>
+    <div class="narvar_order_payload">
+      <pre><code><%= show_payload @payload %></code></pre>
+    </div>
+  <% end %>
+  <% if @payload_shipments %>
+    <% @content = '' %>
+    <hr/>
+    <h4>
+      <%= I18n.t('spree.admin.narvar.order_payload_shipments') %> -
+      <small><%= link_to 'payload.json', payload_shipments_admin_narvar_order_path(@narvar_order.id, format: :json), target: :_blank %></small>
+    </h4>
+    <div class="narvar_order_payload">
+      <pre><code><%= show_payload @payload_shipments %></code></pre>
+    </div>
+  <% end %>
+<% end %>
