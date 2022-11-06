@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://test.salesforce.com/services/oauth2/token
+    body:
+      encoding: US-ASCII
+      string: grant_type=password&client_id=client_id&client_secret=client_secret&username=samuelmartini%40nebulab.it&password=passwordsecurity_token
+    headers:
+      User-Agent:
+      - Faraday v0.17.4
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 Apr 2021 15:31:38 GMT
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache,must-revalidate,max-age=0,no-store,private
+      Set-Cookie:
+      - BrowserId=gTrH7p02EeuHP5-axJubig; domain=.salesforce.com; path=/; expires=Thu,
+        14-Apr-2022 15:31:38 GMT; Max-Age=31536000
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      X-Readonlymode:
+      - 'false'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"access_token","instance_url":"https://maisonette--dev.my.salesforce.com","id":"https://test.salesforce.com/id/00D1b00000090R1EAI/0051b0000036MdeAAE","token_type":"Bearer","issued_at":"1618414300941","signature":"0rThB03HgmXnqESsJiPxH+bOSuEqTNTQJLQrtwnCBWQ="}'
+    http_version:
+  recorded_at: Wed, 14 Apr 2021 15:31:41 GMT
+- request:
+    method: post
+    uri: https://maisonette--dev.my.salesforce.com/services/data/v54.0/composite
+    body:
+      encoding: UTF-8
+      string: '{"allOrNone":true,"compositeRequest":[{"method":"PATCH","url":"/services/data/v54.0/sobjects/Account/External_ID__c/test-id","referenceId":"refAcc","body":{"FirstName":"Max","LastName":"Power","PersonEmail":"power.power@maisonette.com","BillingStreet":"123
+        Foo St","BillingCity":"New York","BillingState":"NY","BillingPostalCode":"11222","BillingCountry":"US","UUID__c":"test"}},{"method":"POST","url":"/services/data/v54.0/sobjects/Order","referenceId":"refOrder","body":{"Order_Number__c":"M883027705","Pricebook2Id":"01s4W000000oj5uQAA","Status":"Draft","EffectiveDate":"2021-01-05T14:36:53.286-05:00","BillingStreet":"123
+        Foo St","BillingCity":"New York","BillingState":"NY","BillingPostalCode":"11222","BillingCountry":"US","Channel__c":"spree","Is_Gift__c":false,"AccountId":"@{refAcc.id}"}},{"method":"POST","url":"/services/data/v54.0/sobjects/PaymentGroup","referenceId":"refPaymentGroup","body":{"SourceObjectId":"@{refOrder.id}"}},{"method":"POST","url":"/services/data/v54.0/composite/sobjects","referenceId":"refPaymentMethods","body":{"allOrNone":true,"records":[{"attributes":{"type":"CardPaymentMethod"},"CardCategory":"CreditCard","AccountId":"@{refAcc.id}","Status":"Active","ProcessingMode":"External"}]}},{"method":"POST","url":"/services/data/v54.0/composite/sobjects","referenceId":"refOrderDetails","body":{"allOrNone":true,"records":[{"attributes":{"type":"OrderDeliveryGroup"},"EmailAddress":"power.power@maisonette.com","DeliverToCity":"New
+        York City","DeliverToCountry":"US","DeliverToName":"Max Power","DeliverToPostalCode":"11222","DeliverToState":"NY","DeliverToStreet":"123
+        Foo St","PhoneNumber":"+1 (222) 111-3333","OrderDeliveryMethodId":"2Dm1b0000000001CAA","OrderId":"@{refOrder.id}"},{"attributes":{"type":"Payment"},"Amount":254.72,"ProcessingMode":"External","Status":"Processed","PaymentGroupId":"@{refPaymentGroup.id}","AccountId":"@{refAcc.id}","PaymentMethodId":"@{refPaymentMethods[0].id}","PaymentGatewayId":"0b01b0000000001AAA","GatewayRefNumber":"kxxxzdcb","Type":"Capture"},{"attributes":{"type":"OrderAdjustmentGroup"},"Name":"Promotion:
+        20% off Order Amount Over $100","Description":"Promotion: 20% off Order Amount
+        Over $100","Type":"Header","OrderId":"@{refOrder.id}"}]}},{"method":"POST","url":"/services/data/v54.0/composite/sobjects","referenceId":"refLineItemsGroup","body":{"allOrNone":true,"records":[{"attributes":{"type":"OrderItem"},"Type":"Order
+        Product","Quantity":1,"TotalLineAmount":61.6,"UnitPrice":61.6,"OrderId":"@{refOrder.id}","PricebookEntryId":"01u1b000005oYT9AAM","OrderDeliveryGroupId":"@{refOrderDetails[0].id}","Product2Id":"01t1b000002KSIxAAO","Vendor__c":"Lindsey
+        Berns","External_ID__c":"60OjpQcm9kdWN0LzMxOTc233"},{"attributes":{"type":"OrderItem"},"Type":"Order
+        Product","Quantity":1,"TotalLineAmount":173.12,"UnitPrice":173.12,"OrderId":"@{refOrder.id}","PricebookEntryId":"01u1b000005oYT9AAM","OrderDeliveryGroupId":"@{refOrderDetails[0].id}","Product2Id":"01t1b000002KSJHAA4","Vendor__c":"Million
+        Dollar Baby","External_ID__c":"60OjpQcm9kdWN0LzMxOTc234"},{"attributes":{"type":"OrderItem"},"Description":"Shipping","Product2Id":"01t1b000002KSJNAA4","Type":"Delivery
+        Charge","Quantity":1,"TotalLineAmount":29.95,"UnitPrice":29.95,"PricebookEntryId":"01u1b000005oYUgAAM","OrderDeliveryGroupId":"@{refOrderDetails[0].id}","OrderId":"@{refOrder.id}"}]}},{"method":"POST","url":"/services/data/v54.0/composite/sobjects","referenceId":"refAdjustments","body":{"allOrNone":true,"records":[{"attributes":{"type":"OrderItemTaxLineItem"},"Name":"Avalara
+        0.000%","Type":"Estimated","Amount":0,"TaxEffectiveDate":"2021-01-05T14:36:53.286-05:00","OrderItemId":"@{refLineItemsGroup[0].id}"},{"attributes":{"type":"OrderItemTaxLineItem"},"Name":"Avalara
+        0.000%","Type":"Estimated","Amount":14.12,"TaxEffectiveDate":"2021-01-05T14:36:53.286-05:00","OrderItemId":"@{refLineItemsGroup[1].id}"},{"attributes":{"type":"OrderItemAdjustmentLineItem"},"Name":"Promotion
+        (Free Ground Shipping Over Threshold)","Amount":-9.95,"OrderItemId":"@{refLineItemsGroup[2].id}","OrderAdjustmentGroupId":"@{refOrderDetails[2].id}"}]}},{"method":"PATCH","url":"/services/data/v54.0/sobjects/Order/@{refOrder.id}","referenceId":"refUpdateOrder","body":{"Status":"Activated"}}]}'
+    headers:
+      User-Agent:
+      - Faraday v0.17.4
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<Authorization Code>"
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 Apr 2021 15:31:41 GMT
+      Strict-Transport-Security:
+      - max-age=31536002; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Robots-Tag:
+      - none
+      Cache-Control:
+      - no-cache,must-revalidate,max-age=0,no-store,private
+      Set-Cookie:
+      - BrowserId=gw2MDp02EeuIDvUOgMhBTg; domain=.salesforce.com; path=/; expires=Thu,
+        14-Apr-2022 15:31:41 GMT; Max-Age=31536000
+      Sforce-Limit-Info:
+      - api-usage=534/5000000
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"compositeResponse":[{"body":{"id":"0011b00000wZnjHAAS","success":true,"errors":[],"created":false},"httpHeaders":{"Location":"/services/data/v54.0/sobjects/Account/0011b00000wZnjHAAS"},"httpStatusCode":200,"referenceId":"refAcc"},{"body":{"id":"8011b000002GV5EAAW","success":true,"errors":[]},"httpHeaders":{"Location":"/services/data/v54.0/sobjects/Order/8011b000002GV5EAAW"},"httpStatusCode":201,"referenceId":"refOrder"},{"body":{"id":"9zx1b0000004CT3AAM","success":true,"errors":[]},"httpHeaders":{"Location":"/services/data/v54.0/sobjects/PaymentGroup/9zx1b0000004CT3AAM"},"httpStatusCode":201,"referenceId":"refPaymentGroup"},{"body":[{"id":"03O1b0000004CQxEAM","success":true,"errors":[]}],"httpHeaders":{},"httpStatusCode":200,"referenceId":"refPaymentMethods"},{"body":[{"id":"2Dg1b0000004Cs8CAE","success":true,"errors":[]},{"id":"0aQ1b0000004CQxEAM","success":true,"errors":[]},{"id":"0az1b0000004CSPAA2","success":true,"errors":[]}],"httpHeaders":{},"httpStatusCode":200,"referenceId":"refOrderDetails"},{"body":[{"id":"8021b0000032rLcAAI","success":true,"errors":[]},{"id":"8021b0000032rLdAAI","success":true,"errors":[]},{"id":"8021b0000032rLeAAI","success":true,"errors":[]}],"httpHeaders":{},"httpStatusCode":200,"referenceId":"refLineItemsGroup"},{"body":[{"id":"0au1b0000004CKxAAM","success":true,"errors":[]},{"id":"0au1b0000004CKyAAM","success":true,"errors":[]},{"id":"3qZ1b0000004CbuEAE","success":true,"errors":[]}],"httpHeaders":{},"httpStatusCode":200,"referenceId":"refAdjustments"},{"body":null,"httpHeaders":{},"httpStatusCode":204,"referenceId":"refUpdateOrder"}]}'
+    http_version:
+  recorded_at: Wed, 14 Apr 2021 15:31:45 GMT
+recorded_with: VCR 5.0.0
