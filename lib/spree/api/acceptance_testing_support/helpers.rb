@@ -6,6 +6,7 @@
 
 # :nocov:
 module Spree
+
   module Api
     module AcceptanceTestingSupport
       module Helpers
