@@ -3,4 +3,5 @@
 <div class="align-right">
 
   <span>Total Count(approx): <%= total_pages * per_page %></span>
+
 </div>
