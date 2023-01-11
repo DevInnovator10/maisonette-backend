@@ -1,0 +1,164 @@
+:forms:
+    :customs: commercial_invoice
+
+:customs:
+  :eel_pfc: NOEEI 30.37(a)
+  :customs_certify: false
+  :contents_type: merchandise
+
+:order_message: Maisonette Order
+:return_message: Maisonette Return
+
+:ignore_codes:
+  :in_flight_request: A duplicate request is currently in-flight
+
+:error_codes:
+  INTERNAL_SERVER_ERROR: We're sorry, something went wrong. If the problem persists please contact us at support@easypost.com.
+  NOT_ACCEPTABLE: The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to the accept headers sent in the request.
+  NOT_FOUND: The requested resource could not be found.
+  FORBIDDEN: Unable to access the requested resource.
+  PAYMENT_REQUIRED: Insufficient funds. Please check your billing settings at http://www.easypost.com/account/billing.
+  UNAUTHORIZED: Unable to access the requested resource, authorization failed.
+  BAD_REQUEST: Malformed request. Please check the contents and retry.
+  PAYMENT_GATEWAY.ERROR: The payment processor could not handle the request. Please try again or contact support@easypost.com if the problem persists.
+  MODE.UNAUTHORIZED: This resource requires a production API Key to access.
+  MODE.CONFLICT: API Key mode conflicted with parameter mode.
+  DATE.PARSE.FAILURE: At least one date was formatted incorrectly and could not be parsed.
+  PARAMETER.FORBIDDEN: The request could not be completed due to forbidden properties present in the parameters.
+  PARAMETER.REQUIRED: Missing required parameter.
+  ADDRESS.PARAMETERS.INVALID_CHARACTER: The parameters passed contained an invalid character.
+  ADDRESS.PARAMETERS.INVALID: The parameters passed to create an Address were missing or invalid.
+  ADDRESS.COUNTRY.INVALID: Invalid 'country', please provide a 2 character ISO country code.
+  ADDRESS.VERIFICATION.FAILURE: The address was unable to be verified.
+  ADDRESS.VERIFY.UNAVAILABLE: Address verification is not available. Please try again.
+  ADDRESS.VERIFICATION.INVALID: One of the verifications selected is invalid.
+  ADDRESS.VERIFICATION.NOT_FOUND: Address Not Found.
+  ADDRESS.VERIFY.FAILURE: Unable to verify address.
+  ADDRESS.VERIFY.CARRIER_INVALID: Unable to verify address using provided carrier.
+  ADDRESS.VERIFY.UPSTREAM_UNAVAILABLE: Address verification is not available due to an upstream service not responding. Please try again.
+  ADDRESS.VERIFY.ONLY_US: USPS can only validate US addresses.
+  ADDRESS.VERIFY.INTL_NOT_ENABLED: International Verification not enabled on this account. Please contact support@easypost.com.
+  ADDRESS.VERIFY.MISSING_STREET: Insufficient address data provided. A street must be provided.
+  ADDRESS.VERIFY.MISSING_CITY_STATE_ZIP: Insufficient address data provided. A city and state or a zip must be provided.
+  BATCH.FILE_FORAMT.INVALID: "Invalid required param: file_format."
+  BATCH.SHIPMENT.MISSING: One or more shipments is required to perform this action.
+  BATCH.SHIPMENTS.REQUIRED: Invalid request, 'shipments' are required.
+  BATCH.STATE.CREATING: Unable to modify batch while it is being created.
+  BATCH.STATE.CREATION_FAILED: One or more of this batch's shipments has failed to be created.
+  BATCH.STATE.ALREADY_PURCHASED: This batch is either already purchased or currently being purchased. If purchasing fails please try again at a later time.
+  BATCH.STATE.NOT_PURCHASED: One or more of the shipments don't have postage associated to them.
+  BATCH.PARAMS.INVALID: Unable to create batch, one or more parameters were invalid.
+  BANK_ACCOUNT.CHARGE.FAILURE: Charge could not be created.
+  BANK_ACCOUNT.VERIFY.FAILURE: Bank account did not verify successfully.
+  CARRIER_ACCOUNT.REGISTRATION.FAILED: The UPS Access License Request could not be completed.
+  CARRIER_ACCOUNT.PARAMETERS.INVALID: Unable to update carrier account, top level 'carrier_account' parameter was missing
+  CARRIER_ACCOUNT.INVALID: The carrier account record was invalid and could not be saved.
+  CARRIER_ACCOUNT.TYPE.EXISTS: There is already a carrier account for that type
+  CARRIER_ACCOUNT.TYPE.UNKNOWN: Carrier account type was unknown
+  CREDIT_CARD.CHARGE.FAILURE: Charge could not be created.
+  CREDIT_CARD.INVALID: There was an issue connecting the card to the payment processor. Please try again.
+  CONTAINER.TYPE.INVALID: Invalid request, the 'type' provided is not one of our allowed values.
+  CONTAINER.DIMENSION.REQUIRED: Invalid request, if one dimension is provided all three are required.
+  CONTAINER.NAME.REQUIRED: Invalid request, 'name' is required.
+  CUSTOMS_INFO.PARAMETERS.INVALID: The parameters passed to create a CustomsInfo were missing or invalid.
+  CUSTOMS_ITEM.ORIGIN_COUNTRY.REQUIRED: The Custom Item's origin country is required to proceed.
+  CUSTOMS_ITEM.CURRENCY.ONE_CURRENCY_SUPPORTED: Invalid request, only one 'currency' across all customs_items per customs_info supported.
+  CUSTOMS_ITEM.PARAMETERS.INVALID: The parameters passed to create a CustomsItem were missing or invalid.
+  DOCUMENT.COMMERCIAL_INVOICE.FAILURE: Unable to generate commercial invoice for shipment
+  DOCUMENT.CONVERSION.FAILURE: Unable to convert document.
+  EMAIL_VERIFICATION.USED: The code you submitted may no longer be used
+  EMAIL_VERIFICATION.NOT_FOUND: The verification code you submitted could not be found
+  EMAIL_VERIFICATION.EXPIRED: The code you submitted is no longer valid, please use the most recent verification code that you have requested
+  IMAGE.CONVERSION.FAILURE: Image conversion failed. Please retry or contact support@easypost.com
+  IMAGE.WIDTH.INVALID: Image width isn't a multiple of 8.
+  INSURANCE.PARAMETERS.INVALID: The parameters you supplied were not valid for creating Insurance.
+  INSURANCE.CREATE.FAILURE: We were unable to create Insurance with the data provided.
+  INSURANCE.PURCHASE.NOT_ALLOWED: The purchase of insurance is not allowed from this account.
+  INSURANCE.PURCHASE.FAILED: Purchasing insurance failed. Please retry or contact support@easypost.com.
+  INSURANCE.AMOUNT.BELOW_MINIMUM: Insurance amount must be greater than 0
+  INSURANCE.AMOUNT.REQUIRED: "Missing required param: amount"
+  INSURANCE.AMOUNT.ABOVE_MAXIMUM: We're sorry, the amount provided is greater than the maximum allowed.
+  ITEM.WEIGHT.REQUIRED: Invalid request, 'weight' is required.
+  ITEM.HEIGHT.REQUIRED: Invalid request, 'height' is required.
+  ITEM.WIDTH.REQUIRED: Invalid request, 'width' is required.
+  ITEM.LENGTH.REQUIRED: Invalid request, 'length' is required.
+  ITEM.VALUE.REQUIRED: Invalid request, 'value' is required.
+  ITEM.NAME.REQUIRED: Invalid request, 'name' is required.
+  ORDER.SHIPMENTS.REQUIRED: Invalid request, if 'containers' or 'items' are not provided 'shipments' is required.
+  ORDER.FROM_ADDRESS.REQUIRED: Invalid request, 'from_address' is required.
+  ORDER.TO_ADDRESS.REQUIRED: Invalid request, 'to_address' is required.
+  ORDER.OPTIONS.INVALID: The provided options are not valid.
+  ORDER.PARAMS.REQUIRED: Invalid request, no parameters were included.
+  ORDER.INVALID: Not enough information was provided to create this order.
+  ORDER.RATE.UNAVAILABLE: Unable to proceed, one of the shipments does not have the requested rate available to it.
+  ORDER.SERVICE.REQUIRED: Invalid request, 'service' is required.
+  ORDER.CARRIER.REQUIRED: Invalid request, 'carrier' is required.
+  ORDER.LABEL_DATE.INVALID: The label_date option you provided is neither a valid ISO 8601 string, or a valid timestamp.
+  ORDER.CARRIER_ACCOUNTS.CONFLICT: Unable to proceed, please provide specific carrier accounts in a list called 'carrier_accounts'.
+  PARCEL.PREDEFINED_PACKAGE.INVALID: The specified predefined package for this parcel is invalid.
+  PARCEL.PARAMETERS.INVALID: The parameters passed to create a Parcel were missing or invalid.
+  REFUND.NO_RESPONSE: The carrier did not respond to our refund request. Please try again or contact support@easypost.com
+  REFUND.FAILURE: Unable to refund postage.
+  REFUND.TRACKING_CODES.INVALID: Unable to proceed, 'tracking_codes' are missing or invalid.
+  REFUND.TRACKING_CODE.NOT_FOUND: Unable to locate 'tracking_code' in your purchased shipment history.
+  SCAN_FORM.FAILURE: Scan Form generation failed. Please try again or contact support@easypost.com
+  SCAN_FORM.BATCH.MULTIPLE_CARRIERS: Unable to create a ScanForm from a batch that was not bought from the same carrier.
+  SCAN_FORM.BATCH.NOT_PURCHASED: All shipments on the Batch must be purchased before generating a ScanForm.
+  SCAN_FORM.SHIPMENTS.INVALID: A consistent from_address is required to create a USPS ScanForm.
+  SCAN_FORM.SHIPMENTS.REQUIRED: Please provide a valid list of shipments.
+  SCAN_FORM.CREATE.CARRIER_NOT_SUPPORTED: Unable to create a ScanForm from shipments bought from this carrier.
+  SCAN_FORM.CREATE.FAILURE: The scan form could not be created.
+  SHIPMENT.PURCHASE.FAILURE: Shipment purchase failed. Please try again or contact support@easypost.com
+  SHIPMENT.OPTIONS.INVALID: The provided options are not valid.
+  SHIPMENT.INVALID_PARAMS: Unable to create shipment, one or more parameters were invalid.
+  SHIPMENT.INVALID: Not enough information was provided to create this shipment
+  SHIPMENT.POSTAGE.INVALID_FORMAT: Invalid file_format type.
+  SHIPMENT.POSTAGE.FORMAT_UNAVAILABLE: The current label cannot be converted to the requested image format.
+  SHIPMENT.POSTAGE.REQUIRED: Postage is required to complete this operation.
+  SHIPMENT.POSTAGE.EXISTS: Postage already exists for this shipment.
+  SHIPMENT.POSTAGE.NO_RESPONSE: "Unable to complete shipment purchase: carrier is not responding to our request. Please try again or contact support@easypost.com"
+  SHIPMENT.POSTAGE.FAILURE: We're sorry, an error has occurred while generating your shipping label. Please retry or contact support@easypost.com.
+  SHIPMENT.REFUND.UNAVAILABLE: Unable to request refund. If this shipment is part of an order, please try refunding the first shipment from the order.
+  SHIPMENT.REFUND.FAILURE: We're sorry, an error occurred while generating your shipping label. Please retry or contact support@easypost.com.
+  SHIPMENT.CUSTOMS_INFO.DESCRIPTION_REQUIRED: Each Customs Item must contain a description.
+  SHIPMENT.CUSTOMS_INFO.REQUIRED: Unable to proceed, 'customs_info' is required for international shipments, shipments bound for US military bases, or US territories. Please see https://www.easypost.com/docs/api#customs for more information.
+  SHIPMENT.RATE.CARRIER_ACCOUNT_INVALID: The rate you are attempting to purchase belongs to an inactive or inaccessible carrier account. You must create a new shipment or regenerate rates.
+  SHIPMENT.CARRIER_ACCOUNTS.CONFLICT: Unable to proceed, please provide specific carrier accounts in a list called 'carrier_accounts'.
+  SHIPMENT.TRACKING_CODE.INVALID_CARRIER: Failed to create shipment from tracking code, unsupported carrier.
+  SHIPMENT.INSURANCE.ALREADY_PURCHASED: The shipment is already insured.
+  SHIPMENT.MISSING_RATE: A valid rate must be supplied in order to purchase a shipment. Please verify the rate exists and that the rate is associated with the shipment being purchased.
+  SHIPMENT.MISSING_INFORMATION: A valid to_address, from_address and parcel must be present before attempting to purchase a shipment.
+  SHIPMENT.PURCHASE.IN_PROGRESS: The purchase process has already started for this shipment.
+  SHIPMENT.RATES.UNAVAILABLE: Missing required data to get rates.
+  SHIPMENT.RATE.STAMP_UNAVAILABLE: Unsupported Service & Carrier Combination
+  SHIPMENT.RATE.BARCODE_UNAVAILABLE: Unsupported Service & Carrier Combination
+  SHIPMENT.POSTAGE.ASCII: The ascii label format is disabled for production shipments.
+  SHIPMENT_REPORT.DATE_RANGE.INVALID: Invalid date range given for the shipment report
+  SHIPMENT_REPORT.ALREADY_IN_PROGRESS: The report for the given parameters is already being generated.
+  SHIPMENT_REPORT.DATE_RANGE.TOO_LONG: The date range covers more than 31 days
+  TRACKER.RETRIEVE.ERROR: The tracker(s) could not be retrieved, please try again.
+  TRACKER.RUN.ERROR: The tracker could not be executed, please try again.
+  TRACKER.CREATE.ERROR: The tracker could not be created, please try again.
+  TRACKER.NOT_FOUND: The tracker(s) could not be found.
+  TRACKER.INVALID_TEST_CODE: In test mode, only test tracking numbers are valid. Test tracking numbers are EZ1000000001, EZ2000000002, ... , EZ7000000007
+  TRACKER.NO_CARRIER_ACCOUNT: Unable to create tracker, please double check that you have the associated carrier account linked to your EasyPost account.
+  TRACKER.INVALID_PARAMS: The parameters you provided are invalid.
+  TRACKER.UNSUPPORTED_CARRIER: The carrier you have provided is not supported by EasyPost. Please confirm the carrier is entered correctly and is currently supported.
+  TRACKER.CARRIER_CODE_MISMATCH: The tracking number does not belong to the carrier you specified. Please confirm that both the carrier and tracking number are correct.
+  TRACKER.MULTIPLE_CARRIERS_FOR_CODE: The tracking number could belong to more than one carrier. Please specify carrier when creating your tracker.
+  TRACKER.NO_CARRIER_FOR_CODE: The tracking number doesn't seem to match the format for any carrier we currently support. Please check that you are sending a valid tracking number.
+  USER.UNAUTHORIZED: The logged-in user does not have permission to access this resource.
+  USER.INVALID: The user record was invalid and could not be saved.
+  USER.PARENT.INVALID: Sub-accounts may not be added to records that are themselves sub-accounts.
+  USER.CHARGE.NOT_ALLOWED: Please contact support@easypost.com to get one-time charges approved for your account.
+  WEBHOOK.EVENT.INVALID: The event type of the received webhook could not be mapped to a handler.
+  WEBHOOK.INVALID: The webhook record was invalid and could not be saved.
+  DHLGM.RATE_TABLE.NOT_FOUND: Rate table was not found.
+  DHLGM.SCAN_FORM.GENERATION_FAILED: Unable to generate DHL Global Mail closeout. Please try again or contact us at support@easypost.com
+  DHLGM.RETURN.AUTHORIZATION_NUMBER_REQUIRED: To generate a DHL Global Mail return you must supply your return authorization number within the shipments print_custom_1 option.
+  DHLGM.LABEL.FAILURE: Unable to generate DHL Global Mail shipping label. Please try again or contact us at support@easypost.com
+  DHLGM.NO_INTERNATIONAL: DHLGlobalMail does not support international shipments.
+  DHLGM.NO_ALCOHOL: DHLGlobalMail does not permit the shipment of alcohol.
+  DHLGM.GIRTH_MAX: Your parcel exceeds the maximum allowed girth of 84".
+  DHLGM.LETTER_NOT_SUPPORTED: DHL Global Mail does not support sending lettermail domestically. Use USPS First Class instead.
+  DHLGM.ACCESS_TOKEN.GENERATION_FAILED: Unable to generate DHL Global Mail access token. Please try again, or contact us at support@easypost.com
