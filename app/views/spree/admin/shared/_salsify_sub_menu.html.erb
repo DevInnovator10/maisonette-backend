@@ -1,0 +1,13 @@
+<ul class="admin-subnav" data-hook="admin_salsify_sub_tabs">
+  <% if can?(:admin, Salsify::Import) %>
+    <%= tab :data_imports, label: :salsify_data_imports, url: spree.admin_salsify_imports_path %>
+  <% end %>
+
+  <% if can?(:admin, Salsify::MiraklOfferExportJob) %>
+    <%= tab :mirakl_offer_export_jobs, label: :mirakl_offer_export_jobs, url: spree.admin_salsify_mirakl_offer_export_jobs_path %>
+  <% end %>
+
+  <% if can?(:admin, Salsify::MiraklProductExportJob) %>
+  <%= tab :mirakl_product_export_jobs, label: :mirakl_product_export_jobs, url: spree.admin_salsify_mirakl_product_export_jobs_path %>
+  <% end %>
+</ul>
