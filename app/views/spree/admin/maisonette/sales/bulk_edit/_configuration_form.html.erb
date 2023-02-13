@@ -1,0 +1,61 @@
+<%= form_with scope: :q, url: bulk_update_admin_maisonette_sale_path, method: :put, local: true do |f| %>
+  <%= f.hidden_field :product_name, value: params[:q][:product_name] %>
+  <%= f.hidden_field :maisonette_sku_or_vendor_sku_or_variant_sku, value: params[:q][:maisonette_sku_or_vendor_sku_or_variant_sku] %>
+  <%= f.hidden_field :vendors_in, value: params[:q][:vendors_in] %>
+  <%= f.hidden_field :vendors_not_in, value: params[:q][:vendors_not_in] %>
+  <%= f.hidden_field :taxons_in, value: params[:q][:taxons_in] %>
+  <%= f.hidden_field :taxons_not_in, value: params[:q][:taxons_not_in] %>
+  <%= f.hidden_field :in_stock, value: params[:q][:in_stock] %>
+
+  <div class="row">
+    <div class="col-6">
+      <div data-hook="admin_maisonette_sale_percent_off">
+        <%= f.field_container :percent_off do %>
+          <%= f.label :percent_off, 'Percent Off' %>
+          <%= f.number_field :percent_off, class: 'fullwidth', step: 1, min: 1, max: 99, placeholder: (sale.percent_off * 100).to_s %>
+          <%= f.error_message_on :percent_off %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div data-hook="admin_maisonette_sale_maisonette_liability">
+        <%= f.field_container :maisonette_liability do %>
+          <%= f.label :maisonette_liability, 'Maisonette Liability' %>
+          <%= f.number_field :maisonette_liability, class: 'fullwidth', max: 100, placeholder: sale.maisonette_liability.to_s %>
+          <%= f.error_message_on :maisonette_liability %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <div data-hook="admin_maisonette_sale_start_date">
+        <%= f.field_container :start_date do %>
+          <%= f.label :start_date, 'Start Date' %>
+          <%= admin_hint 'Start Date', t(:dates_timezone, scope: [:spree, :hints, 'maisonette/sale']) %>
+          <%= f.text_field :start_date, class: 'datetimepicker form-control datepicker-from', placeholder: l(sale.start_date, format: :with_tz) %>
+          <%= f.error_message_on :start_date %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div data-hook="admin_maisonette_sale_end_date">
+        <%= f.field_container :end_date do %>
+          <%= f.label :end_date, 'End Date' %>
+          <%= admin_hint 'End Date', t(:dates_timezone, scope: [:spree, :hints, 'maisonette/sale']) %>
+          <%= f.hidden_field :end_date, id: nil, value: nil %>
+          <%= f.text_field :end_date, class: 'datetimepicker form-control datepicker-from', placeholder: (sale.end_date.present? ? l(sale.end_date, format: :with_tz) : Maisonette::Sale.human_attribute_name(:permanent)), disabled: sale.permanent %>
+          <%= f.error_message_on :end_date %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions filter-actions" data-hook="admin_maisonette_sale_bulk_edit_index_update_buttons">
+    <%= button_tag 'Save configurations on result', class: 'btn btn-primary', disabled: offer_settings.blank? %>
+
+  </div>
+<% end %>
