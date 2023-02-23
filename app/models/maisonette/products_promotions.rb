@@ -2,6 +2,7 @@
 
 module Maisonette
   class ProductsPromotions < ApplicationRecord
+
     self.table_name = 'maisonette_products_promotions'
 
     belongs_to :product,
