@@ -1,0 +1,12 @@
+<fieldset data-hook="store-credit">
+  <legend align="center">Payment source</legend>
+
+  <dl>
+    <dt>Class name</dt>
+    <dd><%= payment.source.class %></dd>
+    <% payment.source.attributes.each do |key, value| %>
+      <dt><%= key.tr('_', ' ').capitalize %></dt>
+      <dd><%= value || '-' %></dd>
+    <% end %>
+  </dl>
+</fieldset>
