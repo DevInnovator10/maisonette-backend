@@ -1,0 +1,17 @@
+<!-- insert_after "[data-hook='admin_shipping_method_form_availability_fields']" -->
+
+
+<div data-hook="admin_shipping_method_form_carrier_fields">
+    <fieldset class="carriers no-border-bottom">
+    <legend align="center"><%= plural_resource_name(Spree::ShippingCarrier) %></legend>
+    <%= f.field_container :carriers do %>
+      <% Spree::ShippingCarrier.all.each do |carrier| %>
+        <label>
+          <%= check_box_tag('shipping_method[shipping_carriers][]', carrier.id, @shipping_method.shipping_carriers.include?(carrier)) %>
+          <%= carrier.name %><br>
+        </label>
+      <% end %>
+      <%= error_message_on :shipping_method, :shipping_carrier_id %>
+    <% end %>
+  </fieldset>
+</div>
