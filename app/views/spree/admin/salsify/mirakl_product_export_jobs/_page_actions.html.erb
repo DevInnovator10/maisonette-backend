@@ -1,0 +1,7 @@
+<% content_for :page_actions do %>
+  <%= button_to(I18n.t('spree.salsify.pull_products_from_salsify_to_mirakl'),
+                pull_products_from_salsify_to_mirakl_admin_salsify_mirakl_product_export_jobs_path,
+                method: :get,
+                class: 'btn btn-primary',
+                'data-hook': 'pull-products-from-salsify-to-mirakl-btn') %>
+<% end %>
