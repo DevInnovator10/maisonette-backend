@@ -1,0 +1,23 @@
+// ------------------------------------------
+//    Maisonette Adnin Variable Overrides
+// ------------------------------------------
+
+$color-1:                       #fbefd8 !default;
+$color-3:                       #8d9cc4 !default;
+$color-4:                       #2f4da1 !default;
+$color-2:                       $color-4 !default;
+
+$color-border:                  $color-3 !default;
+
+$color-sidebar-bg:              $color-4 !default;
+
+$color-navbar:                  #ffffff !default;
+$color-navbar-active:           #ffffff !default;
+$color-navbar-bg:               $color-4 !default;
+$color-navbar-active-bg:        $color-3 !default;
+
+$color-navbar-submenu:          $color-3 !default;
+$color-navbar-submenu-active:   $color-4 !default;
+
+$color-navbar-footer:           #ffffff !default;
+$color-navbar-footer-active:    $color-3 !default;
