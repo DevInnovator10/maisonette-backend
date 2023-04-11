@@ -1,0 +1,505 @@
+{
+	"info": {
+		"_postman_id": "d31b06cf-ffcc-4f16-9dfe-9a1bcd07bc8e",
+		"name": "Avalara",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Utilities - Ping",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API_HOST}}/api/v2/utilities/ping",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"utilities",
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Companies - QueryCompanies",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"company_id\", jsonData.value[0].id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API_HOST}}/api/v2/companies?$filter=companyCode eq '{{COMPANY_CODE}}'",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"companies"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "companyCode eq '{{COMPANY_CODE}}'"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transactions - ListTransactionsByCompany",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"transaction_id\", jsonData.value[0].id);",
+							"postman.setEnvironmentVariable(\"transaction_code\", jsonData.value[0].code);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API_HOST}}/api/v2/companies/{{COMPANY_CODE}}/transactions?$filter=date gt '2021-05-01'",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"companies",
+						"{{COMPANY_CODE}}",
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "date gt '2021-05-01'"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transactions - CreateTransaction",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"transaction_id\", jsonData.id);",
+							"postman.setEnvironmentVariable(\"transaction_code\", jsonData.code);",
+							"postman.setEnvironmentVariable(\"transaction_first_line_id\", jsonData.lines[0].id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"lines\": [\n      {\n         \"number\": \"1\",\n         \"quantity\": 1,\n         \"amount\": 100,\n         \"taxCode\": \"PS081282\",\n         \"itemCode\": \"Y0001\",\n         \"description\": \"Yarn\",\n         \"merchantSellerIdentifier\": \"123\"\n      }\n   ],\n  \"type\": \"SalesInvoice\",\n  \"companyCode\": \"{{COMPANY_CODE}}\",\n  \"date\": \"2021-05-25T00:00:00+00:00\",\n  \"customerCode\": \"Test\",\n  \"purchaseOrderNo\": \"2021-02-04-001\",\n  \"addresses\": {\n    \"singleLocation\": {\n      \"line1\": \"2000 Main Street\",\n      \"city\": \"Irvine\",\n      \"region\": \"CA\",\n      \"country\": \"US\",\n      \"postalCode\": \"92614\"\n    }\n  },\n  \"commit\": false,\n  \"currencyCode\": \"USD\",\n  \"serviceMode\": \"Automatic\",\n  \"description\": \"Yarn\",\n  \"debugLevel\": \"Normal\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_HOST}}/api/v2/transactions/create",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"transactions",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transactions - GetTransactionById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"transaction_code\", jsonData.code);",
+							"postman.setEnvironmentVariable(\"transaction_first_line_id\", jsonData.lines[0].id);",
+							"postman.setEnvironmentVariable(\"merchant_seller_identifier\", jsonData.lines[0].merchantSellerIdentifier);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API_HOST}}/api/v2/transactions/{{transaction_id}}",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"transactions",
+						"{{transaction_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transactions - GetTransactionByCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"transaction_code\", jsonData.code);",
+							"postman.setEnvironmentVariable(\"transaction_first_line_id\", jsonData.lines[0].id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API_HOST}}/api/v2/companies/{{COMPANY_CODE}}/transactions/{{transaction_code}}",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"companies",
+						"{{COMPANY_CODE}}",
+						"transactions",
+						"{{transaction_code}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reports - InitiateExportDocumentLineReport",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"report_id\", jsonData[0].id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/ecmascript",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"format\": \"CSV\",\n  \"startDate\": \"2021-05-01T00:00:00\",\n  \"endDate\": \"2021-05-30T00:00:00\",\n  \"country\": \"US\",\n  \"state\": \"All\",\n  \"dateFilter\": \"DocumentDate\",\n  \"merchantSellerIdentifier\": \"{{merchant_seller_identifier}}\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_HOST}}/api/v2/companies/{{company_id}}/reports/exportdocumentline/initiate",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"companies",
+						"{{company_id}}",
+						"reports",
+						"exportdocumentline",
+						"initiate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reports - ListReports",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"report_id\", jsonData.value[0].id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API_HOST}}/api/v2/reports",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"reports"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reports - GetReport",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API_HOST}}/api/v2/reports/{{report_id}}",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"reports",
+						"{{report_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reports - DownloadReport",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API_HOST}}/api/v2/reports/{{report_id}}/attachment",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"reports",
+						"{{report_id}}",
+						"attachment"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{API_PASSWORD}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{API_USERNAME}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_HOST",
+			"value": "https://sandbox-rest.avatax.com"
+		},
+		{
+			"key": "API_USERNAME",
+			"value": ""
+		},
+		{
+			"key": "API_PASSWORD",
+			"value": ""
+		},
+		{
+			"key": "COMPANY_CODE",
+			"value": "MAISDEV"
+		}
+	]
+}
