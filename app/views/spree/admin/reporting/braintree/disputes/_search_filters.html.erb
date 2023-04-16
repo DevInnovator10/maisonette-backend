@@ -1,0 +1,67 @@
+<% content_for :table_filter_title do %>
+  <%= t('spree.search') %>
+<% end %>
+
+<% content_for :table_filter do %>
+  <div data-hook="admin_reporting_braintree_disputes_index_search">
+    <%= search_form_for [:admin, @search] do |f| %>
+      <div class="row">
+        <div class="date-range-filter col-md-4">
+          <div class="form-group">
+            <%= label_tag :q_received_date_gt, I18n.t('spree.date_range') %>
+            <div class="row no-padding-bottom">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <%= f.text_field :received_date_gt, :class => 'datepicker datepicker-from form-control', :value => params[:q][:received_date_gt], :placeholder => I18n.t('spree.start') %>
+                  <span class="input-group-addon">
+                    <i class="icon icon-calendar"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group">
+                  <%= f.text_field :received_date_lt, :class => 'datepicker datepicker-to form-control', :value => params[:q][:received_date_lt], :placeholder => I18n.t('spree.stop') %>
+                  <span class="input-group-addon">
+                    <i class="icon icon-calendar"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= label_tag :q_braintree_dispute_id_cont, Reporting::Braintree::Dispute.human_attribute_name(:braintree_dispute_id) %>
+            <%= f.text_field :braintree_dispute_id_cont, class: 'form-control js-quick-search-target' %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= label_tag :q_status_eq, Reporting::Braintree::Dispute.human_attribute_name(:status) %>
+            <%= f.select :status_eq, Reporting::Braintree::Dispute::STATUSES, { :include_blank => true }, class: 'custom-select fullwidth' %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= label_tag :q_kind_eq, Reporting::Braintree::Dispute.human_attribute_name(:kind) %>
+            <%= f.select :kind_eq, Reporting::Braintree::Dispute::KINDS, { :include_blank => true }, class: 'custom-select fullwidth' %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= label_tag :q_reason_eq, Reporting::Braintree::Dispute.human_attribute_name(:reason) %>
+            <%= f.select :reason_eq, Reporting::Braintree::Dispute::REASONS, { :include_blank => true }, class: 'custom-select fullwidth' %>
+          </div>
+        </div>
+      </div>
+      <div class="actions filter-actions" data-hook="admin_reporting_braintree_index_search_buttons">
+        <%= button_tag t('spree.search'), class: 'btn btn-primary' %>
+        <% if @active_search %>
+          <%= link_to 'Reset Filters', admin_reporting_braintree_disputes_path, class: 'btn btn-secondary' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
