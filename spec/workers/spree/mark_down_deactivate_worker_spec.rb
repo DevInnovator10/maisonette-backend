@@ -28,6 +28,7 @@ RSpec.describe Spree::MarkDownDeactivateWorker do
 
       it 'sends deactivation notification' do
         expect(Spree::MarkDownDeactivateMailer).to have_received(:notify_deactivate).with(mark_down)
+
         expect(mailer).to have_received(:deliver_now)
       end
     end
