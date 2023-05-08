@@ -1,5 +1,5 @@
 class Rails::Boot
-  def run
+    def run
     load_initializer
 
     Rails::Initializer.class_eval do
