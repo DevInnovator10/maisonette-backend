@@ -1,0 +1,13 @@
+<% admin_breadcrumb link_to(plural_resource_name(Maisonette::Sale), spree.admin_maisonette_sales_path) %>
+<% admin_breadcrumb link_to(@sale.name, admin_maisonette_sale_sale_sku_configurations_path(@sale)) %>
+<% admin_breadcrumb t('spree.actions.edit') %>
+
+<%= render partial: 'spree/shared/error_messages', locals: { target: @sale } %>
+
+<%= form_for [:admin, @sale], as: :sale do |f| %>
+    <fieldset class="no-border-top">
+    <%= render partial: 'form', locals: { f: f } %>
+
+    <%= render partial: 'spree/admin/shared/edit_resource_links' %>
+  </fieldset>
+<% end %>
