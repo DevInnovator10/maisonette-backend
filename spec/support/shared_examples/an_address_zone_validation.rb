@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.shared_examples 'an address zone validation' do
-  context "when the zone and the address don't exist" do
+    context "when the zone and the address don't exist" do
     it { is_expected.not_to be_added(:base, error_type) }
   end
 

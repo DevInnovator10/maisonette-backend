@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://global-api-sandbox.afterpay.com/v2/payments/capture
+    body:
+      encoding: UTF-8
+      string: '{"token":"002.8lp05rmle32ja716duf55uugh5a9ftb25g771a6li8j2a3pe","merchantReference":null,"amount":{"amount":"100.0","currency":"USD"},"isCheckoutAdjusted":true,"paymentScheduleChecksum":null,"items":[{"name":"Product
+        #1 - 7290","sku":"SKU-1","pageUrl":null,"imageUrl":null,"quantity":1,"price":{"amount":"10.0","currency":"USD"},"categories":[["19419"]],"estimatedShipmentDate":null,"preorder":false}],"shipping":{"name":"John
+        Smith","line1":"A Different Road","line2":"Northwest","area1":"Herndon","area2":null,"region":"AL","postcode":"10002","countryCode":null,"phoneNumber":"555-555-0199"}}'
+    headers:
+      User-Agent:
+      - SolidusAfterpay/0.2.0 (Solidus/2.10.3; Ruby/2.5.3; Merchant/100100040) https://
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<Authorization Code>"
+      Expect:
+      - ''
+  response:
+    status:
+      code: 412
+      message: ''
+    headers:
+      Date:
+      - Tue, 02 Nov 2021 17:00:31 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '148'
+      Cf-Ray:
+      - 6a7eeb5f6e70cd22-FCO
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Http-Correlation-Id:
+      - 37vmtt2kmkbxeocqssiqfbygxq
+      X-Envoy-Upstream-Service-Time:
+      - '1356'
+      Set-Cookie:
+      - __cf_bm=UlkOaGg51haCC0zDHzbpysMMA76IDdIE9avJ3eHWx6g-1635872431-0-AfY2QGpwNbvQ9DI42tA6F9ikztChVozfrwqMKZydoer8Ed3xWye4WNJu32E0WXFQ9PuFZA2pVrPMFZPD34jaoS37gRAm5UuZQ/XN2mwpiNU0;
+        path=/; expires=Tue, 02-Nov-21 17:30:31 GMT; domain=.afterpay.com; HttpOnly;
+        Secure; SameSite=None
+      Server:
+      - cloudflare
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errorCode" : "invalid_object",
+
+          "errorId" : "23b768b4652da8b4",
+          "message" : "Payment schedule checksum mismatch",
+          "httpStatusCode" : 412
+        }
+    http_version:
+  recorded_at: Tue, 02 Nov 2021 17:00:31 GMT
+recorded_with: VCR 5.0.0
