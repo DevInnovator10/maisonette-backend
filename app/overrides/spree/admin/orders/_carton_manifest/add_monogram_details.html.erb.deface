@@ -1,0 +1,34 @@
+<!-- insert_after 'tr.stock-item' -->
+
+<% if (monogram = item.line_item.monogram).present? %>
+  <tr class="stock-item-monogram">
+    <td>
+      <strong>Monogram</strong>
+    </td>
+    <td colspan="4" class="stock-item-monogram-details">
+      <dl>
+        <dt>Text</dt>
+        <dd><%= monogram.text %></dd>
+        <% monogram.customization.sort_by { |k, v| k }.each do |customization_key, customization| %>
+          <dt>
+            <%= customization_key.humanize %>
+          </dt>
+          <dd>
+            <%= customization[:name] %> — <code><%= customization[:value] %></code>
+          </dd>
+        <% end %>
+      </dl>
+    </td>
+    <td></td>
+  </tr>
+<% elsif item.variant.monogrammable? %>
+  <tr class="stock-item-monogram"></tr>
+
+    <td>
+      <strong>Monogram</strong>
+    </td>
+    <td colspan="4" class="stock-item-monogram-details">
+      <dt>No monogram customizations found.</dt>
+    </td>
+  </tr>
+<% end %>
