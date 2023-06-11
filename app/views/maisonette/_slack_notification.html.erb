@@ -1,0 +1,12 @@
+<% order ||= @order %>
+<% order_user_name = (order.bill_address || order.ship_address)&.full_name %>
+
+Order <<%= order.edit_admin_url %>|<%= order.number %>> completed by <%= order_user_name %> for $<%= order.total %> with items:
+<% order.line_items.each do |line_item| %>
+  *<%= line_item.variant.name %>*
+  [_Qty_: <%= line_item.quantity %>,  _Price_: <%= line_item.price %>]
+  _Vendor_: <%= line_item.vendor&.name %>
+  _Brand_: <%= line_item.variant.brand&.name %>
+  _Category_: <%= line_item.product.default_product_category_taxon&.name %>
+<% end %>
+---------------------------------------
