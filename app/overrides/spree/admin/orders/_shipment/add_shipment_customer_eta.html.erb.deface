@@ -1,0 +1,6 @@
+<!-- insert_after 'tr.edit-tracking.vertical-middle' -->
+
+<tr data-hook="shipment-customer-eta">
+  <th>Customer Facing ETA: </th>
+  <td colspan="5"><%= shipment.easypost_delivery_estimation || shipment.delivery_estimation %></td>
+</tr>
