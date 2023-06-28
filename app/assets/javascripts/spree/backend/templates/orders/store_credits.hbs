@@ -1,0 +1,36 @@
+{{#if use_store_credits}}
+<table>
+  <tr>
+    <td>Store Credits</td>
+    <td>Available store credits</td>
+
+    <td>Remaining total</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Use</td>
+    <td>{{ display_total_applicable_store_credit }}</td>
+    <td>{{ display_order_total_after_store_credit }}</td>
+    <td class="actions">
+      <button class="js-remove fa fa-remove no-text with-tip" data-action="remove" title="{{ t "actions.remove" }}"></button>
+    </td>
+  </tr>
+</table>
+{{else}}
+<table>
+  <tr>
+    <td>Store Credits</td>
+    <td>Available store credits</td>
+    <td>Remaining total</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Not used</td>
+    <td>{{ display_total_applicable_store_credit }}</td>
+    <td>{{ display_total }}</td>
+    <td class="actions">
+      <button class="js-add fa fa-plus no-text with-tip" data-action="add" title="{{ t "actions.add" }}"></button>
+    </td>
+  </tr>
+</table>
+{{/if}}
