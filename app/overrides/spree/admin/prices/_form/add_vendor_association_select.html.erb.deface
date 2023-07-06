@@ -1,0 +1,13 @@
+<!-- insert_after "[data-hook='admin_product_price_form_country']" -->
+
+<div class="col-12">
+  <%= f.field_container :vendor do %>
+    <%= f.label :vendor %>
+    <%= f.field_hint :vendor %>
+    <%= f.collection_select :vendor_id, Spree::Vendor.order(:name), :id, :name,
+                            {
+                              prompt: t('spree.select_vendor'),
+                            },
+                            { class: 'custom-select fullwidth', disabled: f.object.persisted? } %>
+  <% end %>
+</div>

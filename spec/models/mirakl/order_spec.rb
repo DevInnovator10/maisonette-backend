@@ -224,6 +224,7 @@ RSpec.describe Mirakl::Order, type: :model, mirakl: true do
           it 'does not call process_order_line_update!' do
             expect(mirakl_order).not_to have_received(:process_order_line_update!)
           end
+
         end
       end
     end
