@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Forter
-  module Api
+    module Api
     class Client
       include Singleton
 
