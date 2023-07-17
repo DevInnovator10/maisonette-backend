@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Spree
-  module Admin
+    module Admin
     module Returns
       class CustomerReturnsController < Spree::Admin::BaseController
         include CollectionConcerns
