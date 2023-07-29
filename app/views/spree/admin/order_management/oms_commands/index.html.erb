@@ -1,0 +1,94 @@
+<% content_for :page_title do %>
+  <%= I18n.t('spree.admin.tab.order_management_oms_commands') %>
+  <small>- <%= I18n.t('spree.admin.order_management.order_data_sent_to_order_management') %></small>
+<% end %>
+
+<% content_for :table_filter do %>
+  <div data-hook="admin_order_management_oms_commands_index_search">
+    <%= search_form_for [:admin, @search], url: admin_order_management_oms_commands_path do |f| %>
+      <div class="row">
+        <div class="col-3">
+          <div class="field">
+            <%= f.label :id %>
+            <%= f.text_field :id_eq %>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="field">
+            <%= f.label :state %>
+            <%= f.select :state_eq, { 'Ready': 1, 'Processing': 2, 'Processed': 3, 'Failed': 4 }, { include_blank: 'Show All' }, { class: 'custom-select fullwidth' }  %>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="field">
+            <%= f.label :type %>
+            <%=
+            f.select(
+              :type,
+              OrderManagement::OmsCommand.unscoped.distinct.pluck(:type),
+              { include_blank: 'Show All' }, { class: 'custom-select fullwidth' }
+            ) %>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="field">
+            <%= f.label :order_management_ref %>
+            <%= f.text_field :order_management_ref_eq %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div data-hook="admin_order_management_oms_commands_index_search_buttons" class="form-actions">
+            <%= button_tag I18n.t('spree.admin.order_management.filter_results') %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= paginate @order_management_oms_commands, theme: "solidus_admin" %>
+
+<% if @order_management_oms_commands.any? %>
+  <table class="table" id="listing_oms_commands" data-hook="admin_order_management_listing_oms_commands">
+    <thead>
+      <tr data-hook="admin_order_management_oms_commands_index_headers">
+        <th><%= sort_link @search, :id, I18n.t('spree.id') %></th>
+        <th><%= sort_link @search, :order_management_ref, I18n.t('spree.order_management.order_management_ref') %></th>
+        <th><%= sort_link @search, :created_at, I18n.t('spree.created_at') %></th>
+        <th><%= sort_link @search, :started_at, I18n.t('spree.order_management.started_at') %></th>
+        <th><%= sort_link @search, :ended_at, I18n.t('spree.order_management.ended_at') %></th>
+        <th><%= sort_link @search, :type, I18n.t('spree.order_management.type') %></th>
+        <th><%= sort_link @search, :state, I18n.t('spree.order_management.state') %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @order_management_oms_commands.each do |order_management_oms_command| %>
+      <tr data-hook="admin_order_management_oms_commands_index_rows" class="state-<%= order_management_oms_command.state.downcase %> <%= cycle('odd', 'even') %>">
+        <td><%= order_management_oms_command.id %></td>
+        <td><%= order_management_oms_command.order_management_ref %></td>
+        <td><%= l(order_management_oms_command.created_at, format: :long) %></td>
+        <td><%= order_management_oms_command.started_at %></td>
+        <td><%= order_management_oms_command.ended_at %></td>
+        <td><%= order_management_oms_command.type %></td>
+        <td><%= order_management_oms_command.state %></td>
+        <td>
+          <%= link_to_with_icon 'show', I18n.t('spree.admin.order_management.details'), admin_order_management_oms_command_path(order_management_oms_command.id), class: 'fa fa-eye with-tip no-text', title: I18n.t('spree.admin.order_management.details'), 'data-original-title': I18n.t('spree.admin.order_management.details'), 'data-action': 'show' %>
+          <%= oms_feature_paused?(sales_order_by(order_management_oms_command.order_management_ref).try(:spree_order), :send_to_order_management?) %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-info no-objects-found">
+    <%= I18n.t('spree.admin.order_management.no_results') %>
+  </div>
+<% end %>
+
+<%= paginate @order_management_oms_commands, theme: "solidus_admin" %>
