@@ -1,0 +1,26 @@
+<table class="index" id="listing_maisonette_sale_sku_configurations">
+  <thead>
+    <tr data-hook="admin_maisonette_sale_sku_configurations_index_headers">
+      <% if "#{collection[0].class.name.demodulize.underscore}" == 'sale_sku_configuration' %><th><%= check_box(nil, nil, {class: 'parent_sales_products_checkbox'}, nil) %></th><% end %>
+      <% if bulk_edit %><th>ID</th><% end %>
+      <th>Product name</th>
+      <th>Vendor name</th>
+      <th>Maisonette SKU</th>
+      <th>Vendor SKU</th>
+      <th>Percent Off</th>
+      <th>Maisonette Liability %</th>
+      <th>Final Sale</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Created By</th>
+      <th>Last Updated By</th>
+      <th>Sale Price</th>
+      <th>Cost Price</th>
+      <% if bulk_edit %><th data-hook="admin_maisonette_sale_sku_configurations_index_header_actions" class="actions"></th><% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render "spree/admin/maisonette/sale_sku_configurations/table/#{collection[0].class.name.demodulize.underscore}",
+              collection: collection, bulk_edit: bulk_edit, sale: sale %>
+  </tbody>
+</table>
