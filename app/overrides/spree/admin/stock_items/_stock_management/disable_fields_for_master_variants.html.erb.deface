@@ -1,0 +1,24 @@
+<!-- replace_contents "tr.js-add-stock-item.stock-item-edit-row form" -->
+
+<td class='location-name-cell'>
+  <% options = { class: 'custom-select', prompt: t('spree.add_to_stock_location'), id: "variant-stock-location-#{variant.id}" } %>
+  <% options.merge!(disabled: true) if variant.is_master? %>
+  <%= select_tag :stock_location_id, options_from_collection_for_select(locations_without_items, :id, :name), options %>
+</td>
+<td class="align-center">
+  <% options = { id: "variant-backorderable-#{variant.id}" } %>
+  <% options.merge!(disabled: true) if variant.is_master? %>
+  <%= check_box_tag :backorderable, 'backorderable', false, options %>
+</td>
+<td>
+  <% options = { id: "variant-count-on-hand-#{variant.id}", class: 'fullwidth' } %>
+  <% options.merge!(disabled: true) if variant.is_master? %>
+
+  <%= number_field_tag :count_on_hand, '', options %>
+</td>
+<td></td>
+<td class="actions">
+  <% if !variant.is_master? %>
+    <%= link_to_with_icon 'plus', t('spree.actions.create'), '#', no_text: true, data: { action: 'add' }, class: 'submit' %>
+  <% end %>
+</td>
