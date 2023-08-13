@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style type="text/css">
+    @font-face {
+      font-family: 'Walsheim';
+      src: url("<%= Rails.root.join('app', 'assets', 'fonts', 'Walsheim-Regular.otf') %>") format('opentype');
+    }
+    @font-face {
+      font-family: 'Canela';
+      src: url("<%= Rails.root.join('app', 'assets', 'fonts', 'CanelaDeck-Light.otf') %>") format('opentype');
+    }
+    @font-face {
+      font-family: 'Arial-MT';
+      src: url("<%= Rails.root.join('app', 'assets', 'fonts', 'Arial.ttf') %>") format('truetype');
+    }
+    @font-face {
+      font-family: 'Arial-Bold';
+      src: url("<%= Rails.root.join('app', 'assets', 'fonts', 'Arial-Bold.ttf') %>") format('truetype');
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="<%= Rails.root.join('app', 'assets', 'stylesheets', 'spree', 'backend', 'components', 'packing_slip.css') %>">
+</head>
+<body class="packing-slip">
+  <div class="header">
+  <%= wicked_pdf_image_tag('packing_slip/logo.svg', class: 'logo') %>
+    <h2>Good stuff for the kids in your life.</h2>
+    <%= wicked_pdf_image_tag('packing_slip/heart-guy.svg', class: 'logo') %>
+    <h1>Over 1000 different brands, for babies and kids, across<br>every category; apparel, toys, gear, and home decor.</h1>
+  </div>
+  <table class="address">
+    <tr>
+      <th class="shipping-address">Shipping Address</th>
+      <th class="billing-address">Billing Address</th>
+      <th class="shipping-info">Shipping Info</th>
+    <tr>
+    <tr>
+      <td class><%= shipment.order.ship_address.full_name %></td>
+      <td class><%= shipment.order.bill_address.full_name %></td>
+      <td>Order Date</td>
+      <td class="info-value"><b><%= shipment.order.completed_at.strftime("%m/%d/%G") %></b></td>
+    </tr>
+    <tr>
+      <td>
+        <%= shipment.order.ship_address.address1 %>,
+        <%= "#{shipment.order.ship_address.address2}" if shipment.order.ship_address.address2 %>
+      </td>
+      <td>
+        <%= shipment.order.bill_address.address1 %>,
+        <%= "#{shipment.order.bill_address.address2}" if shipment.order.bill_address.address2 %>
+      </td>
+      <td>Order Number</td>
+      <td class="info-value"><b><%= shipment.order.number %></b></td>
+    </tr>
+    <tr>
+      <td>
+        <%= shipment.order.ship_address.city %>,
+        <%= shipment.order.ship_address.state&.abbr %>
+        <%= shipment.order.ship_address.zipcode %>
+      </td>
+      <td>
+        <%= shipment.order.bill_address.city %>,
+        <%= shipment.order.bill_address.state&.abbr %>
+        <%= shipment.order.bill_address.zipcode %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= shipment.order.ship_address.country.name %></td>
+      <td><%= shipment.order.bill_address.country.name %></td>
+    </tr>
+    <tr>
+      <td class="ship-to-phone">Phone: <%= number_to_phone shipment.order.ship_address.phone %></td>
+    </tr>
+  </table>
+
+  <% if shipment.giftwrapped? %>
+   <div class="giftwrapped">Gift Wrapped</div>
+  <% end %>
+
+  <table class="product-list">
+    <tr class="product-list-header">
+      <th>Vendor SKU</th>
+      <th>Description</th>
+      <th>Qty</th>
+      <th>Size</th>
+      <% unless shipment.order.is_gift? %>
+        <th class="price">Item Price</th>
+        <th class="price">Total Price</th>
+      <% end %>
+    </tr>
+    <% shipment_line_details.each do |shipment_line| %>
+      <tr class="line-item">
+        <td class="sku"><%= shipment_line[:line_item].offer_settings&.vendor_sku %></td>
+        <td class="description">
+          <%= shipment_line[:line_item].offer_settings&.vendor&.name %>
+          <br/>
+          <% if shipment_line[:line_item].final_sale? %>
+            <%= raw shipment_line[:line_item].name %><span class="info-value"> - Final Sale</span>
+          <% else %>
+            <%= raw shipment_line[:line_item].name %>
+          <% end %>
+          <br/>
+          <%= raw shipment_line[:line_item].product.color&.name %>
+        </td>
+        <td><%= shipment_line[:quantity] %></td>
+        <td><%= shipment_line[:line_item].variant.option_values[0]&.name %></td>
+        <% unless shipment.order.is_gift? %>
+          <td class="price"><%= number_to_currency(shipment_line[:line_item].price) %></td>
+          <td class="price"><%= number_to_currency(shipment_line[:total]) %>
+        <% end %>
+      </tr>
+    <% end %>
+    <% unless shipment.order.is_gift? %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <table class="shipment-totals">
+            <tr>
+              <td class="total-header">Subtotal</td>
+            </tr>
+            <tr>
+              <td class="total-header">Shipping</td>
+            </tr>
+            <tr>
+              <td class="total-header">Gift Wrap</td>
+            </tr>
+            <tr>
+              <td class="total-header">Sales Tax</td>
+
+            </tr>
+            <tr class="order-total">
+              <td class="total-header"><b>Order Total</b></td>
+            </tr>
+          </table>
+        </td>
+        <td></td>
+        <td>
+          <table class="shipment-totals">
+            <tr>
+              <td class="total-value"><%= number_to_currency(totals[:subtotal]) %></td>
+            </tr>
+            <tr>
+              <td class="total-value">
+                <%= number_to_currency(totals[:shipping_total_without_giftwrap]) %>
+              </td>
+            </tr>
+            <tr>
+              <td class="total-value">
+                <%= shipment.giftwrapped? ? number_to_currency(totals[:giftwrap_total]) : "-" %>
+              </td>
+            </tr>
+            <tr>
+              <td class="total-value"><%= number_to_currency(totals[:sales_tax]) %></td>
+            </tr>
+            <tr class="order-total">
+              <td class="total-value"><b><%= number_to_currency(totals[:order_total]) %></b></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <% if shipment.order.is_gift? %>
+  <div class="gift-message">
+    <span class="title">Gift Message:</span><br>
+    <span class="message"><%= simple_format shipment.order.gift_message %></span>
+  </div>
+  <% end %>
+
+  <%= render 'mirakl/packing_slip/footer.html.erb' %>
+</body>
+</html>
