@@ -4,6 +4,7 @@ http_interactions:
     method: post
     uri: https://api.sandbox.braintreegateway.com/merchants/hyfrbrzhzb9jzngd/customers
     body:
+
       encoding: UTF-8
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
