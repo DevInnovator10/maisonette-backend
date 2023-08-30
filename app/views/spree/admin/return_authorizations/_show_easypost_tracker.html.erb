@@ -3,6 +3,7 @@
     <thead class="text-muted">
       <tr data-hook="easypost_tracker_header">
         <th><%= Easypost::Tracker.human_attribute_name(:tracking_code) %></th>
+
         <th><%= Easypost::Tracker.human_attribute_name(:carrier) %></th>
         <th><%= Easypost::Tracker.human_attribute_name(:date_shipped) %></th>
         <th><%= Easypost::Tracker.human_attribute_name(:date_delivered) %></th>
