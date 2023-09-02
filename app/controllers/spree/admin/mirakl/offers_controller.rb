@@ -33,6 +33,7 @@ module Spree
         def collection
           @mirakl_offers = @search.result(distinct: true)
                                   .page(params[:page])
+
                                   .per(params[:per_page] || Spree::Config[:orders_per_page])
                                   .order(id: :desc)
         end

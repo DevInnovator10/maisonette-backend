@@ -1,5 +1,5 @@
 default: &default
-  secret_key_base: <%= ENV.fetch('SECRET_KEY_BASE', 'f0e66764b6f49f428f45bb53e9d5c1dd33cf7ec2eae6451fd5ddf1b42260cf2fb5e3cb381750e1f4b011643d59b55d5ee51ac52d9eb7771ee7161fe38d329e6c') %>
+    secret_key_base: <%= ENV.fetch('SECRET_KEY_BASE', 'f0e66764b6f49f428f45bb53e9d5c1dd33cf7ec2eae6451fd5ddf1b42260cf2fb5e3cb381750e1f4b011643d59b55d5ee51ac52d9eb7771ee7161fe38d329e6c') %>
 
   admin_url: <%= ENV.fetch('ADMIN_URL', 'www.example.com') %>
   base_url: <%= ENV.fetch('BASE_URL', 'www.example.com') %>
