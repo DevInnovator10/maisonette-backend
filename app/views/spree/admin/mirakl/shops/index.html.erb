@@ -1,0 +1,89 @@
+<% admin_layout "full-width" %>
+
+<% admin_breadcrumb(t('spree.admin.tab.mirakl')) %>
+<% admin_breadcrumb(plural_resource_name(Mirakl::Shop)) %>
+
+<% content_for :page_actions do %>
+  <%= button_to(I18n.t('spree.mirakl.shops.import_shops_from_mirakl'),
+                import_shops_admin_mirakl_shops_path,
+                method: :get,
+                class: 'mirakl-shops-delta-sync-btn btn btn-primary') %>
+<% end %>
+
+<% content_for :table_filter do %>
+  <div data-hook="admin_mirakl_shops_index_search">
+    <%= search_form_for [:admin, @search] do |f| %>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= label_tag :q_name_cont, I18n.t('spree.name') %>
+            <%= f.text_field :name_cont, class: 'form-control js-quick-search-target' %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= label_tag :q_shop_id_eq, I18n.t('spree.mirakl.shops.shop_number') %>
+            <%= f.text_field :shop_id_eq, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= label_tag :q_id_eq, I18n.t('spree.id') %>
+            <%= f.text_field :id_eq, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="actions filter-actions">
+        <div data-hook="admin_mirakl_shops_index_search_buttons" class="form-actions">
+          <%= button_tag t('spree.filter_results'), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+
+<%= paginate @mirakl_shops, theme: "solidus_admin" %>
+
+
+<% if @mirakl_shops.any? %>
+  <table class="table" id='listing_mirakl_shops' data-hook>
+    <thead>
+    <tr data-hook="admin_mirakl_shops_index_header">
+      <th><%= sort_link @search, :id, I18n.t('spree.id') %></th>
+      <th><%= sort_link @search, :created_at, I18n.t('spree.created_at') %></th>
+      <th><%= sort_link @search, :updated_at, I18n.t('spree.updated_at') %></th>
+      <th><%= sort_link @search, :shop_id, I18n.t('spree.mirakl.shops.shop_number') %></th>
+      <th><%= sort_link @search, :name, I18n.t('spree.name') %></th>
+      <th><%= sort_link @search, :status, I18n.t('spree.status') %></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @mirakl_shops.each do |mirakl_shop| %>
+      <tr id="<%= "mirakl_shop_#{mirakl_shop.id}" %>" data-hook="admin_mirakl_shops_index_rows">
+        <td><%= mirakl_shop.id %></td>
+        <td><%= mirakl_shop.created_at %></td>
+        <td><%= mirakl_shop.updated_at %></td>
+        <td><%= mirakl_shop.shop_id %></td>
+        <% if mirakl_shop.stock_location %>
+          <td>
+            <%= link_to(mirakl_shop.stock_location.name, edit_admin_stock_location_path(mirakl_shop.stock_location)) %>
+          </td>
+        <% else %>
+          <td><%= mirakl_shop.name %> (StockLocation not found!)</td>
+        <% end %>
+        <td><span class="state <%= mirakl_shop.shop_status %>"><%= mirakl_shop.shop_status %></span></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="no-objects-found">
+    <%= render 'spree/admin/shared/no_objects_found', resource: Mirakl::Shop %>
+  </div>
+<% end %>
+
+<%= paginate @mirakl_shops, theme: "solidus_admin" %>
