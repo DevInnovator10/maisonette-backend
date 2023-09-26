@@ -11,6 +11,7 @@ notify_if_saved(country)
 if country.states.empty?
   I18n.t('seeds.addresses.states').each_pair do |abbr, name|
     state = country.states.new(name: name, abbr: abbr)
+
     notify_if_saved(state)
   end
 end
