@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.sandbox.braintreegateway.com/merchants/hyfrbrzhzb9jzngd/customers
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <customer>
+          <payment-method-nonce>fake-paypal-billing-agreement-nonce</payment-method-nonce>
+        </customer>
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept:
+      - application/xml
+      User-Agent:
+
+      - Braintree Ruby Gem 2.96.0
+      X-Apiversion:
+      - '5'
+      Content-Type:
+      - application/xml
+      Authorization:
+      - "<Authorization Code>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Tue, 17 Dec 2019 10:30:11 GMT
+      Content-Type:
+      - application/xml; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Authentication:
+      - basic_auth
+      X-User:
+      - vpr2hxsd2x4rnntd
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Etag:
+      - W/"f5b4cd56426ca0b217404e261f7e2ef2"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.368932'
+      X-Request-Id:
+      - 01-1576578610.805-79.23.86.115-8356242
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      X-Broxyid:
+      - 01-1576578610.805-79.23.86.115-8356242
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIADOu+F0AA6RUTXPaMBC951cwvgtjEhpgjNPOZGDaA70kacuFWVtrW4kseSSZD//6yDYGgsmhk6P2vf16uyv/YZfx3gaVZlLMHK8/cHooIkmZSGbO89OcjJ2H4MaPCm1khiq46fV8RoPxYHI3HNyPJr5rX5XRglEKwhD7TvexClWZluHktRQJ9d1ztGLHTGlDBGTYE4zPHKMKdNwa4vAZEsksB7Hv2DEDxjvWPJWiGyOGXce2xVAzcyWfQjBICZie2ec4c6h9GpahEwwH3oR4Q+LdP3mD6e1g6nkr3z051P5FTv/P/+TQ5K9FJzFDTnVTUsJlCLxS8d/tS0kXE7P6+yv+/fhjtHz8uV2WzyPfPXEOTVBmSASK6kMZoBTsW5Vgn1syRJEshPnIqAgdSmO05pBxbreEQKIQM2xm23DXB2x9xNbMLsFVjzbcF8VuYhy2lHzc0HNzS6UYQ8HbXKGUHEE4QTV93z2AR3K9YMErCOxTid+bJvt2HX23gVriSfpoMR+Ff14KuvA4XaSb1XyyjebjO3xdfqOPbxdTqp1ZBgmSQvEgNSbXU9cFrdHofqiACWM1S2zDW9hXmV1bRC1shiaVdM1lIt1DYblIHlBsmJKiosw0CBrKnT3VY4Y2py5CHSmWG3v+V9aj5hj5hiIYl7elsWI2rxb74oo3fWtS/Q0CrRqCGVbhl3OJgWs7mGvUYxzbfT3jyzs+B0Usr8KcZawqq9BIpKKfx1G4sQLUDXdg3+2eyqVN10agVKEdbkfy07IGN+8AAAD//wMAcnupRZwFAAA=
+    http_version:
+  recorded_at: Tue, 17 Dec 2019 10:30:11 GMT
+recorded_with: VCR 5.0.0
