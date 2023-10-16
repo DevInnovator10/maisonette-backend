@@ -1,0 +1,11 @@
+<!-- insert_before '[data-hook="admin_order_tabs"]' -->
+
+<% if @order.migrated %>
+  <% log = ::Migration::Log.orders.find_by(order_number: @order.number) %>
+
+  <% if log&.extra.present? %>
+    <div class="alert alert-danger">This order has been migrated from the Legacy app but with <%= log.extra %>, log details <%= link_to 'here', admin_migration_log_path(log) %></div>
+  <% else %>
+    <div class="alert alert-warning">This order has been migrated from the Legacy app</div>
+  <% end %>
+<% end %>
