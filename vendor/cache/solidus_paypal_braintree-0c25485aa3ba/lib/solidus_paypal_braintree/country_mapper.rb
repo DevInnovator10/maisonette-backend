@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module SolidusPaypalBraintree
-  module CountryMapper
+    module CountryMapper
     extend ActiveSupport::Concern
 
     USA_VARIANTS = [
