@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module SolidusPaypalBraintree
-  module BraintreeAdminHelper
+    module BraintreeAdminHelper
     # Returns a link to the Braintree web UI for the given Braintree payment
     def braintree_transaction_link(payment)
       environment = payment.payment_method.preferred_environment == 'sandbox' ? 'sandbox' : 'www'
