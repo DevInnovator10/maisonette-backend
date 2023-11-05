@@ -1,0 +1,5 @@
+---
+en:
+  time:
+    formats:
+      with_tz: '%a, %d %b %Y, %I:%M %p %Z'
