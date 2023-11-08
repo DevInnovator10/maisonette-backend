@@ -1,0 +1,141 @@
+<div align="center" width="100%" bgcolor="#ffffff" style="background: #ffffff !important">
+  <table width="600" align="center" cellspacing="0" cellpadding="0" bgcolor="#ffffff" style="background: #ffffff !important">
+    <tr>
+      <td align="center" height="80" colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="75">&nbsp;</td>
+      <td align="center">
+        <font class="order-title">Order Details</font>
+      </td>
+      <td width="75">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" height="60" colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="75">&nbsp;</td>
+      <td align="center">
+        <table width="450" align="center" cellspacing="0" cellpadding="0" bgcolor="#ffffff" style="background: #ffffff !important">
+          <% if @order.ship_address.present? && !@jifiti_order %>
+            <tr>
+              <td align="center" height="20" colspan="2" class="order-border-darker">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="50%" align="left">
+                <font class="order__product__options-key">Shipping To</font>
+              </td>
+              <td width="50%" align="left">
+                <font class="order__product__name"><%= @order.ship_address.display_address.html_safe %></font>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" height="20" colspan="2">&nbsp;</td>
+            </tr>
+          <% end %>
+
+          <% @order.shipments.each do |shipment| %>
+            <tr>
+              <td align="center" height="20" colspan="2" class="order-border">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="50%" align="left">
+                <font class="order__product__options-key">Items Shipped</font>
+              </td>
+              <td width="50%" align="left">
+                <% shipment.line_items.each do |line_item| %>
+                <font class="order__product__name"><%= line_item.product.name %></font><br />
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="left">
+                <font class="order__product__options-key">Shipping Method</font>
+              </td>
+              <td width="50%" align="left">
+                <font class="order__product__name"><%= shipment.shipping_method.name.to_s %></font>
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="left">
+                <font class="order__product__options-key">Shipping From</font>
+              </td>
+              <td width="50%" align="left">
+                <font class="order__product__name"><%= shipment.stock_location.address %></font>
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="left">
+                <font class="order__product__options-key">Estimated Arrival</font>
+              </td>
+              <td width="50%" align="left">
+                <font class="order__product__name"><%= shipment.delivery_estimation %></font>
+                <% if shipment.backordered? %>
+                  <font class="order__product__name">
+                    <%= display_backorder_date(shipment) %>
+                  </font>
+                <% elsif (variant = shipment.manifest.map(&:variant).detect { |var| var.lead_time > default_lead_time }) %>
+                  <font class="order__product__name">
+                    Ships within <%= variant.lead_time %> days
+                  </font>
+                <% end %>
+              </td>
+            </tr>
+            <% if shipment.has_giftwrap? %>
+              <tr>
+                <td width="50%" align="left">
+                  <font class="order__product__options-key">Giftwrap</font>
+                </td>
+                <td width="50%" align="left">
+                  <font class="order__product__name">Yes</font>
+                </td>
+              </tr>
+            <% end %>
+
+            <tr>
+              <td align="center" height="20" colspan="2">&nbsp;</td>
+            </tr>
+          <% end %>
+
+          <tr>
+            <td align="center" height="20" colspan="2" class="order-border">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="50%" align="left">
+              <font class="order__product__options-key">Ordered on</font>
+            </td>
+            <td width="50%" align="left">
+              <font class="order__product__name"><%= date_mdy @order.completed_at %></font>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" height="20" colspan="2">&nbsp;</td>
+          </tr>
+
+          <% if @order.payments.valid.present? %>
+            <tr>
+              <td align="center" height="20" colspan="2" class="order-border">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="50%" align="left">
+                <font class="order__product__options-key">Payment Method</font>
+              </td>
+              <td width="50%" align="left">
+                <font class="order__product__name">
+                  <%= raw order_payment_label(@order).html_safe %>
+                </font>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" height="20" colspan="2">&nbsp;</td>
+            </tr>
+          <% end %>
+        </table>
+      </td>
+      <td width="75">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" height="40" colspan="3">&nbsp;</td>
+    </tr>
+  </table>
+</div>
