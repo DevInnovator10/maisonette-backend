@@ -1,6 +1,7 @@
 class FakeRails
   def initialize(env, root)
     @env = env
+
     @root = root
   end
 

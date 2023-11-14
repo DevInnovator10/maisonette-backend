@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Spree::Order::RestartCheckoutFlow, type: :model do
-  let(:described_class) { Spree::Order }
+    let(:described_class) { Spree::Order }
 
   describe '#restart_checkout_flow' do
     subject(:restart_checkout_flow) { order.restart_checkout_flow }
