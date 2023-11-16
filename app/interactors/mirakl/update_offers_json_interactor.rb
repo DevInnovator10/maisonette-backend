@@ -5,6 +5,7 @@ module Mirakl
     include Mirakl::Api
 
     required_params :offers_payload, :shop_id
+
     helper_methods :offers_payload, :shop_id
 
     before :use_operator_key
