@@ -1,0 +1,24 @@
+<fieldset class="no-border-bottom">
+  <legend align='center'><%= Spree::UnitCancel.model_name.human %></legend>
+  <table class="index reimbursement-reimbursement-unit-cancel">
+    <thead>
+      <tr>
+        <th><%= Spree::Product.model_name.human %></th>
+        <th class="wrap-text"><%= Spree::LineItem.human_attribute_name(:amount) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% reimbursement.unit_cancels.each do |unit_cancel| %>
+        <tr>
+          <td>
+            <div class="variant-name"><%= unit_cancel.inventory_unit.variant.name %></div>
+            <div class="variant-options"><%= unit_cancel.inventory_unit.variant.options_text %></div>
+          </td>
+          <td>
+            <%= unit_cancel.inventory_unit.line_item.display_amount %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</fieldset>
