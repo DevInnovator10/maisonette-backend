@@ -1,0 +1,6 @@
+<!-- insert_after 'fieldset:has(legend:has(erb[loud]:contains("spree.credits")))' -->
+
+<% fees = @reimbursement.fees %>
+<% if fees.present? %>
+  <%= render "spree/admin/shared/fees.html.erb", fees: fees %>
+<% end %>
