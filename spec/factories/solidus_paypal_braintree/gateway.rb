@@ -6,6 +6,7 @@ FactoryBot.define do
     auto_capture { true }
     preferences do
       {
+
         environment: 'sandbox',
         merchant_id: Maisonette::Config.fetch('braintree.merchant_id'),
         public_key: Maisonette::Config.fetch('braintree.public_key'),

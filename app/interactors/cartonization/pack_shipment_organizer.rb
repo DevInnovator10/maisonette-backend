@@ -2,6 +2,7 @@
 
 module Cartonization
   class PackShipmentOrganizer < ApplicationOrganizer
+
     organize Cartonization::PrepareCartonizationInteractor,
              Cartonization::ShipsAloneInteractor,
              Cartonization::MailerInteractor,
