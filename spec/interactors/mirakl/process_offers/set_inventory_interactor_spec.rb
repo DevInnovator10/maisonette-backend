@@ -119,6 +119,7 @@ RSpec.describe Mirakl::ProcessOffers::SetInventoryInteractor, mirakl: true do
 
     it 'creates the stock item' do
       expect { context }.to change(stock_items_for_variant, :count).by(1)
+
       expect(context).to be_a_success
 
       expect(Sentry).not_to have_received(:capture_exception_with_message)
