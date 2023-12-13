@@ -1,0 +1,178 @@
+# run with "docker-compose up --abort-on-container-exit"
+version: '3.4'
+
+x-backend_default: &backend_default
+  image: 276428873250.dkr.ecr.us-west-2.amazonaws.com/test-automation/backend:$SANATIZED_BRANCH_NAME
+  environment:
+    - RAILS_ENV=ci
+    - DB_HOST=ci_psql
+    - DB_NAME=maisonette_backend_ci
+    - DB_USERNAME=postgres
+    - REDIS_URL=redis://redis:6379
+    - REDIS_URL_SERVICE=redis://redis:6379
+    - REDIS_URL_SIDEKIQ=redis://redis:6379
+    - ADMIN_URL=http://backend:3000
+    - ALGOLIA_APPLICATION_ID=${ALGOLIA_APPLICATION_ID}
+    - ALGOLIA_API_KEY=${ALGOLIA_API_KEY}
+    - ALGOLIA_PRODUCT_INDEX=${ALGOLIA_PRODUCT_INDEX}
+    - AFTERPAY_TEST_MODE=${AFTERPAY_TEST_MODE}
+    - AFTERPAY_MERCHANT_ID=${AFTERPAY_MERCHANT_ID}
+    - AFTERPAY_SECRET_KEY=${AFTERPAY_SECRET_KEY}
+    - AFTERPAY_PAYMENT_GATEWAY_ID=${AFTERPAY_PAYMENT_GATEWAY_ID}
+    - AFTERPAY_GATEWAY_REF_NUMBER=${AFTERPAY_GATEWAY_REF_NUMBER}
+    - ASSETS_CDN=http://localhost:3000
+    - AVATAX_COMPANY_CODE=${AVATAX_COMPANY_CODE}
+    - AVATAX_ENDPOINT=https://development.avalara.net
+    - AVATAX_ACCOUNT=${AVATAX_ACCOUNT}
+    - AVATAX_LICENSE_KEY=${AVATAX_LICENSE_KEY}
+    - AWS_REGION=${AWS_REGION}
+    - AWS_S3_BUCKET=${AWS_S3_BUCKET}
+    - AWS_S3_PRIVATE_BUCKET=${AWS_S3_PRIVATE_BUCKET}
+    - AWS_S3_SYNDICATION_BUCKET=${AWS_S3_BUCKET}
+    - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+    - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+    - BASE_URL=http://frontend:7777
+    - BRAINTREE_ENV=${BRAINTREE_ENV}
+    - BRAINTREE_MERCHANT_ID=${BRAINTREE_MERCHANT_ID}
+    - BRAINTREE_PRIVATE_KEY=${BRAINTREE_PRIVATE_KEY}
+    - BRAINTREE_PUBLIC_KEY=${BRAINTREE_PUBLIC_KEY}
+    - EASYPOST_API_KEY=${EASYPOST_API_KEY}
+    - JIFITI_ADMIN_USER=jifiti@maisonette.com
+    - JIFITI_MAIS_ORDER_EMAIL=jifiti@maisonette.com
+    - JIFITI_ORDER_EMAIL=jifiti@maisonette.com
+    - LOG_LEVEL=info
+    - MERCH_EMAIL=devops+merch@maisonette.com
+    - MIRAKL_API_ENDPOINT=${MIRAKL_API_ENDPOINT}
+    - MIRAKL_FRONT_KEY=${MIRAKL_FRONT_KEY}
+    - MIRAKL_OPERATOR_KEY=${MIRAKL_OPERATOR_KEY}
+    - MIRAKL_URL=${MIRAKL_URL}
+    - MOENGAGE_API_SECRET=${MOENGAGE_API_SECRET}
+    - MOENGAGE_APP_ID=${MOENGAGE_APP_ID}
+    - NARVAR_API_PASSWORD=${NARVAR_API_PASSWORD}
+    - NARVAR_API_URL=${NARVAR_API_URL}
+    - NARVAR_API_USERNAME=${NARVAR_API_USERNAME}
+    - NARVAR_RETURN_URL=${NARVAR_RETURN_URL}
+    - OPS_SUPPORT_EMAIL=${OPS_SUPPORT_EMAIL}
+    - PAYPAL_TEST_USER=${PAYPAL_TEST_USER}
+    - PAYPAL_TEST_PW=${PAYPAL_TEST_PW}
+    - RAILS_SERVE_STATIC_FILES=1
+    - SALSIFY_API_ENDPOINT=${SALSIFY_API_ENDPOINT}
+    - SALSIFY_AUTH_TOKEN=${SALSIFY_AUTH_TOKEN}
+    - SALSIFY_FTP_HOSTNAME=${SALSIFY_FTP_HOSTNAME}
+    - SALSIFY_FTP_PASSWORD=${SALSIFY_FTP_PASSWORD}
+    - SALSIFY_FTP_USERNAME=${SALSIFY_FTP_USERNAME}
+    - SALSIFY_ORGANIZATION_ID=${SALSIFY_ORGANIZATION_ID}
+    - SALSIFY_REPORTS_EMAIL=devops+salsify_reports@maisonette.com
+    - SECRET_KEY_BASE=a4166b46d3869cfb8ed695476864ca2cb5cf1cd31d648c65d2750618abdd958d8d8dc5e0e3ca388dc6fe0aed03859020537ef85130838c54b27884d2f4a8740f
+    - SENTRY_DSN=https://1a6cfe4f5254438bab2812962153754d:e079e88f5eaf49ba98f3db0364cde968@sentry.io/1444943
+    - SENTRY_CURRENT_ENV=ci
+    - SIDEKIQ_INLINE=${SIDEKIQ_INLINE}
+    - SITEMAP_CMS_PAGES_ENDPOINT=${SITEMAP_CMS_PAGES_ENDPOINT}
+    - SITEMAP_LPC_PAGE_PATH=${SITEMAP_LPC_PAGE_PATH}
+    - SUPPORT_EMAIL=devops+support@maisonette.com
+    - VENDOR_SUPPORT_EMAIL=devops+vendor_support@maisonette.com
+    - WEB_CONCURRENCY=0
+    - DEV_CACHE_CLASSES=true
+    - OMS_CLIENT_ID=${OMS_CLIENT_ID}
+    - OMS_CLIENT_SECRET=${OMS_CLIENT_SECRET}
+    - OMS_SECURITY_TOKEN=${OMS_SECURITY_TOKEN}
+    - OMS_USERNAME=${OMS_USERNAME}
+    - OMS_PASSWORD=${OMS_PASSWORD}
+    - OMS_PRODUCTION_MODE=${OMS_PRODUCTION_MODE}
+    - OMS_CARD_PAYMENT_GATEWAY_ID=${OMS_CARD_PAYMENT_GATEWAY_ID}
+    - OMS_DIGITAL_WALLET_PAYMENT_GATEWAY_ID=${OMS_DIGITAL_WALLET_PAYMENT_GATEWAY_ID}
+    - OMS_LINE_ITEM_PRICEBOOK_ENTRY_ID=${OMS_LINE_ITEM_PRICEBOOK_ENTRY_ID}
+    - OMS_SHIPMENT_PRICEBOOK_ENTRY_ID=${OMS_SHIPMENT_PRICEBOOK_ENTRY_ID}
+    - OMS_PAYMENT_GATEWAY_ID=${OMS_PAYMENT_GATEWAY_ID}
+    - OMS_PRICEBOOK2_ID=${OMS_PRICEBOOK2_ID}
+    - OMS_PRODUCT2_ID=${OMS_PRODUCT2_ID}
+    - ZYTE_ENVIRONMENT=${ZYTE_ENVIRONMENT}
+    - ZYTE_AWS_REGION=${ZYTE_AWS_REGION}
+    - ZYTE_AWS_BUCKET=${ZYTE_AWS_BUCKET}
+    - DD_ENV=ci
+    - DD_AGENT_HOST=datadog-agent
+    - DD_SERVICE=maisonette-backend
+    - CIRCLECI=true
+    - CIRCLE_BRANCH=${CIRCLE_BRANCH}
+    - CIRCLE_PROJECT_REPONAME=${CIRCLE_PROJECT_REPONAME}
+    - CIRCLE_BUILD_NUM=${CIRCLE_BUILD_NUM}
+    - CIRCLE_BUILD_URL=${CIRCLE_BUILD_URL}
+    - CIRCLE_WORKFLOW_ID=${CIRCLE_WORKFLOW_ID}
+    - CIRCLE_WORKING_DIRECTORY=${CIRCLE_WORKING_DIRECTORY}
+    - CIRCLE_REPOSITORY_URL=${CIRCLE_REPOSITORY_URL}
+    - CIRCLE_SHA1=${CIRCLE_SHA1}
+
+services:
+  ci_psql:
+    container_name: ci_psql
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - "5454:5432"
+
+  redis:
+    container_name: redis
+    image: "redis:alpine"
+
+  chrome:
+    image: selenium/node-chrome:4.0.0-20211025
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_GRID_URL=http://localhost:4444
+
+  selenium-hub:
+    image: selenium/hub:4.0.0-20211025
+    container_name: selenium-hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+
+  frontend:
+    container_name: frontend
+    image: 276428873250.dkr.ecr.us-west-2.amazonaws.com/test-automation/frontend:$FRONTEND_BRANCH
+    ports:
+      - "7777:7777"
+
+  backend:
+    <<: *backend_default
+    container_name: backend
+    build:
+      context: ./maisonette-backend
+      dockerfile: Dockerfile.ci
+    ports:
+      - "3000:3000"
+    volumes:
+      - backend-volume:/app
+    depends_on:
+      - redis
+      - ci_psql
+
+  datadog-agent:
+    image: "gcr.io/datadoghq/agent:latest"
+    environment:
+      - DD_API_KEY=${DD_API_KEY}
+      - DD_INSIDE_CI=true
+      - DD_HOSTNAME=none
+    ports:
+      - 8126/tcp
+
+  cucumber:
+    <<: *backend_default
+    container_name: cucumber
+    entrypoint: sh -c "./wait-for.sh backend:3000 -t 480 -- bundle exec parallel_cucumber $$(cat ./feature_files_$FEATURE_FILES_INDEX.txt) -n $CUCUMBER_CONCURRENCY -o '-f junit -o tmp/cucumber -p $CUCUMBER_PROFILE'"
+    volumes:
+      - backend-volume:/app
+    depends_on:
+      - backend
+
+volumes:
+  backend-volume:
