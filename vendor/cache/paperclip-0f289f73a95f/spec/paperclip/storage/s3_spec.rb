@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'aws-sdk'
 
 describe Paperclip::Storage::S3 do
-  before do
+    before do
     Aws.config[:stub_responses] = true
   end
 
