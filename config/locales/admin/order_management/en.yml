@@ -1,0 +1,30 @@
+---
+en:
+  spree:
+    order_management:
+      sync_status: Sync Status
+      state: State
+      type: Type
+      started_at: Started At
+      ended_at: Ended At
+      order_management_ref: Ref
+      sales_order: OMS
+    admin:
+      order_management:
+        details: Details
+        filter_results: Filter results
+        no_results: No Results
+        order_data_sent_to_order_management: Order data sent to OMS
+        order_number: Order number
+        sync: Sync
+        execute: Execute
+        resend: Resend
+        sync_feature:
+          label: Feature
+          enabled: Enabled
+          disabled: Disabled
+        order_edit_ability: Completed orders cannot be managed in Solidus
+      tab:
+        order_management_entities: Order Management Entities
+        order_management_oms_commands: Order Management OmsCommands
+
