@@ -1,0 +1,10 @@
+<!-- insert_after "tr.edit-tracking.vertical-middle"  -->
+
+<tr>
+    <th>Mirakl Order</th>
+  <% if shipment.mirakl_order %>
+    <td colspan="5"><%= link_to shipment.mirakl_order.logistic_order_id, edit_admin_mirakl_order_path(shipment.mirakl_order) %></td>
+  <% else %>
+    <td colspan="5"><span class="color-error">No Mirakl Order Found!</span></td>
+  <% end %>
+</tr>

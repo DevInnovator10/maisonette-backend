@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Syndication::GoogleFeedWorker do
-  let(:worker) { described_class.new }
+    let(:worker) { described_class.new }
 
   describe '#perform' do
     subject(:perform) { worker.perform }
