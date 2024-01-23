@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Maisonette
-  module Variant
+    module Variant
     class PricingOptions < Spree::Variant::PricingOptions
       def self.from_line_item(line_item)
         tax_address = line_item.order&.tax_address
@@ -14,4 +14,5 @@ module Maisonette
     end
 
   end
+
 end

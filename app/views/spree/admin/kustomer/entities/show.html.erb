@@ -1,0 +1,50 @@
+<% content_for :page_title do %>
+  <%= link_to I18n.t('spree.admin.tab.kustomer_entities'), admin_kustomer_entities_path %> -
+  <small> - <%= @kustomer_entity.id %></small>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= link_to(I18n.t('spree.admin.kustomer.sync'), sync_admin_kustomer_entity_path(@kustomer_entity), class: 'btn btn-info') %>
+<% end %>
+
+<div class='panel panel-default'>
+  <div class='panel-heading'>
+    <h3 class='panel-title'><%= I18n.t('spree.admin.kustomer.details') %></h3>
+  </div>
+  <div class='panel-body'>
+    <dl class="dl-horizontal">
+      <dt><%= Maisonette::Kustomer::Entity.human_attribute_name :id %></dt>
+      <dd><%= @kustomer_entity.id %></dd>
+
+      <dt><%= Maisonette::Kustomer::Entity.human_attribute_name :created_at %></dt>
+      <dd><%= l(@kustomer_entity.created_at, format: :long) %></dd>
+
+      <dt><%= Maisonette::Kustomer::Entity.human_attribute_name :updated_at %></dt>
+      <dd><%= l(@kustomer_entity.updated_at, format: :long) %></dd>
+
+      <dt><%= t('spree.admin.kustomer.order_number') %></dt>
+      <dd><span class="label"><%= @kustomer_entity.kustomerable.number %></span></dd>
+
+      <dt><%= Maisonette::Kustomer::Entity.human_attribute_name :state %></dt>
+      <dd><span class="label"><%= @kustomer_entity.sync_status %></span></dd>
+
+      <dt><%= Maisonette::Kustomer::Entity.human_attribute_name :type %></dt>
+      <dd><%= @kustomer_entity.type %></dd>
+
+      <dt><%= Maisonette::Kustomer::Entity.human_attribute_name :last_result %></dt>
+      <dd><%= @kustomer_entity.last_result %></dd>
+
+      <dt><%= Maisonette::Kustomer::Entity.human_attribute_name :last_message %></dt>
+      <dd><%= @kustomer_entity.last_message %></dd>
+
+      <dt><%= Maisonette::Kustomer::Entity.human_attribute_name :last_request_payload %></dt>
+      <dd><pre><%= JSON.pretty_generate(@kustomer_entity.last_request_payload) %></pre></dd>
+
+      <dt><%= Maisonette::Kustomer::Entity.human_attribute_name :last_response_body %></dt>
+      <dd><%= @kustomer_entity.last_response_body %></dd>
+
+      <dt><%= Maisonette::Kustomer::Entity.human_attribute_name :last_response_code %></dt>
+      <dd><%= @kustomer_entity.last_response_code %></dd>
+    </dl>
+  </div>
+</div>
