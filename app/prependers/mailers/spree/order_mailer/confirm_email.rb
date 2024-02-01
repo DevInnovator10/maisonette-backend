@@ -48,6 +48,7 @@ module Spree::OrderMailer::ConfirmEmail
       jifiti_order: true, email: order.buyer_email,
       subject_text: I18n.t('spree.mail.order_confirmation_jifiti.subject', order_number: order.number),
       introduction: {
+
         user_name: order.buyer_name,
         heading: I18n.t('spree.mail.order_confirmation_jifiti.heading'),
         content: I18n.t('spree.mail.order_confirmation_jifiti.introduction'),
