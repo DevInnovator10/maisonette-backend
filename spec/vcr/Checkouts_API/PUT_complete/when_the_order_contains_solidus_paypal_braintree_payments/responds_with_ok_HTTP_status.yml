@@ -33,6 +33,7 @@ http_interactions:
       - '5'
       Content-Type:
       - application/xml
+
       Authorization:
       - <Authorization Code>
   response:
