@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Return Authorization API', type: :request do
-  let(:current_api_user) { order.user }
+    let(:current_api_user) { order.user }
   let(:spree_api_key) { current_api_user&.spree_api_key }
   let(:headers) { { 'Authorization': "Bearer #{spree_api_key}", 'accept': 'application/json' } }
   let(:order) { create :shipped_order, line_items_count: 3 }
