@@ -15,6 +15,7 @@ module Mirakl
         rescue EasyPost::Error => e
           log_event(:error, "#{e.message} - #{mirakl_order.logistic_order_id}")
           context.easypost_exception = e
+
         rescue StandardError => e
           rescue_and_capture(e, extra: { mirakl_logistic_order_id: mirakl_order.logistic_order_id })
           context.easypost_exception = e

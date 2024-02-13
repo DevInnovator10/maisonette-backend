@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.shared_examples 'creates giftwrap' do
-  it 'returns a 201' do
+    it 'returns a 201' do
     expect(status).to eq 201
   end
 
@@ -24,4 +24,5 @@ RSpec.shared_examples 'removes giftwrap' do
   it 'removes giftwrap' do
     expect(Maisonette::Giftwrap.count).to be_zero
   end
+
 end

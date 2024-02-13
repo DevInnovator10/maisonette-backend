@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.kustomerapp.com/v1/hooks/web/5f04f0386d21290012b80b76/8f4617f4c32b4fa75de82fb78bb3c4a71fcbe802010a613571ed3064ac4a7f59
+    body:
+      encoding: US-ASCII
+      string: '{:order_number=>"M972453959", :email=>"email1@example.com", :shipping_address=>{},
+        :billing_address=>{}, :line_item_details=>{}, :gift_details=>{}, :shipment_details=>{},
+        :payment_total=>0.0, :payment_details=>{}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin19.6.0 x86_64) ruby/2.5.3p105
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<Authorization Code>"
+      Content-Length:
+      - '213'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '63'
+      Connection:
+
+      - keep-alive
+      Date:
+      - Mon, 12 Oct 2020 09:28:38 GMT
+      Vary:
+      - X-HTTP-Method-Override, Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Kustomer-Pod:
+      - prod1
+      Timing-Allow-Origin:
+      - "*"
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1999'
+      X-Ratelimit-Route-Limit:
+      - '1000'
+      X-Ratelimit-Route-Remaining:
+      - '999'
+      Cache-Control:
+      - no-cache,private
+      Etag:
+      - W/"3f-+xJH78ifJWmGsjNqBmcoPIBa09k"
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 a37b7d4c90b51d32448d759d6266b3ab.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - MRS52-C1
+      X-Amz-Cf-Id:
+      - XhO7KBHlIFdx-PncJg1v1HpbNc378l3DiYieSzV7hGZgzQYWpqeyCw==
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"a07bde3ae48ab1ffe5fd74be","type":"transaction"}}'
+    http_version:
+  recorded_at: Mon, 12 Oct 2020 09:28:38 GMT
+recorded_with: VCR 5.0.0
