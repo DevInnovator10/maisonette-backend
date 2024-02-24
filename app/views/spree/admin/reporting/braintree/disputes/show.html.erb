@@ -1,0 +1,34 @@
+<% admin_breadcrumb(t('spree.admin.tab.reporting')) %>
+<% admin_breadcrumb(t('spree.admin.tab.braintree_disputes')) %>
+<% admin_breadcrumb(@object.braintree_dispute_id) %>
+
+<dl class="braintree_dispute_details">
+  <dt><%= Reporting::Braintree::Dispute.human_attribute_name(:id) %>:</dt>
+  <dd><%= @object.id %></dd>
+  <dt><%= Reporting::Braintree::Dispute.human_attribute_name(:braintree_dispute_id) %>:</dt>
+  <dd><%= @object.braintree_dispute_id %></dd>
+  <dt><%= Reporting::Braintree::Dispute.human_attribute_name(:received_date) %>:</dt>
+  <dd><%= @object.received_date %></dd>
+  <dt><%= Reporting::Braintree::Dispute.human_attribute_name(:spree_order_number) %>:</dt>
+  <dd><%= link_to(@object.spree_payment.order.number, edit_admin_order_path(@object.spree_payment.order.number)) if @object.spree_payment %></dd>
+  <dt><%= Reporting::Braintree::Dispute.human_attribute_name(:spree_payment_id) %>:</dt>
+  <dd><%= @object.spree_payment.number %></dd>
+  <dt><%= Reporting::Braintree::Dispute.human_attribute_name(:transaction_code) %>:</dt>
+  <dd><%= @object.transaction_code %></dd>
+  <dt><%= Reporting::Braintree::Dispute.human_attribute_name(:reason) %>:</dt>
+  <dd><%= @object.reason %></dd>
+  <dt><%= Reporting::Braintree::Dispute.human_attribute_name(:kind) %>:</dt>
+  <dd><%= @object.kind %></dd>
+  <dt><%= Reporting::Braintree::Dispute.human_attribute_name(:status) %>:</dt>
+  <dd><%= @object.status %></dd>
+  <dt><%= Reporting::Braintree::Dispute.human_attribute_name(:amount) %>:</dt>
+  <dd><%= @object.amount %></dd>
+  <dt><%= Reporting::Braintree::Dispute.human_attribute_name(:case_number) %>:</dt>
+  <dd><%= @object.case_number %></dd>
+  <% if @object.dispute_payload.present? %>
+      <dt><%= Reporting::Braintree::Dispute.human_attribute_name(:dispute_payload) %>:</dt>
+      <dd>
+        <pre><%= JSON.pretty_generate(JSON.parse(@object.dispute_payload)) %></pre>
+      </dd>
+  <% end %>
+</dl>
