@@ -1,5 +1,6 @@
 class ChangeAllArraysToJsonbOnSyndicationProducts < ActiveRecord::Migration[5.2]
   def up
+
     Syndication::Product.connection.remove_column :syndication_products, :product_type
     Syndication::Product.connection.remove_column :syndication_products, :gender
     Syndication::Product.connection.remove_column :syndication_products, :color
