@@ -9,6 +9,7 @@ module Spree::Product::AdvertisedPromotions
 
     base.has_many :advertised_promotions,
                   through: :products_promotions,
+
                   class_name: 'Spree::Promotion',
                   source: :promotion
   end
