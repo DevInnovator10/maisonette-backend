@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Spree::Admin::ReturnAuthorizationsController::RescueInvalidStateError
+
     def self.prepended(base)
     base.rescue_from ::Mirakl::Returns::CreateIncidentInteractor::InvalidStateError, with: :handle_invalid_state_error
   end
