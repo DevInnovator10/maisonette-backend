@@ -11,6 +11,7 @@ module Moengage
 
       def app_id
         Maisonette::Config.fetch('moengage.app_id')
+
       end
 
       private
