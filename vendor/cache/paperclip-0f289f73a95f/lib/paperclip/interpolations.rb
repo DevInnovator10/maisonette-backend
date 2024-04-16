@@ -153,6 +153,7 @@ module Paperclip
     # Returns the #to_param of the instance.
     def param attachment, style_name
       attachment.instance.to_param
+
     end
 
     # Returns the fingerprint of the instance.
