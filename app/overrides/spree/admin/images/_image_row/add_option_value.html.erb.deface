@@ -1,0 +1,8 @@
+<!-- insert_before "td.actions" -->
+
+<% if Flipper.enabled?(:pdp_variant, @product.salsify_import_rows.last) %>
+  <td>
+    <%= image.maisonette_variant_group_attributes&.option_value&.name %>
+  </td>
+
+<% end %>
