@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://ws-st01.narvar.qa/api/v1/orders/R00050001
+    body:
+      encoding: UTF-8
+      string: '{"order_info":{"order_number":"R00050001","order_date":null,"status":"READY","currency_code":"USD","attributes":{"checkout_brand":null,"checkout_language":"EN","checkout_country":"US","checkout_locale":"en_US"},"order_items":[],"billing":{"billed_to":{"first_name":"John","last_name":null,"phone":"555-555-0199","phone_extension":null,"email":"email2@example.com","fax":null,"address":{"street_1":"PO
+        Box 1337","street_2":"Northwest","city":"Herndon","state":"AL","zip":"10003","country":"US"}},"amount":100.0,"tax_rate":null,"tax_amount":0.0,"shipping_handling":100.0,"payments":[]},"customer":{"first_name":"John","last_name":null,"phone":"555-555-0199","phone_extension":null,"email":"email2@example.com","fax":null,"address":{"street_1":"PO
+        Box 1337","street_2":"Northwest","city":"Herndon","state":"AL","zip":"10003","country":"US"},"customer_id":null,"customer_tier":null,"customer_type":null,"notification_preferences":[]}}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.5.0 x86_64) ruby/2.5.3p105
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '931'
+      Authorization:
+      - <Authorization Code>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Nov 2019 15:03:37 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      X-Xss-Protection:
+      - 1; mode=block
+      Pragma:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Application-Context:
+      - application
+    body:
+      encoding: UTF-8
+      string: '{"status":"SUCCESS","messages":[{"code":"response.status.success","message":"Order
+        information updated order number R00050001"}]}'
+    http_version:
+  recorded_at: Wed, 20 Nov 2019 15:03:25 GMT
+recorded_with: VCR 5.0.0
