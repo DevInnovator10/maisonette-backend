@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Spree::Promotion::Rules::Taxon::ProductsQuery
+
   def products_query(scope)
     case preferred_match_policy
     when 'any', 'all'
