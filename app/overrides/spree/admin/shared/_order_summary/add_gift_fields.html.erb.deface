@@ -1,0 +1,4 @@
+<!-- insert_before "[data-hook='admin_order_tab_subtotal_title']" -->
+
+<dt data-hook="admin-order-is-gift">Gift Order:</dt>
+<dd id="order-is-gift"><%= @order.is_gift ? 'Yes' : 'No' %></dd>
