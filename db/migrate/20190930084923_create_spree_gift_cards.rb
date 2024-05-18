@@ -14,6 +14,7 @@ class CreateSpreeGiftCards < ActiveRecord::Migration[5.2]
       t.datetime :send_email_at
       t.text :gift_message
       t.boolean :redeemable, default: false
+
       t.datetime :sent_at
 
       t.timestamps

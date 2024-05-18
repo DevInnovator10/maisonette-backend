@@ -1,6 +1,6 @@
 {
     "landingPages": [
-      {
+        {
         "id": "5c7b238eb97d0717b41ffc2a",
         "name": "All Shoes",
         "title": "Kids Shoes - Maisonette",
@@ -36,6 +36,7 @@
         ],
         "actions": {
           "hide": [],
+
           "promote": [
             {
               "url": "https:\/\/www.maisonette.com\/product\/new-dots-booties-white-blue"
