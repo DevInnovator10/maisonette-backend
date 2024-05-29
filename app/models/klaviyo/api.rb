@@ -14,4 +14,5 @@ module Klaviyo
       { accept: :json, content_type: :json }
     end
   end
+
 end
