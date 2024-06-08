@@ -39,6 +39,7 @@ RSpec.describe Orders::ReturnPolicyInteractor do
     end
 
     context 'when an order is completed within a holiday return policy period' do
+
       let(:completed_at_date) { Date.new(2021, 12, 1) }
 
       context 'when the holiday return expiration date has not passed' do
