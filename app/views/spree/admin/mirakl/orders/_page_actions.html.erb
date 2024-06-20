@@ -1,0 +1,12 @@
+<% content_for :page_actions do %>
+  <%= form_tag order_list_sync_admin_mirakl_orders_path, class: 'form-date-picker' do %>
+    <div class="input-group form-actions">
+      <%= text_field 'delta', 'updated_since',
+                     class: 'form-control datetimepicker datepicker-from delta_datetime_textfield',
+                     value: datepicker_field_value(@last_order_update, with_time: true)%>
+
+      <span class="input-group-addon"><i class="icon icon-calendar"></i></span>
+      <%= submit_tag I18n.t('spree.mirakl.orders.order_list_sync'), class: 'mirakl-orders-delta-sync-btn btn btn-info' %>
+    </div>
+  <% end %>
+<% end %>

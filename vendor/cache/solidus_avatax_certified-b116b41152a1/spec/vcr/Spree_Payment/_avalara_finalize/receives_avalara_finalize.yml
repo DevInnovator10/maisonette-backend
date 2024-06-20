@@ -1,6 +1,7 @@
 ---
 http_interactions:
 - request:
+
     method: post
     uri: https://sandbox-rest.avatax.com/api/v2/transactions/createoradjust
     body:

@@ -3,7 +3,7 @@
 module Spree
     module Admin
     module Kustomer
-      class EntitiesController < Spree::Admin::BaseController
+        class EntitiesController < Spree::Admin::BaseController
         include ::AdminHelper
 
         def index
