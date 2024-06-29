@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.paccurate.io/
+    body:
+        encoding: UTF-8
+      string: '{"boxTypeChoiceGoal":"most-items","includeScripts":false,"itemSets":[{"refId":1,"weight":4.0,"quantity":1,"dimensions":{"x":10.0,"y":4.0,"z":7.1}},{"refId":2,"weight":10.0,"quantity":1,"dimensions":{"x":16.0,"y":32.0,"z":12.1}}],"boxTypes":[{"name":"fixed-1-1-1","weightMax":150.0,"dimensions":{"x":1.0,"y":1.0,"z":1.0}}]}'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.5.3p105
+      Authorization:
+      - "<Authorization Code>"
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '322'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 18 Dec 2020 13:11:14 GMT
+      Content-Length:
+      - '469'
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: ASCII-8BIT
+      string: '{"boxTypeChoiceGoalUsed":"most-items","boxes":[],"built":"2020-12-18T03:20:35.545504968Z","host":"api.paccurate.io","itemSortUsed":"default","leftovers":[{"item":{"centerOfMass":{"x":0,"y":0,"z":0},"color":"","deltaCost":0,"dimensions":{"x":16,"y":32,"z":12.1},"index":0,"message":"couldn''t
+        fit Item(id:2 dimensions:[16,32,12.1] origin:[0,0,0]) into any box","name":"","origin":{"x":0,"y":0,"z":0},"refId":2,"uniqueId":"2-0","virtual":false,"weight":10}},{"item":{"centerOfMass":{"x":0,"y":0,"z":0},"color":"","deltaCost":0,"dimensions":{"x":10,"y":4,"z":7.1},"index":0,"message":"couldn''t
+        fit Item(id:1 dimensions:[10,4,7.1] origin:[0,0,0]) into any box","name":"","origin":{"x":0,"y":0,"z":0},"refId":1,"uniqueId":"1-0","virtual":false,"weight":4}}],"lenBoxes":0,"lenItems":2,"lenLeftovers":2,"packTime":0.001946404,"renderTime":0.005579755,"svgs":[],"title":"Default","totalCost":0,"totalTime":0.007526159,"usedKeyStem":"true","version":"1.4.6"}
+
+'
+    http_version:
+  recorded_at: Fri, 18 Dec 2020 13:11:14 GMT
+recorded_with: VCR 5.0.0

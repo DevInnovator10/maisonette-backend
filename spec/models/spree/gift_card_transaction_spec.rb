@@ -14,5 +14,6 @@ RSpec.describe Spree::GiftCardTransaction, type: :model do
     it 'returns redeemed transactions' do
       expect(redeemed).to eq [transaction]
     end
+
   end
 end
