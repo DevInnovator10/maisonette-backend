@@ -51,6 +51,7 @@ RSpec.describe Salsify::ImportNotificationMailer, type: :mailer do
 
         expect(body).to(
           have_link('Spree Product Import',
+
                     href: "#{admin_url}/admin/salsify/imports/#{salsify_import.id}")
         )
       end
