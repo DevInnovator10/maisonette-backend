@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/reports/shipment_invoice
+    body:
+      encoding: UTF-8
+      string: start_date=2021-02-03&end_date=2021-02-03&type=shipment_invoice
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1
+      Authorization:
+      - "<Authorization Code>"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '63'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 409
+      message: Conflict
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - 8fdc8f78601c0c1ce0ff1eca000edb61
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.031054'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb2nuq
+      X-Version-Label:
+      - easypost-202102030054-7d2bfab216-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 9cd9455ca9
+      - intlb1nuq 9cd9455ca9
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"code":"REPORT.ALREADY_EXISTS","message":"The report already
+        exists please use id to find report","errors":[{"field":"existing_report","id":"shpinvrep_72dc2cd540c6400083ff0044f4e19cf7"}]}}'
+    http_version:
+  recorded_at: Thu, 04 Feb 2021 15:00:44 GMT
+recorded_with: VCR 5.0.0
