@@ -4,6 +4,7 @@ http_interactions:
     method: post
     uri: https://sandbox-rest.avatax.com/api/v2/addresses/resolve
     body:
+
         encoding: UTF-8
       string: '{"line1":null,"line2":"","city":null,"region":"AL","country":"US","postalCode":null}'
     headers:
