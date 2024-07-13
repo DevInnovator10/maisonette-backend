@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Mirakl::ImportShopsAndOffersWorker do
   let(:import_shops_worker) { instance_double(Mirakl::ImportShopsWorker, perform: true) }
+
   let(:updated_since) { Time.current }
 
   before do
