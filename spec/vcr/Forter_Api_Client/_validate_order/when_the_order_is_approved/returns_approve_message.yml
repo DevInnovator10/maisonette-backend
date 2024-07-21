@@ -4,7 +4,7 @@ http_interactions:
     method: post
     uri: https://6cbad560de9a.api.forter-secure.com/v2/orders/M920354089
     body:
-      encoding: UTF-8
+        encoding: UTF-8
       string: '{"orderId":"2356fdse0rr489","orderType":"WEB","authorizationStep":"PRE_AUTHORIZATION","timeSentToForter":1415287568000,"checkoutTime":1415273168,"connectionInformation":{"customerIP":"10.0.0.127","userAgent":"Mozilla/5.0
         (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73
         Safari/537.36","forterTokenCookie":"2315688945984","merchantDeviceIdentifier":"HGJ7512345H3","fullHeaders":"{\\\"method\\\":\\\"GET
