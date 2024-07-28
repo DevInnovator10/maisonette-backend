@@ -4,7 +4,7 @@ http_interactions:
     method: post
     uri: https://sandbox-rest.avatax.com/api/v2/transactions/createoradjust
     body:
-      encoding: UTF-8
+        encoding: UTF-8
       string: '{"createTransactionModel":{"code":"R762203072","date":"2021-04-30","discount":"0.0","commit":false,"type":"SalesOrder","lines":[{"number":"1-LI","description":"Product
         #27 - 3622","taxCode":"PC030000","itemCode":"SKU-27","quantity":1,"amount":10.0,"discounted":false,"taxIncluded":false,"addresses":{"shipFrom":{"line1":"1600
         Pennsylvania Ave NW","line2":null,"city":"Washington","region":"AL","country":"US","postalCode":"20500"},"shipTo":{"line1":"915
@@ -30,6 +30,7 @@ http_interactions:
       code: 201
       message: Created
     headers:
+
       Date:
       - Fri, 30 Apr 2021 20:20:36 GMT
       Content-Type:
