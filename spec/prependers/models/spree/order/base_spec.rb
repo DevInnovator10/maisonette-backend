@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Spree::Order::Base, type: :model do
-  let(:described_class) { Spree::Order }
+    let(:described_class) { Spree::Order }
 
   it { is_expected.to have_db_column(:is_gift) }
   it { is_expected.to have_db_column(:gift_email) }
@@ -275,6 +275,7 @@ RSpec.describe Spree::Order::Base, type: :model do
     let(:order) { create :order_with_line_items, line_items_count: 2 }
 
     before do
+
       allow(order).to receive(:apply_shipping_promotions)
       allow(order).to receive(:reload).and_return(order)
     end
