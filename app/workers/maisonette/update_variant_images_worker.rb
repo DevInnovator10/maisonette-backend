@@ -12,7 +12,7 @@ module Maisonette
     # Output:
     # - number of batches
     def perform(styles, size = 50)
-      batch_size = size.to_i
+        batch_size = size.to_i
       batches = (Spree::Variant.count / batch_size.to_f).ceil
       batches.times do |index|
         ::Maisonette::UpdateVariantImagesBatchWorker.perform_async(styles, index, batch_size)
