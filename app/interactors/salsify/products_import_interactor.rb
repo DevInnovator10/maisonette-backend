@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Salsify
-  class ProductsImportInteractor < ApplicationInteractor
+    class ProductsImportInteractor < ApplicationInteractor
     include Salsify::ImportHelper
 
     before :validate_and_init
