@@ -40,6 +40,7 @@ RSpec.describe Salsify::ImportNotificationMailer, type: :mailer do
           :salsify_import_row,
           :failed, :with_product,
           import: salsify_import,
+
           data: { 'Maisonette SKU': '123' }
         )
       end
