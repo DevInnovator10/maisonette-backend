@@ -194,6 +194,7 @@ http_interactions:
       X-Permitted-Cross-Domain-Policies:
       - none
       Referrer-Policy:
+
       - strict-origin-when-cross-origin
       X-Authentication:
       - basic_auth
