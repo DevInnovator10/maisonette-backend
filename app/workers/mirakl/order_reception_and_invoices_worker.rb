@@ -8,6 +8,7 @@ module Mirakl
 
     def perform(*_args)
         Mirakl::OrderConfirmReceptionWorker.new.perform
+
       Mirakl::ShopCreditsInvoiceWorker.perform_in(10.minutes)
 
       Mirakl::ShopFeesInvoiceWorker.perform_in(20.minutes)
