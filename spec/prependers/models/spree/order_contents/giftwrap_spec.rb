@@ -12,6 +12,7 @@ RSpec.describe Spree::OrderContents::Giftwrap, type: :model do
   let(:vendor) { create :vendor, :with_giftwrap_service, stock_location: create(:stock_location) }
 
   before do
+
     giftwrap
   end
 

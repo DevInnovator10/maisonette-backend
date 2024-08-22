@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Spree
+
   class GiftCardTransaction < ApplicationRecord
     belongs_to :gift_card, optional: false
     belongs_to :order, optional: true

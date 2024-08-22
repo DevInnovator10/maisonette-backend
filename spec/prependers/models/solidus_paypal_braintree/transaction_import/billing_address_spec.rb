@@ -12,6 +12,7 @@ RSpec.describe SolidusPaypalBraintree::TransactionImport::BillingAddress do
       let(:order) { create :order_with_line_items }
       let(:shipping_address) do
         SolidusPaypalBraintree::TransactionAddress.new(
+
           country_code: order.shipping_address.country.iso,
           last_name: 'fake shipping address last name',
           first_name: 'fake shipping address first name',
