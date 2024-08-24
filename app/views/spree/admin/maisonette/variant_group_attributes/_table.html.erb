@@ -1,0 +1,41 @@
+<%= paginate variant_group_attributes_list, theme: "solidus_admin" %>
+
+<fieldset class="no-border-bottom">
+  <legend align="center">Variant Group Attributes</legend>
+  <table class="index variant_group_attributes">
+    <thead data-hook="variant_group_attributes_header">
+      <tr>
+        <th>Option Value Name</th>
+        <th><%= Maisonette::VariantGroupAttributes.human_attribute_name(:description) %></th>
+        <th><%= Maisonette::VariantGroupAttributes.human_attribute_name(:meta_description) %></th>
+        <th><%= Maisonette::VariantGroupAttributes.human_attribute_name(:meta_title) %></th>
+        <th><%= Maisonette::VariantGroupAttributes.human_attribute_name(:meta_keywords) %></th>
+        <th><%= Maisonette::VariantGroupAttributes.human_attribute_name(:sku) %></th>
+        <th><%= Maisonette::VariantGroupAttributes.human_attribute_name(:available_on) %></th>
+        <th><%= Maisonette::VariantGroupAttributes.human_attribute_name(:available_until) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% variant_group_attributes_list.each do |variant_group_attributes| %>
+        <tr id="<%= spree_dom_id variant_group_attributes %>" data-hook="variant_group_attributes_row">
+          <td><%= variant_group_attributes&.option_value&.name %></td>
+          <td><%= variant_group_attributes.description %></td>
+          <td><%= variant_group_attributes.meta_description %></td>
+          <td><%= variant_group_attributes.meta_title %></td>
+          <td><%= variant_group_attributes.meta_keywords %></td>
+          <td><%= variant_group_attributes.sku %></td>
+          <td><%= variant_group_attributes&.available_on&.to_date %></td>
+          <td><%= variant_group_attributes&.available_until&.to_date %></td>
+          <td class="actions">
+            <% if can?(:edit, variant_group_attributes) %>
+              <%= link_to_edit_url(edit_admin_product_variant_group_attribute_path(id: variant_group_attributes), no_text: true) %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</fieldset>
+
+<%= paginate variant_group_attributes_list, theme: "solidus_admin" %>

@@ -1,5 +1,5 @@
 class CreateSpreeGiftCards < ActiveRecord::Migration[5.2]
-  def change
+    def change
     create_table :spree_gift_cards do |t|
       t.string :name
       t.decimal :balance, precision: 10, scale: 2, default: "0.0"
