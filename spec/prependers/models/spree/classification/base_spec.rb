@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Spree::Classification::Base, type: :model do
     let(:described_class) { Spree::Classification }
 
-  describe 'validations' do
+    describe 'validations' do
     subject { classification }
 
     let(:classification) do
@@ -14,6 +14,7 @@ RSpec.describe Spree::Classification::Base, type: :model do
       end
       product.classifications.last
     end
+
     let(:vga) { create(:maisonette_variant_group_attributes) }
 
     before { classification.update(maisonette_variant_group_attributes_id: vga.id) }

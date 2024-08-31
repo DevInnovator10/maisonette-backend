@@ -8,4 +8,5 @@ module Spree::OrderUpdater::DeliveryEstimation
 
     super
   end
+
 end
