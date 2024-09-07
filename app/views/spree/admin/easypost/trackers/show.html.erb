@@ -1,0 +1,37 @@
+<% admin_layout "full-width" %>
+
+<% admin_breadcrumb(t('spree.admin.tab.easypost')) %>
+<% admin_breadcrumb(t('spree.admin.tab.easypost_trackers')) %>
+
+<table class="table" id="listing_orders" data-hook>
+  <thead>
+  <tr data-hook="admin_easypost_tracker_index_headers">
+    <th><%= I18n.t('spree.id') %></th>
+    <th><%= I18n.t('spree.created_at') %></th>
+    <th><%= I18n.t('spree.updated_at') %></th>
+    <th><%= I18n.t('spree.easypost.tracker.easypost_order_id') %></th>
+    <th><%= I18n.t('spree.easypost.tracker.tracking_code') %></th>
+    <th><%= I18n.t('spree.easypost.tracker.carrier') %></th>
+    <th><%= I18n.t('spree.easypost.tracker.status') %></th>
+    <th><%= I18n.t('spree.easypost.tracker.date_shipped') %></th>
+    <th><%= I18n.t('spree.easypost.tracker.date_out_for_delivery') %></th>
+    <th><%= I18n.t('spree.easypost.tracker.date_delivered') %></th>
+    <th><%= I18n.t('spree.easypost.tracker.webhook_payload') %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr data-hook="admin_easypost_tracker_index_rows" <%= cycle('odd', 'even') %>">
+    <td><%= @object.id %></td>
+    <td><%= @object.created_at %></td>
+    <td><%= @object.updated_at %></td>
+    <td><%= @object.easypost_order_id %></td>
+    <td><%= @object.tracking_code %></td>
+    <td><%= @object.carrier %></td>
+    <td><%= @object.status %></td>
+    <td><%= @object.date_shipped %></td>
+    <td><%= @object.date_out_for_delivery %></td>
+    <td><%= @object.date_delivered %></td>
+    <td><%= @object.webhook_payload %></td>
+  </tr>
+  </tbody>
+</table>
