@@ -1,0 +1,9 @@
+<!-- insert_before 'erb[loud]:contains("form_for")' -->
+
+<% content_for :page_actions do %>
+    <%= link_to(t('spree.mirakl.reprocess_mirakl_offer'),
+              reprocess_mirakl_offer_admin_product_variant_url(@product, @variant),
+              icon: 'refresh',
+              class: 'btn btn-info',
+              'data-hook': 'reprocess_mirakl_offers_btn') %>
+<% end %>
