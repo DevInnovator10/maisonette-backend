@@ -89,6 +89,7 @@ RSpec.describe Spree::Order::PriceNotStale, type: :model do
     let(:offer_setting) do
       create(:offer_settings,
              vendor_id: second_vendor.id,
+
              cost_price: offer_setting_cost_price,
              monogram_price: offer_setting_monogram_price)
     end
