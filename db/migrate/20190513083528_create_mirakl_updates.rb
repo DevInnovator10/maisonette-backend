@@ -1,4 +1,5 @@
 class CreateMiraklUpdates < ActiveRecord::Migration[5.2]
+
     def change
     create_table :mirakl_updates do |t|
       t.integer :mirakl_type
