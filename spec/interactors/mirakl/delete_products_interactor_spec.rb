@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Mirakl::DeleteProductsInteractor, mirakl: true do
-  describe '#call' do
+    describe '#call' do
     let(:interactor) { described_class.call(products_file: products_file) }
     let(:products_file) { File.new(Rails.root.join('spec', 'fixtures', 'files', 'mirakl', file_name)) }
 
