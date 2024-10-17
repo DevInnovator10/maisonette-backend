@@ -42,6 +42,7 @@ RSpec.describe SolidusPaypalBraintree::TransactionImport::BillingAddress do
       let(:transaction) do
         SolidusPaypalBraintree::Transaction.new(
           nonce: Braintree::Test::Nonce::PayPalBillingAgreement,
+
           payment_method: payment_method,
           payment_type: payment_type,
           email: 'test@example.com',
