@@ -17,6 +17,7 @@ module Spree
           when Array
             body
           end
+
         end
       end
     end
