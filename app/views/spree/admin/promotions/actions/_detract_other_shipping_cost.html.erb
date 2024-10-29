@@ -1,0 +1,14 @@
+<p>
+  Shipping methods restricted here will use expedited flat rate amount on top of the base flat rate amount.<br/>
+  e.g.<br/>
+  Given two day expedited_flat_rate_adjustment is <b>$10.0</b><br/>
+  And ground shipping cost <b>$9.95</b> (base flat rate)<br/>
+  When I have <b>2</b> shipments with 1 two day, 1 ground shipping<br/>
+  Then my shipping total <b>$19.95</b><br/>
+  <br/>
+
+  Given two day expedited_flat_rate_adjustment is <b>$10.0</b><br/>
+  And two day base flat rate amount is <b>$9.95</b><br/>
+  When I have <b>1</b> shipment with 1 two day<br/>
+  Then my shipping total <b>$19.95</b><br/>
+</p>
