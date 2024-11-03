@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Maisonette
-  module Trends
+    module Trends
     module BestSellersHelper
       include TrendsHelper
 

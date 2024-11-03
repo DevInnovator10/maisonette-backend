@@ -1,0 +1,38 @@
+<div align="center" width="100%" bgcolor="#ffffff" style="background: #ffffff !important">
+  <table width="600" align="center" cellspacing="0" cellpadding="0" bgcolor="#ffffff" style="background: #ffffff !important">
+    <tr>
+      <td width="75">&nbsp;</td>
+      <td align="center">
+        <font class="main-title">
+          <%= @introduction[:heading] %>
+        </font>
+      </td>
+      <td width="75">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" height="40" colspan="3">
+        &nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td width="75">&nbsp;</td>
+      <td align="center">
+        <font class="main-title">
+          <% if @introduction[:image].blank? %>
+            <img src="<%= image_path('email/boy.png') %>" width="75" height="123" style="display: block;"/>
+          <% elsif @introduction[:image] == 'flower.png' %>
+              <img src="<%= image_path('email/flower.png') %>" width="123" height="123" style="display: block;"/>
+          <% else %>
+            <img src="<%= image_path('email/' + @introduction[:image]) %>" width="75" height="123" style="display: block;"/>
+          <% end %>
+        </font>
+      </td>
+      <td width="75">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" height="40" colspan="3">
+        &nbsp;
+      </td>
+    </tr>
+  </table>
+</div>
