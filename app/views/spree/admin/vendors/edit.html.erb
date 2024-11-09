@@ -1,0 +1,22 @@
+<% content_for :page_actions do %>
+  <% if can?(:create, Spree::Vendor) %>
+    <li id="new_vendor_link">
+      <%= link_to t('spree.new_vendor'), new_object_url, id: 'admin_new_vendor', class: 'btn btn-primary' %>
+    </li>
+  <% end %>
+<% end %>
+
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @vendor } %>
+
+<% admin_breadcrumb link_to(plural_resource_name(Spree::Vendor), spree.admin_vendors_path) %>
+<% admin_breadcrumb link_to(@vendor.name, spree.edit_admin_vendor_path(@vendor)) %>
+<% admin_breadcrumb(t('spree.mark_down_details')) %>
+
+<%= form_for [:admin, @vendor] do |f| %>
+  <fieldset class="no-border-top">
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <% if can?(:update, @vendor) %>
+      <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+    <% end %>
+  </fieldset>
+<% end %>
