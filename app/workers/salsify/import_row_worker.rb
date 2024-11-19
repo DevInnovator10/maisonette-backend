@@ -25,6 +25,7 @@ module Salsify
       end
 
       Mirakl::ProcessOffersWorker.perform_async(@variant_skus_processed) if @variant_skus_processed.any?
+
     end
 
     private
