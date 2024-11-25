@@ -1,0 +1,10 @@
+<% @return_authorization.build_easypost_tracker %>
+<%= f.field_container :easypost_tracker do %>
+  <%= f.fields_for :easypost_tracker_attributes do |tracker| %>
+    <%= tracker.label :tracking_code %>
+    <%= tracker.text_field :tracking_code, class: 'fullwidth' %>
+
+    <%= tracker.label :carrier %>
+    <%= tracker.select :carrier, Spree::ShippingCarrier.pluck(:name), { include_blank: true } , class: 'custom-select fullwidth' %>
+  <% end %>
+<% end %>
