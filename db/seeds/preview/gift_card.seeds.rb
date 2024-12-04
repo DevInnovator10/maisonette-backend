@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 after 'preview:stock_location' do
-  gift_card = I18n.t('seeds.gift_card')
+    gift_card = I18n.t('seeds.gift_card')
   name = gift_card[:name]
 
   gift_card_option_type = Spree::OptionType.find_or_create_by!(name: 'Amount', presentation: 'Amount')
