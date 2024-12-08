@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Returns/CustomerReturn', type: :feature do
     let!(:customer_return1) { create(:customer_return) }
-  let!(:customer_return2) { create(:customer_return) }
+    let!(:customer_return2) { create(:customer_return) }
   let!(:customer_return3) { create(:customer_return) }
   let(:page) { Admin::Returns::CustomerReturnSearchPage.new }
 
