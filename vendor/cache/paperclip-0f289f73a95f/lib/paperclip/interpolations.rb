@@ -1,5 +1,5 @@
 module Paperclip
-  # This module contains all the methods that are available for interpolation
+    # This module contains all the methods that are available for interpolation
   # in paths and urls. To add your own (or override an existing one), you
   # can either open this module and define it, or call the
   # Paperclip.interpolates method.

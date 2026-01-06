@@ -1,0 +1,9 @@
+<!-- insert_after '[data-hook="admin_orders_index_search"] .checkbox:last' -->
+
+<div class="checkbox">
+  <%= label_tag 'jifiti' do %>
+    <%= f.check_box :jifiti, {:checked => (params[:q][:jifiti] == 'true')}, 'true', '' %>
+    <%= I18n.t('spree.jifiti') %>
+  <% end %>
+
+</div>

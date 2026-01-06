@@ -1,0 +1,45 @@
+<div class="index" id="listing_sale_prices" data-hook="sale_prices">
+  <fieldset class="no-border-bottom">
+    <legend align="center"><%= plural_resource_name(Spree::SalePrice) %></legend>
+    <table class="index prices">
+      <thead data-hook="prices_header">
+        <tr>
+          <th><%=t 'spree.state' %></th>
+          <th><%= Spree::Variant.model_name.human %> </th>
+          <th><%= Spree::Price.human_attribute_name(:country) %></th>
+          <th><%= Spree::Price.human_attribute_name(:currency) %></th>
+          <th><%= Spree::Price.human_attribute_name(:amount) %></th>
+          <th><%= Spree::SalePrice.human_attribute_name(:start_at) %></th>
+          <th><%= Spree::SalePrice.human_attribute_name(:end_at) %></th>
+          <th class="actions"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% sale_prices.each do |price| %>
+          <tr id="<%= spree_dom_id price %>" data-hook="prices_row" class="<%= "deleted" if price.discarded? %>">
+            <td>
+              <% if price.start_at&.future? %>
+                <span class="pill pill-warning"><%=t 'spree.sale_price_scheduled' %></span>
+              <% elsif price.end_at&.past? %>
+                <span class="pill pill-inactive"><%=t 'spree.sale_price_expired' %></span>
+              <% else %>
+                <span class="pill pill-active"><%=t 'spree.sale_price_active' %></span>
+              <% end %>
+            </td>
+            <td><%= price.variant.descriptive_name %></td>
+            <td><%= price.price.display_country %></td>
+            <td><%= price.currency %></td>
+            <td><%= price.display_price.to_html %></td>
+            <td><%= pretty_time(price.start_at) if price.start_at %></td>
+            <td><%= pretty_time(price.end_at) if price.end_at %></td>
+            <td class="actions">
+              <% if can?(:update, price) %>
+                <%= link_to_delete price, {url: admin_product_sale_price_url(price.variant.product, price.id), no_text: true} %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </fieldset>
+</div>

@@ -1,0 +1,4 @@
+<!-- insert_after '[data-hook="product_property"] .value' -->
+<% if Flipper.enabled?(:pdp_variant, @product.salsify_import_rows.last) %>
+    <td><%= f.object.maisonette_variant_group_attributes&.option_value&.name %></th>
+<% end %>

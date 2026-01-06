@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 json.address_verification do # rubocop:disable Metrics/BlockLength
-  return unless address_verification
+    return unless address_verification
 
   json.address do
     json.street1(address_verification.street1)

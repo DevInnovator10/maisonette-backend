@@ -1,0 +1,153 @@
+:order:
+  :state:
+    :waiting_acceptance: WAITING_ACCEPTANCE
+    :canceled: CANCELED
+    :refused: REFUSED
+  :documents:
+    :labels: LABELS
+    :package_slip: PACKAGE_SLIP
+    :invoice: CUSTOMER_INVOICE
+    :customs_form: CUSTOMS_FORM
+    :system_delivery_bill: SYSTEM_DELIVERY_BILL
+  :additional_fields:
+    :returns_tracking_code: returns-tracking-code
+    :returns_easypost_tracking_url: returns-easypost-tracking-url
+    :gift_message: gift-message
+    :gift_wrapped: gift-wrapped
+    :gift_wrap_customer_fee: gift-wrap-customer-fee
+    :gift_wrap_vendor_fee: gift-wrap-vendor-fee
+    :transaction_fee_amount: transaction-fee-amount
+    :dropship_surcharge: dropship-surcharge
+    :fulfil_by_date: fulfil-by-date
+    :fulfil_by_time: fulfil-by-time
+    :late_shipping_fee: late-shipping-fee
+    :no_stock_fee: refusal-fee
+    :dropship_surchage: dropship-surchage
+    :return_label_fee: return-label-fee
+    :mark_down_credit: mark-down-credit
+    :cost_price_fee: cost-price-fee
+    :env: environment
+    :incidental_credit: incidental-credit
+    :incidental_credit_reason: incidental-credit-reason
+    :incidental_debit: incidental-debit
+    :incidental_debit_reason: incidental-debit-reason
+    :warehouse: warehouse
+    :order_fee: order-fee
+    :order_management_ref: order-management-ref
+    :return_fee_total: return-fee-total
+  :refund_reason:
+    :cancelled_by_spree_admin: Canceled In Spree Admin
+    :rejected_by_vendor: Order rejected by vendor
+  :refund_reasons_types:
+    - INCIDENT_OPEN
+    - REFUND
+    - CANCELATION
+  :payment_type:
+    :store_credit: 'Store Credit'
+    :mixed: Mixed
+  :shipping_label:
+    :excluded_methods:
+      - Freight
+  :default_lead_time_to_ship: 2
+
+:order_line:
+  :state:
+    :incident_open: INCIDENT_OPEN
+    :refused: REFUSED
+  :additional_fields:
+    :total_cost_price: total-cost-price
+    :number_of_boxes: number-of-boxes
+    :monogram:
+      :text: monogram-text
+      :color_hex: monogram-color-hex
+      :color_name: monogram-color-name
+      :font_family: monogram-font-family
+      :font_name: monogram-font-name
+      :max_length: monogram-max-length
+    :mark_down_liability: mark-down-liability
+    :return_authorization: return-authorization-number
+    :return_authorization_tracking: return-authorization-tracking
+    :return_quantity: return-quantity
+    :return_fee: return-fee
+
+:flash_notice:
+  :commercial_order:
+    :submitted_with_errors: Submitted Commercial Order To Mirakl With Errors
+    :submitted_successfully: Submitted Commercial Order To Mirakl Sucessfully
+    :failed_to_mirakl_orders_with_errors: Failed to Create Mirakl::Orders
+    :created_mirakl_orders_successfully: Sucessfully Created Mirakl::Orders
+  :order:
+    :cancelled: Mirakl Order Cancelled - Please Wait for Mirakl Order Sync
+    :sync_complete: Mirakl Order Sync Complete.
+    :recreate_easypost_label: Recreated and sent easypost label to Mirakl
+    :send_packing_slip: Sent packing slip to Mirakl
+  :order_line:
+    :incident_sent: "Incident request successfully sent for order line: "
+  :invoice:
+    :issuing: Issuing all Draft Invoices
+
+:flash_error:
+  :order_line:
+    :incident_blocked: Request not accepted by Mirakl - Please wait for Mirakl order sync
+
+:offer:
+  :import_mode:
+    :normal: NORMAL
+
+:shop:
+  :additional_fields:
+    :transaction_fee_percentage: transaction-fee-percentage
+
+:boxes:
+  :box1:
+    :weight: box1-packaged-weight
+    :length: box1-packaged-length
+    :height: box1-packaged-height
+    :width: box1-packaged-width-depth
+    :name: box1-package-name
+  :box2:
+    :weight: box2-packaged-weight
+    :length: box2-packaged-length
+    :height: box2-packaged-height
+    :width: box2-packaged-width-depth
+    :name: box2-package-name
+  :box3:
+    :weight: box3-packaged-weight
+    :length: box3-packaged-length
+    :height: box3-packaged-height
+    :width: box3-packaged-width-depth
+    :name: box3-package-name
+  :box4:
+    :weight: box4-packaged-weight
+    :length: box4-packaged-length
+    :height: box4-packaged-height
+    :width: box4-packaged-width-depth
+    :name: box4-package-name
+
+:cancellation_reason:
+  :no_stock: No stock after accepting order
+
+:refund_reason:
+  :item_returned: Item returned
+
+:invoice:
+  :lines:
+    :transaction_fee: Transaction Fee
+    :late_shipping_fee: Late Shipping Fee
+    :no_stock_fee: No Stock Fee
+    :gift_wrap_vendor_fee: Gift Wrap Vendor Credit
+    :dropship_surcharge: Dropship Surcharge
+    :return_label_fee: Returns Label Fee
+    :mark_down_credit: Credit for Maisonette Markdown
+    :mark_down_refund: Returned Maisonette Markdown
+    :cost_price_fee: Maisonette Revenue Share
+    :cost_price_refund: Maisonette Revenue Share Returns
+    :order_fee: Order Fee
+    :incidental_credit: Incidental Credit
+    :incidental_debit: Incidental Debit
+    :return_fee: Return Fee
+  :max_lines: 1000
+
+:default_return_authorization_reason: Return Authorization
+
+:free_shipping_gift_cards: Free Shipping (Gift Cards)

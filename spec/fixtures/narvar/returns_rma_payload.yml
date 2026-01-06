@@ -1,0 +1,73 @@
+---
+return_status: LABEL_CREATED
+rma_number: '99333999'
+order_number: R092619046
+return_creation_date: '2018-02-24T13:25:31Z'
+retailer_name: peninsula
+package:
+  tracking_number: 1Z453087998799333
+  tracking_url: https://peninsula.narvar.com/peninsula/tracking/UPS?tracking_numbers=1Z6W11111650E0319580262&type=ret&order_number=70074401&rma=993338
+  carrier: UPS
+  carrier_service_method: Ground
+  destination_zip: 01810
+  destination_city: Andover
+  destination_country: US
+  shipping_fee: '5.99'
+return_method: MAIL
+gift: false
+email: johndoe@narvar.com
+locale: en_US
+origin_zip: '94117'
+origin_city: San Francisco
+origin_country: US
+estimated_refund: '305.93'
+restocking_fee: '0'
+label_url: https://narvar.com/retailer/label.pdf
+items:
+  - sku: A-SKU-1
+    item_id: 101
+    line_number: 1
+    quantity: 1
+    reason: Did not Like
+    reason_code: 2OF
+    comment: Comments entered by user
+    unit_price: 12.99
+    total_item_price: 12.99
+    request_type: RETURN
+  - sku: A-SKU-2
+    item_id: 102
+    line_number: 2
+    quantity: 1
+    reason: Did not Like
+    reason_code: 2OF
+    unit_price: 13.99
+    total_item_price: 13.99
+    request_type: RETURN
+  - sku: A-SKU-3
+    item_id: 103
+    line_number: 3
+    quantity: 1
+
+    reason: I don't know
+    reason_code: '?'
+    unit_price: 13.99
+    total_item_price: 13.99
+    request_type: RETURN
+  - sku: A-SKU-4
+    item_id: 104
+    line_number: 4
+    quantity: 1
+    reason: Too Big
+    reason_code: INCIDENT_OPEN_TOO_BIG
+    unit_price: 14.99
+    total_item_price: 14.99
+    request_type: RETURN
+  - sku: A-SKU-5
+    item_id: 105
+    line_number: 5
+    quantity: 1
+    reason: Too Big
+    reason_code: INCIDENT_OPEN_TOO_BIG
+    unit_price: 15.99
+    total_item_price: 15.99
+    request_type: RETURN

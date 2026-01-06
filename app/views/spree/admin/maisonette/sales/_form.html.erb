@@ -1,0 +1,82 @@
+<div data-hook="admin_maisonette_sales_form_fields">
+    <div class="row">
+    <div class="col-6">
+      <div data-hook="admin_maisonette_sale_name">
+        <%= f.field_container :name do %>
+          <%= f.label :name, 'Name', class: 'required' %>
+          <%= f.text_field :name, class: 'fullwidth', required: true %>
+          <%= f.error_message_on :name %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <div data-hook="admin_maisonette_sale_percent_off">
+        <%= f.field_container :percent_off do %>
+          <%= f.label :percent_off, 'Percent Off', class: 'required' %>
+          <%= f.number_field :percent_off, class: 'fullwidth', value: f.object.percent_off.nil? ? nil : f.object.percent_off * 100, required: true, step: 1, min: 1, max: 99 %>
+          <%= f.error_message_on :percent_off %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div data-hook="admin_maisonette_sale_maisonette_liability">
+        <%= f.field_container :maisonette_liability do %>
+          <%= f.label :maisonette_liability, 'Maisonette Liability', class: 'required' %>
+          <%= f.number_field :maisonette_liability, class: 'fullwidth', required: true, min: 0, max: 100, step: 1 %>
+          <%= f.error_message_on :maisonette_liability %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+ <div class="row">
+    <div class="col-6">
+      <div data-hook="admin_maisonette_sale_start_date">
+        <%= f.field_container :start_date do %>
+          <%= f.label :start_date, 'Start Date', class: 'required' %>
+          <%= admin_hint 'Start Date', t(:dates_timezone, scope: [:spree, :hints, 'maisonette/sale']) %>
+          <%= f.text_field :start_date, class: 'datetimepicker form-control datepicker-from', value: datepicker_field_value(f.object.start_date, with_time: true), required: true, placeholder: Maisonette::Sale.human_attribute_name(:start_date) %>
+          <%= f.error_message_on :start_date %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div data-hook="admin_maisonette_sale_end_date">
+        <%= f.field_container :end_date do %>
+          <%= f.label :end_date, 'End Date', class: 'required' %>
+          <%= admin_hint 'End Date', t(:dates_timezone, scope: [:spree, :hints, 'maisonette/sale']) %>
+          <%= f.hidden_field :end_date, id: nil, value: nil %>
+          <%= f.text_field :end_date, class: 'datetimepicker form-control datepicker-from', value: datepicker_field_value(f.object.end_date, with_time: true), required: true, placeholder: Maisonette::Sale.human_attribute_name(:end_date), disabled: f.object.permanent %>
+          <%= f.error_message_on :end_date %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6">
+    <div data-hook="admin_maisonette_sale_final_sale">
+      <%= f.field_container :final_sale do %>
+        <%= f.label :final_sale %>
+        <%= f.check_box :final_sale %>
+        <%= f.error_message_on :final_sale %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <div data-hook="admin_maisonette_sale_permanent">
+      <%= f.field_container :permanent do %>
+        <%= f.label :permanent %>
+        <%= f.check_box :permanent %>
+        <%= f.error_message_on :permanent %>
+      <% end %>
+    </div>
+  </div>
+</div>

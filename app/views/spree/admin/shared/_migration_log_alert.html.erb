@@ -1,0 +1,12 @@
+<% log = ::Migration::Log.find_by(migrable_type: "Legacy::#{entity.class.to_s}", migrable_id: entity.id) %>
+<% if log.present? && log&.status != 'completed' %>
+  <% if ['require_verification', 'failed_but_saved'].include? log.status %>
+    <div class="alert alert-warning">
+      This entity has been migrated from the Legacy app but with <%= log.extra %>, log details <%= link_to 'here', admin_migration_log_path(log) %>
+    </div>
+  <% else %>
+    <div class="alert alert-danger">
+      This entity has been migrated from the Legacy app but with <%= log.extra %>, log details <%= link_to 'here', admin_migration_log_path(log) %>
+    </div>
+  <% end %>
+<% end %>

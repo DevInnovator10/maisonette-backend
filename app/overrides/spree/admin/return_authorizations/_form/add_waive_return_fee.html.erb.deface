@@ -1,0 +1,7 @@
+<!-- insert_bottom "[data-hook='admin_return_authorization_form_fields']" -->
+
+<div class="field">
+  <%= f.check_box(:waive_customer_return_fee) %>
+  <%= f.label :waive_customer_return_fee %>
+
+</div>

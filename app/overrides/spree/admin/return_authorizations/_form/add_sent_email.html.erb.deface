@@ -1,0 +1,6 @@
+<!-- insert_before 'erb[loud]:contains("f.field_container :stock_location")' -->
+
+<% reimbursements = f.object.return_items.map(&:reimbursement).compact %>
+<% gift_card_reimbursements = reimbursements.map(&:gift_card_reimbursements).compact.flatten %>
+
+<%= render "spree/admin/reimbursements/gift_cards", gift_card_reimbursements: gift_card_reimbursements %>

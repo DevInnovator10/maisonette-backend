@@ -1,0 +1,57 @@
+<% admin_layout "full-width" %>
+
+<% admin_breadcrumb(t('spree.admin.tab.mirakl')) %>
+<% admin_breadcrumb(plural_resource_name(Mirakl::Invoice)) %>
+
+<%= render 'page_actions' %>
+
+<%= render 'search_filters' %>
+
+<%= paginate @mirakl_invoices, theme: "solidus_admin" %>
+
+<% if @mirakl_invoices.any? %>
+  <table class="table" id="listing_invoices">
+    <thead>
+    <tr>
+      <th><%= sort_link @search, :id, I18n.t('spree.id') %></th>
+      <th><%= sort_link @search, :created_at, I18n.t('spree.created_at') %></th>
+      <th><%= sort_link @search, :invoice_id, I18n.t('spree.mirakl.invoices.invoice_id') %></th>
+      <th><%= sort_link @search, :issued, I18n.t('spree.mirakl.invoices.issued') %></th>
+      <th><%= sort_link @search, :mirakl_shop_shop_id, I18n.t('spree.mirakl.invoices.shop_id') %></th>
+      <th><%= sort_link @search, :mirakl_shop_name, I18n.t('spree.mirakl.invoices.shop_name') %></th>
+      <th><%= sort_link @search, :invoice_type, I18n.t('spree.mirakl.invoices.invoice_type') %></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @mirakl_invoices.each do |mirakl_invoice| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <td><%= mirakl_invoice.id %></td>
+        <td><%= mirakl_invoice.created_at %></td>
+        <td><%= mirakl_invoice.invoice_id %></td>
+        <td>
+          <span class="label <%= "label-issued-#{mirakl_invoice.issued}" %>"><%= mirakl_invoice.issued.to_s.humanize %></span>
+          <span class="icon icon-filter filterable js-add-filter" data-ransack-field="q_issued_eq" data-ransack-value="<%= mirakl_invoice.issued ? 1 : 0 %>"></span>
+        </td>
+        <td>
+          <span><%= mirakl_invoice.mirakl_shop&.shop_id %></span>
+          <span class="icon icon-filter filterable js-add-filter" data-ransack-field="q_mirakl_shop_shop_id_eq" data-ransack-value="<%= mirakl_invoice.mirakl_shop&.shop_id %>"></span>
+        </td>
+        <td>
+          <span><%= mirakl_invoice.mirakl_shop&.name %></span>
+          <span class="icon icon-filter filterable js-add-filter" data-ransack-field="q_mirakl_shop_name_eq" data-ransack-value="<%= mirakl_invoice.mirakl_shop&.name %>"></span>
+        </td>
+        <td>
+          <span><%= mirakl_invoice.invoice_type %></span>
+          <span class="icon icon-filter filterable js-add-filter" data-ransack-field="q_invoice_type_eq" data-ransack-value="<%= Mirakl::Invoice.invoice_types[mirakl_invoice.invoice_type] %>"></span>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="no-objects-found">
+    <%= render 'spree/admin/shared/no_objects_found', resource: Mirakl::Invoice %>
+  </div>
+<% end %>
+
+<%= paginate @mirakl_invoices, theme: "solidus_admin" %>

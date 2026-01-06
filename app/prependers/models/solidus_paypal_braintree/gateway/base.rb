@@ -52,4 +52,5 @@ module SolidusPaypalBraintree::Gateway::Base
 
     params
   end
+
 end

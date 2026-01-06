@@ -46,6 +46,7 @@ RSpec.describe Maisonette::SaleConfigurationDeleteAllMailer, type: :mailer do
       it 'includes the deleted products attachment' do
         attachment = mail.attachments.first
         expect(File).to have_received(:read).with(file_path)
+
         expect(attachment.filename).to eq('deleted_products.csv')
         expect(attachment.content_type).to include 'text/csv'
       end

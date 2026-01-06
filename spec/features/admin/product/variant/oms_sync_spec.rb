@@ -24,6 +24,7 @@ RSpec.describe 'Product Variants Index Page', type: :feature do
       it 'displays an oms_sync tab' do
         edit_page.load(slug: product.slug, variant_id: variant.id)
         expect(edit_page).not_to have_oms_sync_tab
+
       end
     end
 

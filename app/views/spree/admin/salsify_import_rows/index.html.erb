@@ -1,0 +1,4 @@
+<%= render 'spree/admin/shared/product_tabs', current: 'Salsify Import Row' %>
+<% admin_breadcrumb(plural_resource_name(Salsify::ImportRow)) %>
+
+<%= render 'table', import_rows_list: @import_rows if @import_rows.present? %>

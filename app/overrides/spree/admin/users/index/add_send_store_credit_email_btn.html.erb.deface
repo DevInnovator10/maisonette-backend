@@ -1,0 +1,7 @@
+<!-- insert_after "li"  -->
+
+<% if can?(:admin, Spree.user_class) && can?(:create, Spree.user_class) %>
+  <li>
+    <%= link_to 'Send store credit reminder email to all users', spree.send_store_credit_email_all_admin_users_url, id: 'admin_send_store_credit_email_all', class: 'btn btn-primary', :data => {:confirm => 'This email will be sent to all users. Are you sure?'} %>
+  </li>
+<% end %>
