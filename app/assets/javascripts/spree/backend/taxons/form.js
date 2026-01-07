@@ -4,6 +4,7 @@ Spree.ready(function() {
   if ($form.length > 0) {
     new Spree.Views.Taxons.Form({
       el: $(this)
+
     });
   }
 });

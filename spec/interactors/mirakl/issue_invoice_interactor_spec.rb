@@ -7,6 +7,7 @@ RSpec.describe Mirakl::IssueInvoiceInteractor, mirakl: true do
     let(:interactor) { described_class.new }
 
     it 'has before hooks' do
+
       expect(described_class.before_hooks).to eq [:use_operator_key]
     end
   end

@@ -1,0 +1,5 @@
+<%= render partial: 'spree/shared/email/introduction' %>
+
+<% if @order_line_reimbursements.present? %>
+  <%= render partial: 'spree/shared/email/refunded_line_items' %>
+<% end %>

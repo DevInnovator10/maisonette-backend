@@ -1,0 +1,62 @@
+<% admin_layout "full-width" %>
+
+<% admin_breadcrumb(t('spree.admin.tab.mirakl')) %>
+<% admin_breadcrumb(plural_resource_name(Mirakl::CommercialOrder)) %>
+
+<%= render 'search_filters' %>
+
+<%= paginate @mirakl_commercial_orders, theme: "solidus_admin" %>
+
+<% if @mirakl_commercial_orders.any? %>
+  <table class="table" id="listing_orders" data-hook>
+    <thead>
+    <tr data-hook="admin_orders_index_headers">
+      <th><%= sort_link @search, :id, I18n.t('spree.id') %></th>
+      <th><%= sort_link @search, :created_at, I18n.t('spree.created_at') %></th>
+      <th><%= sort_link @search, :updated_at, I18n.t('spree.updated_at') %></th>
+      <th><%= sort_link @search, :commercial_order_id, I18n.t('spree.mirakl.commercial_orders.commercial_order_id') %></th>
+      <th><%= sort_link @search, :order_number, I18n.t('spree.mirakl.orders.order_number') %></th>
+      <th><%= sort_link @search, :state, I18n.t('spree.state') %></th>
+      <th><%= sort_link @search, :error_message, I18n.t('spree.error_message') %></th>
+      <th data-hook="admin_orders_index_header_actions" class="actions"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @mirakl_commercial_orders.each do |mirakl_commercial_order| %>
+      <tr data-hook="admin_orders_index_rows" class="state-<%= mirakl_commercial_order.state.downcase %> <%= cycle('odd', 'even') %>">
+        <td><%= mirakl_commercial_order.id %></td>
+        <td><%= mirakl_commercial_order.created_at %></td>
+        <td><%= mirakl_commercial_order.updated_at %></td>
+        <td><%= mirakl_commercial_order.commercial_order_id %></td>
+        <td><%= link_to mirakl_commercial_order.spree_order.number, edit_admin_order_path(mirakl_commercial_order.spree_order.number) %></td>
+        <td>
+          <span class="label <%= "label-#{mirakl_commercial_order.state}" %>"><%= mirakl_commercial_order.state %></span>
+          <span class="icon icon-filter filterable js-add-filter" data-ransack-field="q_state_eq" data-ransack-value="<%= mirakl_commercial_order.state %>"></span>
+        </td>
+        <td>
+          <%= mirakl_commercial_order.error_message %>
+        </td>
+        <td>
+          <% if mirakl_commercial_order.state?(:failed_submission) %>
+            <%= link_to(I18n.t('spree.mirakl.commercial_orders.resend'),
+                        resend_commercial_order_admin_mirakl_commercial_orders_path(id: mirakl_commercial_order),
+                        'data-hook': "resubmit_#{mirakl_commercial_order.commercial_order_id}",
+                        data: { confirm: 'Are you sure?' }) %>
+          <% elsif mirakl_commercial_order.orders.empty? %>
+            <%= link_to(I18n.t('spree.mirakl.commercial_orders.recreate_mirakl_orders'),
+                        recreate_mirakl_orders_admin_mirakl_commercial_orders_path(id: mirakl_commercial_order),
+                        'data-hook': "recreate_orders_#{mirakl_commercial_order.commercial_order_id}",
+                        data: { confirm: 'Are you sure?' }) %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="no-objects-found">
+    <%= render 'spree/admin/shared/no_objects_found', resource: Mirakl::CommercialOrder %>
+  </div>
+<% end %>
+
+<%= paginate @mirakl_commercial_orders, theme: "solidus_admin" %>

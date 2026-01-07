@@ -1,0 +1,102 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://test.salesforce.com/services/oauth2/token
+    body:
+      encoding: US-ASCII
+      string: grant_type=password&client_id=client_id&client_secret=client_secret&username=salesforce%40maisonette.com.dev&password=passwordsecurity_token
+    headers:
+      User-Agent:
+      - Faraday v1.5.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+
+      Date:
+      - Fri, 09 Sep 2022 14:06:06 GMT
+      Set-Cookie:
+      - BrowserId=jAtpJjBIEe2ajLk-sRVtGA; domain=.salesforce.com; path=/; expires=Sat,
+        09-Sep-2023 14:06:06 GMT; Max-Age=31536000
+      - CookieConsentPolicy=0:0; path=/; expires=Sat, 09-Sep-2023 14:06:06 GMT; Max-Age=31536000
+      - LSKey-c$CookieConsentPolicy=0:0; path=/; expires=Sat, 09-Sep-2023 14:06:06
+        GMT; Max-Age=31536000
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache,must-revalidate,max-age=0,no-store,private
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      X-Readonlymode:
+      - 'false'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"access_token","instance_url":"https://maisonette--dev.sandbox.my.salesforce.com","id":"https://test.salesforce.com/id/00D1b00000090R1EAI/0051b000002yuesAAA","token_type":"Bearer","issued_at":"1662732368036","signature":"zSLA7wNw3zT4UsIP6KtyQig1iFwcrT6zVIvDU6Db//Q="}'
+    http_version:
+  recorded_at: Fri, 09 Sep 2022 14:06:07 GMT
+- request:
+    method: get
+    uri: https://maisonette--dev.sandbox.my.salesforce.com/services/data/v54.0/query?q=SELECT%20Id%20FROM%20OrderSummary%20WHERE%20OriginalOrderId%20=%20%278011b000002GubnAAB%27
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.5.0
+      Authorization:
+      - "<Authorization Code>"
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 09 Sep 2022 14:06:08 GMT
+      Set-Cookie:
+      - BrowserId=jZcS2DBIEe2qmcvHaSRXcw; domain=.salesforce.com; path=/; expires=Sat,
+        09-Sep-2023 14:06:08 GMT; Max-Age=31536000
+      - CookieConsentPolicy=0:1; path=/; expires=Sat, 09-Sep-2023 14:06:08 GMT; Max-Age=31536000
+      - LSKey-c$CookieConsentPolicy=0:1; path=/; expires=Sat, 09-Sep-2023 14:06:08
+        GMT; Max-Age=31536000
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Robots-Tag:
+      - none
+      Cache-Control:
+      - no-cache,must-revalidate,max-age=0,no-store,private
+      Sforce-Limit-Info:
+      - api-usage=27729/5000000
+      Content-Type:
+      - application/json;charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"totalSize":0,"done":true,"records":[]}'
+    http_version:
+  recorded_at: Fri, 09 Sep 2022 14:06:09 GMT
+recorded_with: VCR 5.0.0

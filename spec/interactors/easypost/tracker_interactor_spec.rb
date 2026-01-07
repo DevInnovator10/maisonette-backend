@@ -23,6 +23,7 @@ RSpec.describe Easypost::TrackerInteractor do
     let(:delivered_tracking_detail) do
       { 'status' => 'delivered', 'datetime' => '2019-06-05T10:09:20Z' }
     end
+
     let(:easypost_order) { Easypost::Order.create!(tracking_code: '123456') }
     let(:tracker) { Easypost::Tracker.create!(tracking_code: '123456') }
     let(:tracker_hash) do

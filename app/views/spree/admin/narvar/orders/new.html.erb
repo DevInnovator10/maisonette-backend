@@ -1,0 +1,32 @@
+<% content_for :page_title do %>
+  <%= link_to I18n.t('spree.admin.tab.narvar_orders'), admin_narvar_orders_path %> /
+  <%= I18n.t('spree.admin.narvar.new') %>
+  <small>- <%= I18n.t('spree.admin.narvar.force_update_order_data_to_narvar') %></small>
+<% end %>
+
+<% if @error %>
+  <div class="alert alert-info"><%= @error %></div>
+<% end %>
+
+<div><%= I18n.t('spree.admin.narvar.enter_a_completed_order') %>:</div>
+<br/>
+<%= form_for :narvar_order_job, url: admin_narvar_orders_path do |f| %>
+  <fieldset>
+    <div class='row'>
+      <div class='col-md-8'>
+        <div class="form-group">
+          <%= f.label :order_number %>
+          <%= f.text_field :order_number, class: 'form-control' %>
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-actions">
+          <%= button_tag I18n.t('spree.admin.narvar.submit') %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

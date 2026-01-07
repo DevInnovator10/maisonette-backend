@@ -41,6 +41,7 @@ RSpec.describe Klaviyo::Client do
     end
 
     it 'can use a custom public api key' do
+
       expect(Maisonette::Config).not_to have_received(:fetch)
       expect(client.instance_variable_get(:@public_api_key)).to eq public_key
     end

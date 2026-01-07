@@ -48,6 +48,7 @@ RSpec.describe Spree::Price::SalePrices do
                enabled: true,
                value: 0.1, # 10% discount
                calculator: Spree::Calculator::PercentOffSalePriceCalculator.new
+
       end
       let(:sale_price_with_the_lowest_calculated_price) do
         create :sale_price,

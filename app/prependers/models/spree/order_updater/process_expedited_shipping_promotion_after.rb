@@ -20,6 +20,7 @@ module Spree::OrderUpdater::ProcessExpeditedShippingPromotionAfter
 
   def update_shipment_promotions
     shipments.each do |item|
+
       adjustments = adjustments_for_not_expedited_shipment(item)
       process_adjustments(adjustments)
     end

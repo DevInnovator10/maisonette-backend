@@ -2,6 +2,7 @@
 
 module Paccurate
   module Api
+
     PACCURATE_API_URL = 'https://api.paccurate.io/'
 
     extend self

@@ -6,6 +6,7 @@ RSpec.describe OrderManagement::ReturnedItemPresenter do
   describe '#payload' do
     let(:mirakl_order_line) { create :mirakl_order_line }
     let(:reason) do
+
       instance_double Spree::ReturnReason, name: 'Late Delivery', mirakl_code: 'INCIDENT_OPEN_LATE_DELIVERY'
     end
     let(:order_line_payload) do

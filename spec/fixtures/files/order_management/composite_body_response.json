@@ -1,0 +1,50 @@
+{"compositeResponse":
+  [{"body":
+     {"id":"0011b00000wZnjHAAS",
+      "success":true,
+      "errors":[],
+      "created":false},
+    "httpHeaders":
+     {"Location":"/services/data/v54.0/sobjects/Account/0011b00000wZnjHAAS"},
+    "httpStatusCode":200,
+    "referenceId":"refAcc"},
+   {"body":{"id":"8011b000002GV5EAAW", "success":true, "errors":[]},
+    "httpHeaders":
+     {"Location":"/services/data/v54.0/sobjects/Order/8011b000002GV5EAAW"},
+    "httpStatusCode":201,
+    "referenceId":"refOrder"},
+   {"body":{"id":"9zx1b0000004CT3AAM", "success":true, "errors":[]},
+    "httpHeaders":
+     {"Location":
+       "/services/data/v54.0/sobjects/PaymentGroup/9zx1b0000004CT3AAM"},
+    "httpStatusCode":201,
+    "referenceId":"refPaymentGroup"},
+   {"body":[{"id":"03O1b0000004CQxEAM", "success":true, "errors":[]}],
+    "httpHeaders":{},
+    "httpStatusCode":200,
+    "referenceId":"refPaymentMethods"},
+   {"body":
+     [{"id":"2Dg1b0000004Cs8CAE", "success":true, "errors":[]},
+      {"id":"0aQ1b0000004CQxEAM", "success":true, "errors":[]},
+      {"id":"0az1b0000004CSPAA2", "success":true, "errors":[]}],
+    "httpHeaders":{},
+    "httpStatusCode":200,
+    "referenceId":"refOrderDetails"},
+   {"body":
+     [{"id":"8021b0000032rLcAAI", "success":true, "errors":[]},
+      {"id":"8021b0000032rLdAAI", "success":true, "errors":[]},
+      {"id":"8021b0000032rLeAAI", "success":true, "errors":[]}],
+    "httpHeaders":{},
+    "httpStatusCode":200,
+    "referenceId":"refLineItemsGroup"},
+   {"body":
+     [{"id":"0au1b0000004CKxAAM", "success":true, "errors":[]},
+      {"id":"0au1b0000004CKyAAM", "success":true, "errors":[]},
+      {"id":"3qZ1b0000004CbuEAE", "success":true, "errors":[]}],
+    "httpHeaders":{},
+    "httpStatusCode":200,
+    "referenceId":"refAdjustments"},
+   {"body":null,
+    "httpHeaders":{},
+    "httpStatusCode":204,
+    "referenceId":"refUpdateOrder"}]}

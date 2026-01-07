@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 after 'preview:order' do
-  spree_order = Spree::Order.complete.last
+
+    spree_order = Spree::Order.complete.last
   return unless spree_order
 
   shipment = spree_order.shipments[0]

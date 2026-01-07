@@ -2,6 +2,7 @@
 
 module Mirakl
   class ReimbursementPreview < ActionMailer::Preview
+
     def rejection
       unless (order_line_reimbursement = Mirakl::OrderLineReimbursement.rejection.last)
         raise 'Your database needs at least Mirakl::OrderLineReimbursement rejection to render this preview'

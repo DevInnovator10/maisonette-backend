@@ -93,6 +93,7 @@ RSpec.describe OrderManagement::SendSalesOrderInteractor do
         expect(interactor).to be_a_failure
         expect(interactor.error).to eq(
           I18n.t('order_management.missing_order_management_ref', response: 'Response')
+
         )
       end
     end

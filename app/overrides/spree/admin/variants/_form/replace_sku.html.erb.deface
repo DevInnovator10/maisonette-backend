@@ -1,0 +1,3 @@
+<!-- replace 'erb[loud]:contains("f.text_field :sku")' -->
+
+<%= f.text_field :sku, class: 'fullwidth', disabled: true %>

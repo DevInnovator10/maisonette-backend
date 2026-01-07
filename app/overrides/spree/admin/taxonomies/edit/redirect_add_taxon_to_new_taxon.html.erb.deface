@@ -1,0 +1,5 @@
+<!-- replace_contents 'li:first-of-type' -->
+
+<li>
+  <%= link_to t('spree.add_taxon'), spree.new_admin_taxonomy_taxon_path(taxonomy_id: @taxonomy.id, parent_id: @taxonomy.root.id), class: 'btn btn-primary' %>
+</li>

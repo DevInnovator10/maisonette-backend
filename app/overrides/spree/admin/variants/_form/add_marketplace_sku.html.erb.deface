@@ -1,0 +1,6 @@
+<!-- insert_bottom 'div[data-hook="sku"]' -->
+
+<div class="field" data-hook="marketplace_sku">
+  <%= f.label :marketplace_sku %>
+  <%= f.text_field :marketplace_sku, class: 'fullwidth', disabled: true %>
+</div>

@@ -19,6 +19,7 @@ RSpec.describe Maisonette::Sentry do
     it 'returns a hash error message' do
       expect(error_message).to eq(event: { message: event_message, extra: extra },
                                   exception: exception.inspect,
+
                                   message: "#{exception.message} - #{event_message}",
                                   backtrace: nil)
     end

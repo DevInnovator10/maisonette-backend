@@ -1,0 +1,8 @@
+<!-- insert_after "erb[loud]:contains('field_container :meta_title')" -->
+
+<% if f.object.icon_present? %>
+  <%= check_box_tag :_remove_icon, 1, params[:_remove_icon] %>
+  <%= label_tag :_remove_icon, 'Remove Icon?' %>
+  <br />
+  <br />
+<% end %>

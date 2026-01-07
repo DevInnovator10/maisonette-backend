@@ -1,0 +1,6 @@
+<!-- insert_bottom '.additional-info' -->
+
+<% if @order.complete? %>
+  <dt data-hook="admin-order-narvar-return-link">Narvar Return:</dt>
+  <dd id="order-narvar-return-link"><%= link_to('Create/View',  Narvar::OrderDecorator.new(@order).order_return_with_narvar_url, target: '_blank') %></dd>
+<% end %>

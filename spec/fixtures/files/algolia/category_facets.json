@@ -1,0 +1,15 @@
+{
+  "facets":
+  {
+    "categories.lvl0":
+      { "Kids": 4861, "Home": 1445 },
+    "categories.lvl1":
+      { "Kids > Girl Clothing": 561, "Home > Decor": 1695 },
+    "categories.lvl2":
+
+    {
+      "Kids > Girl Clothing > Dresses": 17,
+      "Home > Decor > Shams & Pillows": 42
+    }
+  }
+}

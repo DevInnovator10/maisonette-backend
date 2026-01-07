@@ -1,0 +1,295 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.sandbox.braintreegateway.com/merchants/hyfrbrzhzb9jzngd/customers
+    body:
+        encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <customer>
+          <payment-method-nonce>fake-valid-visa-nonce</payment-method-nonce>
+          <credit-card>
+            <billing-address>
+              <first-name>John</first-name>
+              <last-name nil="true"/>
+              <street-address>PO Box 1337 Northwest</street-address>
+              <locality>Herndon</locality>
+              <postal-code>10001</postal-code>
+              <region>Alabama</region>
+              <country-code-alpha2>US</country-code-alpha2>
+            </billing-address>
+          </credit-card>
+        </customer>
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept:
+      - application/xml
+      User-Agent:
+      - Braintree Ruby Gem 2.96.0
+      X-Apiversion:
+      - '5'
+      Content-Type:
+      - application/xml
+      Authorization:
+      - <Authorization Code>
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Fri, 15 Nov 2019 13:44:54 GMT
+      Content-Type:
+      - application/xml; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Authentication:
+      - basic_auth
+      X-User:
+      - vpr2hxsd2x4rnntd
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Etag:
+      - W/"91a239025d804b71cc4f528c5354a84f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.433944'
+      X-Request-Id:
+      - 01-1573825494.116-82.34.56.181-13558047
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      X-Broxyid:
+      - 01-1573825494.116-82.34.56.181-13558047
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIANarzl0AA6xW21LjOBB95ytceTe+JIGEckwxNQVbU7XMVs3ALrxMyVY7FpElrySHJF+/khNbzo0FMm/u06elVt/c0fWioM4chCScTXrBud9zgKUcEzad9B5+3rqj3nV8FqWVVLwAEZ85TkRwHA6HA384uuhHnpYMqJVpjphytZwvM5GIVb5Kxi8rNsWR19UadkaEVC5DBTiM0ElPiQp6Xq2i6Jgm5UWJ2HIPhwIRuoeWOWf7Z2RosYe9QiKJOnCfAKQAu0g5alnCpIe1qEgBvTj0g7EbBG4w/Bn0rwaDq+HgOfKsQW1flfhj9tZgfX8ddDcjQLFcuzSlPEHURPGp/7jCd2P1/M+37M+Xh+D+603w/evTKvIsZ/MITJSbIoHlxg0kBFr2jHZbv0Y0lhBKdQG4CGMBUjb4OvX9WZPzDdbUhrtdF13Ykm3i4288Z5HXASzraA00Vx6uhI1WKgGgWu//+u584Qsn6PcvnXsuVP4KUkXeDsuaw0IBwyYNa9WRWyhPESVqGf8BgmGun9IiliRgqhsrvqEoQQWKvI1sCSWXSidLdxzEge/7QeR1oe6TK6bEsoZdRMschfHDDx3mA/hbVn1tdXPIrH/MjFU6iySNRwN/x67R7BvW+Xxguquw80PpopYOz5ybmo7sKTtpP7HhNqec2Hb1Gd6RFtCtweKBH4SjkeG0mYxM/7jmuviRSPPCVu4yck6x7ohjlW3q2kxKgqgO3ozxV2Zi1WKWtg4fz1wiZYVYCl3+vrI1PD3AH2h3SzWdoUzh1xW7hzZ8DAlR9iVr0SozVNHG8YRzCoj1YhNBQ62VllwJnR1Xt1tFzQM6h+5qGhNYlETU/rgFZyqPgzDy9sAD7CUgocMX+lv0Gt1i61bY8T1DVMLGquOJHeDp3e0w+fuxwncBxXf5/Pl2/PIUjPyUffGfGd+Z9bVxDoiqXBdbpyQ6WEMjBZqCWwka50qV8srzkJSg5HkiEGFmNE51dF7R8lzXn1eiZQFM/SpA5Rz/onzKvbmu8/OSTa+BzYngzBAmEjGc8IX+Q7TntzfqYjQdlSA2s65toQ21Hv+DOBiN9DjcCI1OuyI47fRHA7QEASXSAbnX4Wm+rY7jKq23EGtvsYYmq0SmgpQmkds/Tduqis9AjwJRqkz/c9dSo6sY+beqx2NSN4SODNF/cREHQ5SGaZqNL8PRRZilF9llgsaDsN9PQ+RDqmfRMdP27N8w3ebACu5KPDtSkK2+YyG0G+t2PRiRelR0F4ktoJ6f0WaWwsE9ZHfQ7m0aHxk879gy3t4x3towTtov3rVdvGO3+J/N4p17xWe2ik/tFJ/cKE7ZJ37Lz+7kbou8TgG0AmjRVm589h8AAAD//wMAy6AImYcNAAA=
+    http_version:
+  recorded_at: Fri, 15 Nov 2019 13:44:54 GMT
+- request:
+    method: post
+    uri: https://api.sandbox.braintreegateway.com/merchants/hyfrbrzhzb9jzngd/transactions
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <transaction>
+          <amount>110.00</amount>
+          <order-id>M100219902-KH3STT75</order-id>
+          <channel>Solidus</channel>
+          <options>
+            <store-in-vault-on-success type="boolean">true</store-in-vault-on-success>
+            <submit-for-settlement type="boolean">true</submit-for-settlement>
+          </options>
+          <payment-method-token>4rptfz</payment-method-token>
+          <billing>
+            <first-name>John</first-name>
+            <last-name nil="true"/>
+            <street-address>PO Box 1337 Northwest</street-address>
+            <locality>Herndon</locality>
+            <postal-code>10001</postal-code>
+            <region>AL</region>
+            <country-code-alpha2>US</country-code-alpha2>
+          </billing>
+          <customer-id>255405863</customer-id>
+          <device-data>fake device data</device-data>
+          <type>sale</type>
+        </transaction>
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept:
+      - application/xml
+      User-Agent:
+      - Braintree Ruby Gem 2.96.0
+      X-Apiversion:
+      - '5'
+      Content-Type:
+      - application/xml
+      Authorization:
+      - <Authorization Code>
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Fri, 15 Nov 2019 13:44:56 GMT
+      Content-Type:
+      - application/xml; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Authentication:
+      - basic_auth
+      X-User:
+      - vpr2hxsd2x4rnntd
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Etag:
+      - W/"feeccc8e8d324fd2c70cf2ed26b9fe29"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.518499'
+      X-Request-Id:
+      - 01-1573825495.393-82.34.56.181-13558343
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      X-Broxyid:
+      - 01-1573825495.393-82.34.56.181-13558343
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+    http_version:
+  recorded_at: Fri, 15 Nov 2019 13:44:56 GMT
+- request:
+    method: post
+    uri: https://maisonette-dev.mirakl.net/api//orders
+    body:
+      encoding: UTF-8
+      string: '{"commercial_id":"M100219902","scored":"true","shipping_zone_code":"USA","payment_workflow":"PAY_ON_ACCEPTANCE","payment_info":{"payment_type":"Braintree"},"customer":{"customer_id":"email1@example.com","email":"email1@example.com","firstname":"John","lastname":null,"billing_address":{"city":"Herndon","company":"Company","country":"UNITED
+        STATES","country_iso_code":"USA","firstname":"John","lastname":null,"phone":"555-555-0199","phone_secondary":"555-555-0199","state":"Alabama","street_1":"PO
+        Box 1337","street_2":"Northwest","zip_code":"10001"},"shipping_address":{"city":"Herndon","company":"Company","country":"UNITED
+        STATES","country_iso_code":"USA","firstname":"John","lastname":null,"phone":"555-555-0199","phone_secondary":"555-555-0199","state":"Alabama","street_1":"A
+        Different Road","street_2":"Northwest","zip_code":"10002"}},"offers":[{"currency_iso_code":"USD","offer_id":1236,"offer_price":"10.0","price":"10.0","quantity":1,"shipping_price":0.0,"shipping_type_code":null,"taxes":null,"order_line_additional_fields":[]}],"order_additional_fields":[{"code":"environment","value":"test"}]}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.5.3p105
+      Authorization:
+      - <Authorization Code>
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1106'
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Fri, 15 Nov 2019 13:44:56 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-Id:
+      - f03d10b2-49b7-48df-80aa-717b381f9db2
+      X-Frame-Options:
+      - DENY
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '62'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAKpWKi5JLCktVrIyMTDWUcpNLS5OTE9VslJyyy9KykxJSc1TqgUAAAD//wMAz4p8USQAAAA=
+    http_version:
+  recorded_at: Fri, 15 Nov 2019 13:44:57 GMT
+- request:
+    method: get
+    uri: https://api.sandbox.braintreegateway.com/merchants/hyfrbrzhzb9jzngd/payment_methods/any/4rptfz
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept:
+      - application/xml
+      User-Agent:
+      - Braintree Ruby Gem 2.96.0
+      X-Apiversion:
+      - '5'
+      Content-Type:
+      - application/xml
+      Authorization:
+      - <Authorization Code>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 15 Nov 2019 13:44:57 GMT
+      Content-Type:
+      - application/xml; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Authentication:
+      - basic_auth
+      X-User:
+      - vpr2hxsd2x4rnntd
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Etag:
+      - W/"39427059edd64fbbcce2a9ee2cd34e33"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.113504'
+      X-Request-Id:
+      - 02-1573825497.406-82.34.56.181-13637249
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      X-Broxyid:
+      - 02-1573825497.406-82.34.56.181-13637249
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIANmrzl0AA6RVTW/jNhC9+1cIviv6shMlkBVkD0nRw7bAbrZoLguKHFmsKVIlKSfur+9QH5ZiO8Au9qZ584Yfj29G2f1bLbw9aMOV3Cyjq3DpgaSKcbndLJ+/Pvrp8j5fZFQD49anRLN84XlZwYVAik8Y02CMwxDlLE92WcDZENPWWFWD9hGJ1+tVuE6vkyyYwz2x5NpYX5Ia8t9VJbNgBvQMQYbYk1xslla3sAzGbVTdEHm4kDFWA9jjKf/8w/uk3rwoSW68z0rb6hWMzYITVl8KbxYkAzbCF1YXihLB7SH/DbRkCo99RHqChi3Kmj8IUpCaZMEQ98lGGUuEj1pDHoVhGGXBHBqv1kqrDx3kE9FUJM6fv6CEF/CPKhKseLhUklwqkS2+DKd5ugpPasbM+6LujZ4lt8C8L5ZYMJ4qvYeOSqYVZk+JXkIaCms9e2hgs2QYWl7DMo/D6NaPIj9af42Su9Xqbr16wTWOBcMKbcN+boWpoHNvcMG+aGmZr8IoTlOX714pc3733Rb5N27cbY7xmK2UYOjkS850vkQZKCcCBdpJ9SqdHkdsMVNRlT43piWSwpx7nlz8uoA/2JYTzbnaOuN2zjtDHZdBwe108j7sEyVpxXjQQikBRC5zp5Kjdcme2GpU3ccWaYU77Gyx08yia8+G625/v1bSVnkUZ8EZeMI8ANEoURy+o3bokYk2PjlrSYSBoWLYfStUgY2KQtGnx3Xx17eWPUWCPVX7l8fbf/6O0pDKT+GLVFkwUV1hBUTYCo0ze+YZ5ii8JlvwWy3yytrG3AUBMQasuSo04dKNqi2q8EoOV+iloCGHGqT9XoOtFPsu1FYFe/TqVSO39yD3XCvpCBtDJCvUG07n4/rdbmgs1wkFkbvpSO/QxTh+V3mUpjimhsDhuL1WYubvEeiSGhqCF/+MMozfPa5YS63TZKqbMEcxbWGo5o17IDM8CNGaHIbWsmoH2K66seV/WdBHDm8l/7ftRlXRGRlvzksOOo/WhMaUlrc3cXodl/S6vCnI7SpOEhqTECjOiI9KFz87ca7PJ84eZK18w3YfmOuYH9gat+7b6+z2XTtPP+P/AQAA//8DAEcfbEvCBwAA
+    http_version:
+  recorded_at: Fri, 15 Nov 2019 13:44:57 GMT
+recorded_with: VCR 5.0.0

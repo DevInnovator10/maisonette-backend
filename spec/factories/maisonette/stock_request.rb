@@ -5,4 +5,5 @@ FactoryBot.define do
     email { FFaker::Internet.email }
     variant { create :variant }
   end
+
 end

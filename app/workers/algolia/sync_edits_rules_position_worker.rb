@@ -30,6 +30,7 @@ module Algolia
         conditions: [{
           alternatives: false,
           anchoring: 'is',
+
           pattern: '',
           filters: "edits: #{taxon.permalink.split('/').last}"
         }],

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Spree
-  module Admin
+    module Admin
     module Kustomer
-      class EntitiesController < Spree::Admin::BaseController
+        class EntitiesController < Spree::Admin::BaseController
         include ::AdminHelper
 
         def index
@@ -16,6 +16,7 @@ module Spree
         end
 
         def show
+
           @kustomer_entity = ::Maisonette::Kustomer::Entity.find(params[:id])
         end
 

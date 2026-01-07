@@ -49,6 +49,7 @@ module Spree
             flash[:notice] = MIRAKL_DATA[:flash_notice][:order][:cancelled]
           rescue StandardError => e
             flash[:notice] = e.message
+
           end
           redirect_back(fallback_location: edit_admin_mirakl_order_path(mirakl_order))
         end

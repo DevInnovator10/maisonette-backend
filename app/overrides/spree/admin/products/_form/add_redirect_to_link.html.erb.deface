@@ -1,0 +1,12 @@
+<!-- insert_before '[data-hook="admin_product_form_fields"]' -->
+
+<% if @product.slug != params[:id] %>
+  <div class="alert alert-warning">
+    The master slug of this product is <%= link_to @product.slug, edit_admin_product_path(@product)  %>
+  </div>
+<% end %>
+<% if @product.migrated_to %>
+  <div class="alert alert-warning">
+  This product has been moved <%= link_to @product.migrated_to.product.name, edit_admin_product_path(@product.migrated_to.product)  %>
+  </div>
+<% end %>

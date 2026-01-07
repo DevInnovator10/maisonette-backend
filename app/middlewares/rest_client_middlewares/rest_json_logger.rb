@@ -34,6 +34,7 @@ module RestClientMiddlewares
                     headers: headers,
                     body: parsed_response_body(body),
                     error: env['restclient.hash'][:error] } }
+
     end
 
     def parsed_response_body(body)

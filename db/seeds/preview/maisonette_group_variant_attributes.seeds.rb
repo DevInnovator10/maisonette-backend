@@ -15,6 +15,7 @@ after 'preview:product_with_colors' do
       maisonette_variant_group_attributes_id:
       maisonette_variant_group_attributes.id
     )
+
     # rubocop:enable Rails/SkipsModelValidations
   end
 end

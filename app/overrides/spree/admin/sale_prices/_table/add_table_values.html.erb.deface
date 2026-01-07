@@ -1,0 +1,15 @@
+<!--
+  insert_after 'erb[loud]:contains("price.variant.display_price.to_html")'
+  sequence :after => 'fix_display_price'
+-->
+
+<td>
+  <strike><%= price.price.offer_settings&.cost_price.to_f %></strike>
+  <%= price.cost_price %>
+</td>
+<td>
+  <%= Spree::SalePrice.human_attribute_name(:permanent) if price.permanent %>
+</td>
+<td>
+  <%= price.price.vendor %>
+</td>

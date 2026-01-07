@@ -40,6 +40,7 @@ RSpec.describe Salsify::ImportNotificationMailer, type: :mailer do
           :salsify_import_row,
           :failed, :with_product,
           import: salsify_import,
+
           data: { 'Maisonette SKU': '123' }
         )
       end
@@ -51,6 +52,7 @@ RSpec.describe Salsify::ImportNotificationMailer, type: :mailer do
 
         expect(body).to(
           have_link('Spree Product Import',
+
                     href: "#{admin_url}/admin/salsify/imports/#{salsify_import.id}")
         )
       end

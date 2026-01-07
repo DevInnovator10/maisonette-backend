@@ -1,0 +1,14 @@
+<% admin_breadcrumb link_to(plural_resource_name(Maisonette::Sale), spree.admin_maisonette_sales_path) %>
+<% admin_breadcrumb t('spree.new_maisonette_sale') %>
+
+<%= render partial: 'spree/shared/error_messages', locals: { target: @sale } %>
+
+<%= form_for [:admin, @sale], as: :sale do |f| %>
+  <fieldset class="no-border-top">
+    <legend align="center"><%= t('spree.new_maisonette_sale') %></legend>
+
+    <%= render partial: 'form', locals: { f: f } %>
+
+    <%= render partial: 'spree/admin/shared/new_resource_links' %>
+  </fieldset>
+<% end %>

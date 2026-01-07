@@ -22,6 +22,7 @@ module Easypost
         ::EasyPost::CustomsInfo.create(eel_pfc: EASYPOST_DATA[:customs][:eel_pfc],
                                        customs_certify: EASYPOST_DATA[:customs][:customs_certify],
                                        contents_type: EASYPOST_DATA[:customs][:contents_type],
+
                                        contents_explanation: contents_explanation,
                                        customs_items: customs_items)
       end

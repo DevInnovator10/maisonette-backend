@@ -1,0 +1,5 @@
+<ul class="admin-subnav" data-hook="admin_reporting_sub_tabs">
+    <% if can?(:admin, Reporting::Braintree::Dispute) %>
+    <%= tab :reporting, label: :braintree_disputes, url: spree.admin_reporting_braintree_disputes_path %>
+  <% end %>
+</ul>

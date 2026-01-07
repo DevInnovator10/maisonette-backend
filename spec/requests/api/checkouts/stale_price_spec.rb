@@ -102,6 +102,7 @@ RSpec.describe '/api/checkouts/', type: :request do
         create(
           :order_with_line_items,
           stock_location: stock_location,
+
           line_items_attributes: [{
             price: variant.price_for_vendor(vendor, as_money: false).amount,
             vendor: vendor,
