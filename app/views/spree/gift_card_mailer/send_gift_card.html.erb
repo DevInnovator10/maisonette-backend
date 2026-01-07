@@ -1,0 +1,68 @@
+<div align="center" width="100%" bgcolor="#ffffff" style="background: #ffffff !important">
+  <table width="600" align="center" cellspacing="0" cellpadding="0" bgcolor="#ffffff" style="background: #ffffff !important">
+    <tr>
+      <td align="center" height="80" colspan="3">
+        &nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td width="75">&nbsp;</td>
+      <td align="center">
+        <font class="main-title">
+        <%= @introduction[:heading] %>
+        </font>
+      </td>
+      <td width="75">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" height="40" colspan="3">
+        &nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td width="75">&nbsp;</td>
+      <td align="center">
+        <font class="main-title">
+          <% if @introduction[:image].blank? %>
+            <img src="<%= image_path('email/gift_card.png') %>" width="700" height="700" style="display: block;" />
+          <% else %>
+            <img src="<%= image_path('email/' +@introduction[:image]) %>" width="75" height="123" style="display: block;" />
+          <% end %>
+        </font>
+      </td>
+      <td width="75">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" height="40" colspan="3">
+        &nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td width="75">&nbsp;</td>
+      <td align="center">
+        <font class="text">
+        <% if @introduction[:user_name].blank? %>Hi<% else %>Dear <%= @introduction[:user_name] %><% end %>,<br /><br />
+        <%= raw @introduction[:content] %>
+        <br /><br />
+        <%= raw @gift_card.gift_message %>
+        <br /><br />
+        If you have any questions at all, feel free to contact us at <a href="tel:<%=store_phone%>" class="text__link"><%= store_phone %></a> or <a href="mailto:<%= store_email %>" class="text__link"><%= store_email %></a>. Visit our <a href="<%= mail_url('/faq') %>" class="text__link">FAQs</a> for more details.
+        <br /><br />
+        Love,<br />
+        Maisonette
+        <br />
+        </font>
+      </td>
+      <td width="75">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" height="40" colspan="3">&nbsp;</td>
+    </tr>
+    <% if @cta.present? %>
+    <%= render partial: 'spree/shared/email/cta', locals: { cta: @cta } %>
+    <tr>
+      <td align="center" height="80" colspan="3">&nbsp;</td>
+    </tr>
+    <% end %>
+  </table>
+</div>

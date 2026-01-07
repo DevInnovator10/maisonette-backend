@@ -20,4 +20,5 @@ RSpec.describe Spree::RefundReason::OrderManagement, type: :model do
       expect(OrderManagement::Reason).to have_received(:mark_out_of_sync!).with(reason).at_least(:once)
     end
   end
+
 end

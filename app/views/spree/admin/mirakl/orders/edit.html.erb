@@ -1,0 +1,34 @@
+<% admin_layout "full-width" %>
+
+<% admin_breadcrumb(t('spree.admin.tab.mirakl')) %>
+<% admin_breadcrumb(Mirakl::Order.model_name.human) %>
+
+<% content_for :page_actions do %>
+  <% if @mirakl_order.can_cancel? %>
+    <%= link_to(I18n.t('spree.mirakl.orders.cancel_order'),
+                cancel_order_admin_mirakl_orders_path(id: @mirakl_order.id),
+                data: { confirm: 'Are you sure?' },
+                class: 'mirakl-orders-cancel-order-btn btn btn-primary',
+                method: :put) %>
+  <% end %>
+  <% if @mirakl_order.accepted? %>
+    <%= link_to(I18n.t('spree.mirakl.orders.recreate_easypost_label'),
+
+              recreate_easypost_label_admin_mirakl_orders_path(id: @mirakl_order.id),
+              data: { confirm: 'Are you sure?' },
+              class: 'mirakl-orders-recreate-easypost-label-btn btn btn-primary') %>
+  <%= link_to(I18n.t('spree.mirakl.orders.fetch_easypost_errors'),
+              fetch_easypost_errors_admin_mirakl_orders_path(id: @mirakl_order.id),
+              data: { confirm: 'Are you sure?' },
+              class: 'mirakl-orders-fetch-easypost-errors-btn btn btn-primary') %>
+  <%= link_to(I18n.t('spree.mirakl.orders.send_packing_slip'),
+              send_packing_slip_admin_mirakl_orders_path(id: @mirakl_order.id),
+              data: { confirm: 'Are you sure?' },
+              class: 'mirakl-orders-send-packing-slip-btn btn btn-primary') %>
+    <% end %>
+<% end %>
+
+<%= render partial: 'order_summary', locals: { mirakl_order: @mirakl_order } %>
+<%= render partial: 'order_lines', locals: { order_lines: @mirakl_order.order_lines } %>
+<%= render partial: 'easypost_order', locals: { easypost_order: @mirakl_order.shipment.easypost_orders.not_return } %>
+

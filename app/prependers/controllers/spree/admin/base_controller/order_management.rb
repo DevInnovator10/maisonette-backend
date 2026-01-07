@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Spree::Admin::BaseController::OrderManagement
-  def self.prepended(base)
+    def self.prepended(base)
     base.before_action :authorize_completed_order
   end
 

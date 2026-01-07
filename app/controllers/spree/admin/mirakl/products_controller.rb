@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Spree
-  module Admin
+    module Admin
     module Mirakl
       class ProductsController < Spree::Admin::BaseController
         def upload_deleted_products

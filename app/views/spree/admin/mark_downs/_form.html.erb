@@ -1,0 +1,130 @@
+<div data-hook="admin_mark_down_form_fields">
+
+    <div class="row">
+    <div class="left col-6" data-hook="admin_mark_down_form_left">
+      <div data-hook="admin_mark_down_form_title">
+        <%= f.field_container :title do %>
+          <%= f.label :title, class: 'required' %>
+          <%= f.text_field :title, class: 'fullwidth title', required: true %>
+          <%= f.error_message_on :title %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="left col-6" data-hook="admin_mark_down_form_left">
+      <div data-hook="admin_mark_down_form_amount">
+        <%= f.field_container :amount do %>
+          <%= f.label :amount, class: 'required' %>
+          <%= f.number_field :amount, class: 'fullwidth', required: true, step: 0.01, min: 0.01, max: 1 %>
+          <%= f.error_message_on :amount %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="left col-3" data-hook="admin_mark_down_form_left">
+      <div data-hook="admin_mark_down_form_our_liability">
+        <%= f.field_container :our_liability do %>
+          <%= f.label :our_liability %>
+          <span id="mark_down_our_liability_value"></span>
+          <%= f.range_field :our_liability, min: 0, max: 100, step: 1, class: 'fullwidth our_liability slider' %>
+          <%= f.error_message_on :our_liability %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="left col-3" data-hook="admin_mark_down_form_left">
+      <div data-hook="admin_mark_down_form_amount">
+        <%= f.field_container :vendor_liability do %>
+          <%= f.label :vendor_liability %>
+          <span id="mark_down_vendor_liability_value"></span>
+          <%= f.range_field :vendor_liability, min: 0, max: 100, step: 1, class: 'fullwidth vendor_liability slider' %>
+          <%= f.error_message_on :vendor_liability %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="left col-6" data-hook="admin_mark_down_form_left">
+      <div class="date-range-filter field">
+        <%= label_tag :validity_period, t('spree.validity_period') %>
+
+        <%= admin_hint t('spree.validity_period'), t(:validity_period, scope: [:spree, :hints, "spree/mark_down"]) %>
+
+        <div class="date-range-fields input-group">
+          <%= f.text_field :start_at, class: 'datetimepicker form-control datepicker-from', value: datepicker_field_value(f.object.start_at, with_time: true), placeholder: Spree::MarkDown.human_attribute_name(:start_at) %>
+
+          <div class="input-group-prepend input-group-append">
+            <span class="input-group-text range-divider">
+              <i class="fa fa-arrow-right"></i>
+            </span>
+          </div>
+
+          <%= f.text_field :end_at, class: 'datetimepicker form-control datepicker-to', value: datepicker_field_value(f.object.end_at, with_time: true), placeholder: Spree::MarkDown.human_attribute_name(:end_at) %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="left col-3" data-hook="admin_mark_down_form_left">
+      <div data-hook="admin_mark_down_form_active">
+        <%= f.field_container :active do %>
+          <%= f.label :active %>
+          <%= f.check_box :active %>
+          <%= f.error_message_on :active %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="left col-3" data-hook="admin_mark_down_form_left">
+      <div data-hook="admin_mark_down_form_our_liability">
+        <%= f.field_container :final_sale do %>
+          <%= f.label :final_sale %>
+          <%= f.check_box :final_sale %>
+          <%= f.error_message_on :final_sale %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="left col-6" data-hook="admin_markdown_form_taxons">
+      <%= f.field_container :taxons do %>
+        <%= f.label :include_taxon_ids, plural_resource_name(Spree::Taxon) %><br />
+        <%= f.hidden_field :include_taxon_ids, value: @object.included_taxon_ids.join(',') %>
+      <% end %>
+    </div>
+
+    <div class="left col-6" data-hook="admin_markdown_form_vendors">
+      <%= f.field_container :vendors do %>
+        <%= f.label :include_vendors_ids, plural_resource_name(Spree::Vendor) %><br />
+        <%= f.hidden_field :include_vendor_ids, value: @object.included_vendor_ids.join(',') %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class="left col-6" data-hook="admin_markdown_form_taxons">
+      <%= f.field_container :taxons do %>
+        <%= f.label :exclude_taxon_ids, 'Exclude ' + plural_resource_name(Spree::Taxon) %><br />
+        <%= f.hidden_field :exclude_taxon_ids, value: @object.excluded_taxon_ids.join(',') %>
+      <% end %>
+    </div>
+
+    <div class="left col-6" data-hook="admin_markdown_form_vendors">
+      <%= f.field_container :vendors do %>
+        <%= f.label :exclude_vendor_ids, 'Exclude ' + plural_resource_name(Spree::Vendor) %><br />
+        <%= f.hidden_field :exclude_vendor_ids, value: @object.excluded_vendor_ids.join(',') %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+
+  <div data-hook="admin_mark_down_form_additional_fields"></div>
+
+  <div class="clear"></div>
+</div>

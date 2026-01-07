@@ -1,0 +1,34 @@
+<!-- insert_bottom 'div[data-hook="admin_stock_locations_form_fields"]' -->
+
+<div class="col-md-12">
+  <fieldset class="no-border-bottom">
+    <legend><%= t('.shipping settings') %></legend>
+
+    <div class="row">
+      <div class="col-md-6">
+
+        <% if @stock_location.international? %>
+          <%= label_tag 'Shipping methods included for International Vendor:' %>
+          <% stock_location_filters = [:available_to_all, :available_to_international] %>
+        <% else %>
+          <%= label_tag 'Shipping methods included for Domestic Vendor:' %>
+          <% stock_location_filters = [:available_to_all, :available_to_domestic] %>
+        <% end %>
+
+        <%= Spree::ShippingMethod.where(stock_location_filter: stock_location_filters).pluck(:admin_name).join(',') %>
+
+        <%= f.field_container :shipping_methods do %>
+          <%= f.label :shipping_methods %>
+          <% shipping_methods = Spree::ShippingMethod.where(stock_location_filter: :custom) %>
+          <%= f.select :shipping_method_ids,
+                        options_from_collection_for_select(shipping_methods, :id, :admin_name, @stock_location.shipping_method_ids),
+                        {},
+                        {multiple: true, class: 'type-select custom-select fullwidth'}
+                         %>
+
+          <%= error_message_on :shipping_methods, :shipping_methods %>
+        <% end %>
+      </div>
+    </div>
+  </fieldset>
+</div>

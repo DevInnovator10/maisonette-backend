@@ -1,0 +1,93 @@
+<% content_for :table_filter do %>
+  <div data-hook="admin_salsify_import_index_search">
+    <%= search_form_for [:admin, @search] do |f| %>
+      <div class="row">
+        <div class="date-range-filter col-md-6">
+          <div class="form-group">
+            <%= label_tag :q_created_at_gt, I18n.t('salsify.import.created_at.date_range', scope: 'spree.admin') %>
+            <div class="row no-padding-bottom">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <%= f.text_field :created_at_gt, :class => 'datepicker datepicker-from form-control', :value => params[:q][:created_at_gt], :placeholder => I18n.t('spree.start') %>
+                  <span class="input-group-addon">
+                    <i class="icon icon-calendar"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group">
+
+                  <%= f.text_field :created_at_lt, :class => 'datepicker datepicker-to form-control', :value => params[:q][:created_at_lt], :placeholder => I18n.t('spree.stop') %>
+                  <span class="input-group-addon">
+                    <i class="icon icon-calendar"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="date-range-filter col-md-6">
+          <div class="form-group">
+            <%= label_tag :q_updated_at_gt, I18n.t('salsify.import.updated_at.date_range', scope: 'spree.admin') %>
+            <div class="row no-padding-bottom">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <%= f.text_field :updated_at_gt, :class => 'datepicker datepicker-from form-control', :value => params[:q][:updated_at_gt], :placeholder => I18n.t('spree.start') %>
+                  <span class="input-group-addon">
+                    <i class="icon icon-calendar"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group">
+                  <%= f.text_field :updated_at_lt, :class => 'datepicker datepicker-to form-control', :value => params[:q][:updated_at_lt], :placeholder => I18n.t('spree.stop') %>
+                  <span class="input-group-addon">
+                    <i class="icon icon-calendar"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <%= label_tag :q_salsify_import_rows_unique_key, I18n.t('salsify.import_row.unique_key', scope: 'spree.admin')%>
+            <%= f.text_field :salsify_import_rows_unique_key_eq, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <%= label_tag :q_salsify_import_rows_spree_product_id, I18n.t('salsify.import_row.spree_product_id', scope: 'spree.admin')%>
+            <%= f.text_field :salsify_import_rows_spree_product_id_eq, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <%= label_tag :q_salsify_import_rows_messages, I18n.t('salsify.import_row.messages', scope: 'spree.admin')%>
+            <%= f.text_field :salsify_import_rows_messages_cont, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <%= label_tag :q_state, I18n.t('salsify.import.status', scope: 'spree.admin')%>
+            <%= f.select :state_eq, Salsify::Import.states, { :include_blank => true }, class: 'custom-select fullwidth' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions filter-actions" data-hook="admin_salsify_import_index_search_button">
+        <%= button_tag t('spree.search'), class: 'btn btn-primary' %>
+        <% if @active_search %>
+          <%= link_to 'Reset Filters', admin_mirakl_commercial_orders_path, class: 'btn btn-secondary' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Mirakl::ProcessOrderLineReimbursementRefundsWorker, mirakl: true do
-  describe '#perform' do
+    describe '#perform' do
     let(:mirakl_reimbursements) { [reimbursement_ready_1, reimbursement_ready_2] }
     let(:reimbursement_ready_1) { build_stubbed :mirakl_order_line_reimbursement }
     let(:reimbursement_ready_2) { build_stubbed :mirakl_order_line_reimbursement }

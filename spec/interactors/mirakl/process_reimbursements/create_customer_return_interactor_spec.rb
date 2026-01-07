@@ -83,6 +83,7 @@ RSpec.describe Mirakl::ProcessReimbursements::CreateCustomerReturnInteractor, mi
         it 'updates the return items with the customer return and reimbursement and receives them' do
           expect(return_items_1).to all have_received(:update).with(customer_return: customer_return_1,
                                                                     reimbursement: reimbursement_1,
+
                                                                     acceptance_status: :accepted)
           expect(return_items_2).to all have_received(:update).with(customer_return: customer_return_2,
                                                                     reimbursement: reimbursement_2,

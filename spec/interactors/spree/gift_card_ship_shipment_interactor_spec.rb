@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Spree::GiftCardShipShipmentInteractor do
-  describe '#call' do
+    describe '#call' do
     context 'when it is successful' do
       subject(:call) { described_class.call gift_card: gift_card_1 }
 

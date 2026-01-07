@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 module Spree::Api::ReturnAuthorizationsController::Mine
-  def self.prepended(base)
+    def self.prepended(base)
+
     base.include MineConcerns
     base.before_action :load_order, except: [:mine, :my_return]
   end

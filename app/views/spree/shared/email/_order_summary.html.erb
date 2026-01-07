@@ -1,0 +1,93 @@
+<div align="center" width="100%" bgcolor="#ffffff" style="background: #ffffff !important">
+  <table width="600" align="center" cellspacing="0" cellpadding="0" bgcolor="#ffffff" style="background: #ffffff !important">
+    <tr>
+      <td width="75">&nbsp;</td>
+      <td align="center">
+        <font class="order-title">Order Summary #<%= @order.number %></font>
+      </td>
+      <td width="75">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" height="60" colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="75">&nbsp;</td>
+      <td align="center">
+        <table width="450" align="center" cellspacing="0" cellpadding="0" bgcolor="#ffffff" style="background: #ffffff !important">
+          <tr>
+            <td align="center" height="20" colspan="3" class="order-border-darker">&nbsp;</td>
+          </tr>
+
+          <% @order.line_items.each do |item| %>
+          <tr>
+            <td align="center" width="150">
+              <a href="<%= product_url(item.product) %>" style="text-decoration:none">
+                <img src="<%= mail_product_image(item.product) %>" width="60" height="60" style="display: block;" />
+              </a>
+            </td>
+            <td align="left">
+              <a href="<%= product_url(item.product) %>" style="text-decoration:none">
+                <font class="order__product__brand"><%= item.product.brand&.name %><br /></font>
+                <font class="order__product__name"><%= raw(item.variant.product.name) %><br /></font>
+                <% if item.final_sale? %>
+                  <font class="order__product__final_sale">Final Sale<br /></font>
+                <% end %>
+                <%= display_option_values(item.variant.option_values) do |ov| %>
+                  <font class="order__product__options-key"><% ov.option_type.presentation %></font>
+                  <font class="order__product__options-value"><%= ov.presentation %></font>
+                <% end %>
+                <font class="order__product__options-key">Qty:</font>
+                <font class="order__product__options-value"><%= item.quantity %></font>
+                <% monogram = item.monogram %>
+                <% if monogram %>
+                  <br />
+                  <font class="order__product__options-key">Monogram: </font>
+                  <font class="order__product__options-value">
+                    <%= [monogram.text, monogram.customization.dig(:font, :name), monogram_color_display_name(item)].compact.join(', ') %>
+                  </font>
+                <% end %>
+              </a>
+            </td>
+            <td align="right">
+              <font class="order__product__price"><%= item.single_money %></font>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" height="20" colspan="3">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center" height="20" colspan="3" class="order-border">&nbsp;</td>
+          </tr>
+          <% end # line_item %>
+
+          <% order_subtotals(@order).each do |subtotal| %>
+          <tr>
+            <td align="left" colspan="2">
+              <font class="order__total-key"><%= subtotal[:label] %></font>
+            </td>
+            <td align="right">
+              <font class="order__total-value"><%= subtotal[:value] %></font>
+            </td>
+          </tr>
+          <% end #subtotals %>
+
+          <tr>
+            <td align="center" height="20" colspan="3">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center" height="20" colspan="3" class="order-border-darker">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="left" colspan="2">
+              <font class="order__total-key">TOTAL</font>
+            </td>
+            <td align="right">
+              <font class="order__total-key"><%= @order.display_total %></font>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td width="75">&nbsp;</td>
+    </tr>
+  </table>
+</div>

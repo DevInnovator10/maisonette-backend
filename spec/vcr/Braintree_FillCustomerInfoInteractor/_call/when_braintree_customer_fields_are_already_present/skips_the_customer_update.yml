@@ -1,0 +1,82 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.sandbox.braintreegateway.com/merchants/hyfrbrzhzb9jzngd/customers
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <customer>
+          <email>fake-user@maisonette.com</email>
+          <first-name>John</first-name>
+          <last-name>Doe</last-name>
+          <phone>3338888888</phone>
+        </customer>
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept:
+      - application/xml
+      User-Agent:
+      - Braintree Ruby Gem 2.96.0
+      X-Apiversion:
+      - '5'
+      Content-Type:
+      - application/xml
+      Authorization:
+      - "<Authorization Code>"
+  response:
+    status:
+      code: 201
+      message: ''
+    headers:
+      Date:
+      - Tue, 27 Apr 2021 10:22:03 GMT
+      Content-Type:
+      - application/xml; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Authentication:
+      - basic_auth
+      X-User:
+      - vpr2hxsd2x4rnntd
+      Vary:
+      - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
+      Etag:
+      - W/"4b5e72c33cda797c9d06c4da89b54f51"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.103167'
+      X-Request-Id:
+      - d19354e1-17ac-4de5-a354-5fc145963288
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      X-Broxyid:
+      - d19354e1-17ac-4de5-a354-5fc145963288
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Paypal-Debug-Id:
+      - bcf5657f7b004
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAMvlh2AAA5RSTW/CIBi++ysa7kg/plND60zMlnnYLm7ZvNHy1uJaaACn7a9fP9xq4mncni94XoAuz0XufIM2QskQeWMXOSATxYXch+ht+4hnaBmNaHI0VhWgo5HjUMGjqe9O3OnMnVDSoJZsxCRj0uIGZ1WqY11ndTw/1HLPKblWW3cqtLFYsgKijcokJVdEq+fsF60VUDLAVkxUUTJZOVLkIbL6CIh0PBRM5FHKvgAfDeiHBholwVoYNxFKer11llnDR0EQzPpFSc901dj5ZucTxEZYuOETDcwCx8w6tiohRLyBVhSAIt/1PezeYf9+67kL31+4wY6SIdDljyX/X34I9Od3z4JTATk3faV9rmKWt/f8GbzX/Gludx+b9OXwfHrZrvzX9cqjZPBchuDC4oRpbi41mNasuszIONdgDNxozTR/v+IHAAD//wMAYQon+0gCAAA=
+    http_version:
+  recorded_at: Tue, 27 Apr 2021 10:22:03 GMT
+recorded_with: VCR 5.0.0

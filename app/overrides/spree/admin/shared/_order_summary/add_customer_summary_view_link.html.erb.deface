@@ -1,0 +1,6 @@
+<!-- insert_bottom '.additional-info' -->
+
+<% if @order.complete? %>
+  <dt data-hook="admin-order-customer-summary-view">Customer Summary View:</dt>
+  <dd id="order-customer-summary-view"><%= link_to(@order.number, admin_order_url(@order), target: '_blank') %></dd>
+<% end %>

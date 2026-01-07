@@ -1,0 +1,244 @@
+default: &default
+    secret_key_base: <%= ENV.fetch('SECRET_KEY_BASE', 'f0e66764b6f49f428f45bb53e9d5c1dd33cf7ec2eae6451fd5ddf1b42260cf2fb5e3cb381750e1f4b011643d59b55d5ee51ac52d9eb7771ee7161fe38d329e6c') %>
+
+  admin_url: <%= ENV.fetch('ADMIN_URL', 'www.example.com') %>
+  base_url: <%= ENV.fetch('BASE_URL', 'www.example.com') %>
+  cors_origins: <%= ENV.fetch('CORS_ORIGINS', '') %>
+  datadog_disabled: <%= ENV.fetch('DATADOG_DISABLED', false) %>
+  orders_path: <%= ENV.fetch('ORDERS_PATH', '/orders') %>
+  log_level: <%= ENV.fetch('LOG_LEVEL', 'debug') %>
+  json_logs: <%= ENV.fetch('JSON_LOGS', false) %>
+  product_path: <%= ENV.fetch('PRODUCT_PATH', '/product') %>
+  serve_static_files: <%= ENV.fetch('RAILS_SERVE_STATIC_FILES', false) %>
+  default_giftwrap_price: 5.00
+
+  afterpay:
+    test_mode: <%= ENV.fetch('AFTERPAY_TEST_MODE', true) %>
+    merchant_id: <%= ENV.fetch('AFTERPAY_MERCHANT_ID', nil) %>
+    secret_key: <%= ENV.fetch('AFTERPAY_SECRET_KEY', nil) %>
+
+  algolia:
+    application_id: <%= ENV.fetch('ALGOLIA_APPLICATION_ID', nil) %>
+    api_key: <%= ENV.fetch('ALGOLIA_API_KEY', nil) %>
+    product_index: <%= ENV.fetch('ALGOLIA_PRODUCT_INDEX', 'products_dev') %>
+
+  aws:
+    access_key_id: <%= ENV.fetch('AWS_ACCESS_KEY_ID') %>
+    secret_access_key: <%= ENV.fetch('AWS_SECRET_ACCESS_KEY') %>
+    region: <%= ENV.fetch('AWS_REGION') %>
+    bucket: <%= ENV.fetch('AWS_S3_BUCKET') %>
+    private_bucket: <%= ENV.fetch('AWS_S3_PRIVATE_BUCKET') %>
+    syndication_bucket: <%= ENV.fetch('AWS_S3_SYNDICATION_BUCKET') %>
+    memcached_servers: <%= ENV.fetch('MEMCACHED_SERVERS', nil) %>
+
+  braintree:
+    environment: <%= ENV.fetch('BRAINTREE_ENV') %>
+    merchant_id: <%= ENV.fetch('BRAINTREE_MERCHANT_ID') %>
+    public_key: <%= ENV.fetch('BRAINTREE_PUBLIC_KEY') %>
+    private_key: <%= ENV.fetch('BRAINTREE_PRIVATE_KEY') %>
+
+  cdn:
+    assets: <%= ENV.fetch('ASSETS_CDN') %>
+
+  easypost:
+    api_key: <%= ENV.fetch('EASYPOST_API_KEY', '') %>
+
+  forter:
+    site_id: <%= ENV.fetch('FORTER_SITE_ID', '') %>
+    secret_key: <%= ENV.fetch('FORTER_SECRET_KEY', '') %>
+    api_version: <%= ENV.fetch('FORTER_API_VERSION', '2.3') %>
+    api_path: <%= ENV.fetch('FORTER_API_PATH', 'api.forter-secure.com/v2/') %>
+
+  greenhouse:
+    careers_url: <%= ENV.fetch('GREENHOUSE_CAREERS_URL', '') %>
+
+  jifiti:
+    admin_user: <%= ENV.fetch('JIFITI_ADMIN_USER') %>
+    order_email: <%= ENV.fetch('JIFITI_ORDER_EMAIL') %>
+    mais_order_email: <%= ENV.fetch('JIFITI_MAIS_ORDER_EMAIL') %>
+
+  klaviyo:
+    default_list_id: <%= ENV.fetch('KLAVIYO_DEFAULT_LIST_ID', '') %>
+    private_api_key: <%= ENV.fetch('KLAVIYO_PRIVATE_API_KEY', '') %>
+    public_api_key: <%= ENV.fetch('KLAVIYO_PUBLIC_API_KEY', '') %>
+
+  kustomer:
+    api_key: <%= ENV.fetch('KUSTOMER_API_KEY', nil) %>
+    webhooks:
+      order: <%= ENV.fetch('KUSTOMER_WEBHOOKS_ORDER', '') %>
+      customer: <%= ENV.fetch('KUSTOMER_WEBHOOKS_CUSTOMER', '') %>
+
+  lograge:
+    enabled: <%= ENV.fetch('LOGRAGE_ENABLED', false) %>
+    sql: <%= ENV.fetch('LOGRAGE_SQL', false) %>
+
+  mail:
+    salsify_reports_email: <%= ENV.fetch('SALSIFY_REPORTS_EMAIL') %>
+    vendor_support_email: <%= ENV.fetch('VENDOR_SUPPORT_EMAIL') %>
+    ops_support_email: <%= ENV.fetch('OPS_SUPPORT_EMAIL') %>
+    merch_email: <%= ENV.fetch('MERCH_EMAIL') %>
+    support_email: <%= ENV.fetch('SUPPORT_EMAIL') %>
+
+  mailer:
+    performer_deliveries: <%= ENV.fetch('MAILER_PERFORMER_DELIVERIES', true) %>
+
+  mirakl:
+    api_endpoint: <%= ENV.fetch('MIRAKL_API_ENDPOINT') %>
+    front_key: <%= ENV.fetch('MIRAKL_FRONT_KEY') %>
+    operator_key: <%= ENV.fetch('MIRAKL_OPERATOR_KEY') %>
+    url: <%= ENV.fetch('MIRAKL_URL') %>
+
+  moengage:
+    app_id: <%= ENV.fetch('MOENGAGE_APP_ID', '') %>
+    api_secret: <%= ENV.fetch('MOENGAGE_API_SECRET', '') %>
+
+  narvar:
+    api_url: <%= ENV.fetch('NARVAR_API_URL') %>
+    api_username: <%= ENV.fetch('NARVAR_API_USERNAME') %>
+    api_password: <%= ENV.fetch('NARVAR_API_PASSWORD') %>
+    return_url: <%= ENV.fetch('NARVAR_RETURN_URL') %>
+
+  order_management:
+    afterpay_payment_gateway_id: <%= ENV.fetch('AFTERPAY_PAYMENT_GATEWAY_ID', '0b01b0000004C9SAAU') %>
+    afterpay_gateway_ref_number: <%= ENV.fetch('AFTERPAY_GATEWAY_REF_NUMBER', '1utiCssXit7A52SWFmSIO2o9vzM') %>
+    card_payment_gateway_id: <%= ENV.fetch('OMS_CARD_PAYMENT_GATEWAY_ID', '0b01b0000000001AAA') %>
+    digital_wallet_payment_gateway_id: <%= ENV.fetch('OMS_DIGITAL_WALLET_PAYMENT_GATEWAY_ID', '0b01b0000004C9DAAU') %>
+    line_item_pricebook_entry_id: <%= ENV.fetch('OMS_LINE_ITEM_PRICEBOOK_ENTRY_ID', '01u1b000005oYT9AAM') %>
+    shipment_pricebook_entry_id: <%= ENV.fetch('OMS_SHIPMENT_PRICEBOOK_ENTRY_ID', '01u1b000005oYUgAAM') %>
+    payment_gateway_id: <%= ENV.fetch('OMS_PAYMENT_GATEWAY_ID', '0b01b0000000001AAA') %>
+    pricebook2_id: <%= ENV.fetch('OMS_PRICEBOOK2_ID', '01s4W000000oj5uQAA') %>
+    product2_id: <%= ENV.fetch('OMS_PRODUCT2_ID', '01t1b000002KSJNAA4') %>
+
+  paccurate:
+    api_key: <%= ENV.fetch('PACCURATE_API_KEY', false) %>
+
+  redis:
+    db: <%= ENV.fetch('REDIS_DB', 0) %>
+    sidekiq_url: <%= ENV.fetch('REDIS_URL_SIDEKIQ') %>
+    service_url: <%= ENV.fetch('REDIS_URL_SERVICE') %>
+    taxon_ids_touch_list: 'spree-taxon'
+
+  salsify:
+    api_endpoint: <%= ENV.fetch('SALSIFY_API_ENDPOINT') %>
+    auth_token: <%= ENV.fetch('SALSIFY_AUTH_TOKEN') %>
+    ftp_hostname: <%= ENV.fetch('SALSIFY_FTP_HOSTNAME') %>
+    ftp_username: <%= ENV.fetch('SALSIFY_FTP_USERNAME') %>
+    ftp_password: <%= ENV.fetch('SALSIFY_FTP_PASSWORD') %>
+    ftp_port: <%= ENV.fetch('SALSIFY_FTP_PORT', 21) %>
+    local_path: <%= Rails.root.join 'salsify_imports' %>
+    organization_id: <%= ENV.fetch('SALSIFY_ORGANIZATION_ID') %>
+
+  salesforce:
+    production_mode: <%= ENV.fetch('OMS_PRODUCTION_MODE', false) %>
+    client_id: <%= ENV.fetch('OMS_CLIENT_ID', nil) %>
+    client_secret: <%= ENV.fetch('OMS_CLIENT_SECRET', nil) %>
+    username: <%= ENV.fetch('OMS_USERNAME', nil) %>
+    password: <%= ENV.fetch('OMS_PASSWORD', nil) %>
+    security_token: <%= ENV.fetch('OMS_SECURITY_TOKEN', nil) %>
+    api_version: <%= ENV.fetch('SALESFORCE_API_VERSION', '54.0') %>
+
+  sentry:
+    dsn: <%= ENV.fetch('SENTRY_DSN', nil) %>
+    server_name: <%= ENV.fetch('GIT_BRANCH', Socket.gethostname) %>
+
+  sidekiq:
+    inline: <%= ENV.fetch('SIDEKIQ_INLINE', false) %>
+
+  slack:
+    webhook: <%= ENV.fetch('SLACK_WEBHOOK', nil) %>
+    sales_feed: <%= ENV.fetch('SLACK_SALES_FEED', nil) %>
+    vendor_invoices_feed: <%= ENV.fetch('SLACK_VENDOR_INVOICES_FEED', nil) %>
+
+  smtp:
+    address: <%= ENV.fetch('SMTP_ADDRESS', nil) %>
+    port: <%= ENV.fetch('SMTP_PORT', 587) %>
+    domain: <%= ENV.fetch('SMTP_DOMAIN', nil) %>
+    username: <%= ENV.fetch('SMTP_USERNAME', nil) %>
+    password: <%= ENV.fetch('SMTP_PASSWORD', nil) %>
+    default_from: <%= ENV.fetch('SMTP_DEFAULT_FROM', nil) %>
+    delivery_method: <%= ENV.fetch('SMTP_DELIVERY_METHOD', :smtp) %>
+    perform_deliveries: <%= ENV.fetch('SMTP_PERFORM_DELIVERIES', true) %>
+
+  store_defaults:
+    default_lead_time: <%= ENV.fetch('DEFAULT_LEAD_TIME', 2) %>
+    admin_user: <%= ENV.fetch('STORE_ADMIN_USER', 'admin@maisonette.com') %>
+    phone_number: <%= ENV.fetch('STORE_PHONE_NUMBER', '844-MAISONETTE') %>
+    contact_email: <%= ENV.fetch('CONTACT_EMAIL', 'customercare@maisonette.com') %>
+  sitemap:
+    cms_pages_endpoint: <%= ENV.fetch('SITEMAP_CMS_PAGES_ENDPOINT', nil) %>
+    lpc_pages_path: <%= ENV.fetch('SITEMAP_LPC_PAGE_PATH', nil) %>
+    old_lpc_pages: <%= ENV.fetch('OLD_SITEMAP_LPC_PAGES', 'lpc_redirects/old-lpcs.xml') %>
+    edits_sitemap: <%= ENV.fetch('EDITS_SITEMAP', 'lpc_redirects/seo-agency-edits-sitemap.xml') %>
+
+  zyte:
+    environment: <%= ENV.fetch('ZYTE_ENVIRONMENT', 'staging') %>
+    aws:
+      region: <%= ENV.fetch('ZYTE_AWS_REGION', 'us-east-1') %>
+      bucket: <%= ENV.fetch('ZYTE_AWS_BUCKET', 'maisonette-zyte') %>
+
+development:
+  <<: *default
+  rails:
+    cache_classes: <%= ENV.fetch('DEV_CACHE_CLASSES', false) %>
+
+test:
+  <<: *default
+  algolia:
+    application_id: <%= ENV.fetch('ALGOLIA_APPLICATION_ID', nil) %>
+    api_key: <%= ENV.fetch('ALGOLIA_API_KEY', nil) %>
+    product_index: <%= ENV.fetch('ALGOLIA_PRODUCT_INDEX', 'products_tst') if Rails.env.test? %>
+
+ci:
+  <<: *default
+  rails:
+    cache_classes: true
+  algolia:
+    application_id: <%= ENV.fetch('ALGOLIA_APPLICATION_ID', nil) %>
+    api_key: <%= ENV.fetch('ALGOLIA_API_KEY', nil) %>
+    product_index: <%= ENV.fetch('ALGOLIA_PRODUCT_INDEX', 'products_ci') if Rails.env.ci? %>
+
+preview:
+  <<: *default
+  admin_url: <%= ENV.fetch('ADMIN_URL') if Rails.env.preview? %>
+  base_url: <%= ENV.fetch('BASE_URL') if Rails.env.preview? %>
+  algolia:
+    application_id: <%= ENV.fetch('ALGOLIA_APPLICATION_ID', nil) %>
+    api_key: <%= ENV.fetch('ALGOLIA_API_KEY', nil) %>
+    product_index: <%= ENV.fetch('ALGOLIA_PRODUCT_INDEX', 'products_pre') if Rails.env.preview? %>
+
+staging:
+  <<: *default
+  admin_url: <%= ENV.fetch('ADMIN_URL') if Rails.env.staging? %>
+  base_url: <%= ENV.fetch('BASE_URL') if Rails.env.staging? %>
+  algolia:
+    application_id: <%= ENV.fetch('ALGOLIA_APPLICATION_ID', nil)  if Rails.env.staging? %>
+    api_key: <%= ENV.fetch('ALGOLIA_API_KEY', nil)  if Rails.env.staging? %>
+    product_index: <%= ENV.fetch('ALGOLIA_PRODUCT_INDEX', 'products_stg') if Rails.env.staging? %>
+
+ppd:
+  <<: *default
+  admin_url: <%= ENV.fetch('ADMIN_URL') if Rails.env.ppd? %>
+  base_url: <%= ENV.fetch('BASE_URL') if Rails.env.ppd? %>
+  algolia:
+    application_id: <%= ENV.fetch('ALGOLIA_APPLICATION_ID', nil)  if Rails.env.ppd? %>
+    api_key: <%= ENV.fetch('ALGOLIA_API_KEY', nil)  if Rails.env.ppd? %>
+    product_index: <%= ENV.fetch('ALGOLIA_PRODUCT_INDEX', 'products_gotdoodle') if Rails.env.ppd? %>
+
+production:
+  <<: *default
+  admin_url: <%= ENV.fetch('ADMIN_URL') if Rails.env.production? %>
+  base_url: <%= ENV.fetch('BASE_URL') if Rails.env.production? %>
+  algolia:
+    application_id: <%= ENV.fetch('ALGOLIA_APPLICATION_ID', nil)  if Rails.env.production? %>
+
+    api_key: <%= ENV.fetch('ALGOLIA_API_KEY', nil)  if Rails.env.production? %>
+    product_index: <%= ENV.fetch('ALGOLIA_PRODUCT_INDEX', 'products_production') if Rails.env.production? %>
+
+sf:
+  <<: *default
+  admin_url: <%= ENV.fetch('ADMIN_URL') if Rails.env.sf? %>
+  base_url: <%= ENV.fetch('BASE_URL') if Rails.env.sf? %>
+  algolia:
+    application_id: <%= ENV.fetch('ALGOLIA_APPLICATION_ID', nil)  if Rails.env.sf? %>
+    api_key: <%= ENV.fetch('ALGOLIA_API_KEY', nil)  if Rails.env.sf? %>
+    product_index: <%= ENV.fetch('ALGOLIA_PRODUCT_INDEX', 'products_sf') if Rails.env.sf? %>

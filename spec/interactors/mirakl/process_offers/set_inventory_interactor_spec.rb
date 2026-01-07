@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Mirakl::ProcessOffers::SetInventoryInteractor, mirakl: true do
-  subject(:context) { described_class.call(offers_inventory_to_update: [mirakl_offer]) }
+    subject(:context) { described_class.call(offers_inventory_to_update: [mirakl_offer]) }
 
   let(:mirakl_offer) do
     create(:mirakl_offer, :best, sku: offer_settings.maisonette_sku, quantity: 100, shop: mirakl_shop)
@@ -119,6 +119,7 @@ RSpec.describe Mirakl::ProcessOffers::SetInventoryInteractor, mirakl: true do
 
     it 'creates the stock item' do
       expect { context }.to change(stock_items_for_variant, :count).by(1)
+
       expect(context).to be_a_success
 
       expect(Sentry).not_to have_received(:capture_exception_with_message)
@@ -131,6 +132,7 @@ RSpec.describe Mirakl::ProcessOffers::SetInventoryInteractor, mirakl: true do
     let(:offer_without_variant) { create(:mirakl_offer, :best, sku: 'not-found', quantity: 100, shop: mirakl_shop) }
 
     it 'sets the count on hand on the stock item' do
+
       expect { context }.to change(Spree::StockItem, :count).by(1)
       expect(context).to be_a_success
 

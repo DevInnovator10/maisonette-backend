@@ -1,0 +1,50 @@
+<br/>
+
+<div><b>Orders' documents</b></div>
+<br/>
+<table>
+    <tr>
+    <td>Orders:</td>
+    <td><%= @orders.count + @orders_with_fixed_errors.count %></td>
+  <tr>
+  <tr>
+    <td>Total Quantity:</td>
+    <td><%= @total_items_quantity %></td>
+  </tr>
+</table>
+<br/>
+
+<table>
+  <tr>
+    <td>From:</td>
+    <td><%= @begin_time %></td>
+  <tr>
+  <tr>
+    <td>To:</td>
+    <td><%= @end_time %></td>
+  </tr>
+</table>
+<br/>
+
+<% if @orders_with_fixed_errors.any? %>
+  <table>
+    <td><b>Fixed Orders:</b></td>
+    <% @orders_with_fixed_errors.each do |order| %>
+      <tr>
+        <td><%= order %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+<br/>
+
+<% if @orders.any? %>
+  <table>
+    <td><b>Accepted Orders:</b></td>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

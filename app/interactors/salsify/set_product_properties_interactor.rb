@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Salsify
-  class SetProductPropertiesInteractor < ApplicationInteractor
+    class SetProductPropertiesInteractor < ApplicationInteractor
     def call
       set_properties
     end

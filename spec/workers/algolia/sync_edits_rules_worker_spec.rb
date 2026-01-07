@@ -19,6 +19,7 @@ RSpec.describe Algolia::SyncEditsRulesWorker do
           alternatives: false,
           anchoring: 'is',
           pattern: '',
+
           filters: 'edits: just-in'
         }],
         consequence: {

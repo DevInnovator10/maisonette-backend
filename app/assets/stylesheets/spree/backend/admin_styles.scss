@@ -1,0 +1,60 @@
+@import 'spree/backend/globals/variables_override';
+@import 'spree/backend/components/mirakl_orders_view';
+@import 'spree/backend/components/narvar';
+@import 'spree/backend/components/jifiti';
+@import 'spree/backend/components/maisonette_sale';
+
+.tabs > li:not(.in-dropdown).active a {
+  background-color: $color-1;
+  border-bottom-color: $color-1;
+}
+
+.admin-nav-menu .icon_link::before {
+  color: $color-3;
+  font-weight: 400;
+  left: 2em;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.admin-nav-menu .icon_link {
+  padding-left: calc(26px + 2em);
+  text-indent: 0;
+}
+
+.edit_taxon .permalink-prefix {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#admin-nav-toggle {
+  color: #8d9cc4;
+}
+
+#login-nav a {
+  color: #8d9cc4;
+}
+
+#login-nav a:hover {
+  color: #2f4da1;
+}
+
+.user_picker .select2-choices {
+  height: 300px !important;
+  overflow: scroll;
+}
+
+.no-padding-before:before {
+  padding: 0 !important;
+}
+
+.table-compact td {
+  line-height: 30px;
+
+  padding: 1px !important;
+}
+.table-compact select {
+  padding: 3px;
+}

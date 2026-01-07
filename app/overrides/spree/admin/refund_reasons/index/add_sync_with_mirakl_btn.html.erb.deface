@@ -1,0 +1,7 @@
+<!-- insert_bottom "ul.actions"  -->
+
+<% if can?(:create, Spree::RefundReason) %>
+  <li>
+    <%= link_to t('mirakl.sync_reasons_with_mirakl'), sync_with_mirakl_admin_refund_reasons_url, id: 'admin_sync_with_mirakl', class: 'btn btn-primary' %>
+  </li>
+<% end %>

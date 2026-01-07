@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-6">
+    <div class="field">
+      <%= Spree::Promotion::Rules::AtLeastNOrders.human_attribute_name(:completed_order_threshold) %><br />
+      <br />
+      This rule will be applied when the number of the orders placed by that user are equal or greater than the
+      threshold
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="field">
+      <%= number_field_tag "#{param_prefix}[preferred_threshold_order_occurrence]", promotion_rule.preferred_threshold_order_occurrence, class: 'fullwidth' %>
+    </div>
+  </div>
+</div>

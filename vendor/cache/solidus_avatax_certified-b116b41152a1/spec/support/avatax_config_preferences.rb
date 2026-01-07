@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MyConfigPreferences
-  def self.set_preferences
+    def self.set_preferences
     Spree::Avatax::Config.reset
 
     Spree::Avatax::Config.configure do |config|
@@ -13,6 +13,7 @@ class MyConfigPreferences
       config.log_to_stdout = false
       config.raise_exceptions = false
       config.log = true
+
       config.address_validation = true
       config.tax_calculation = true
       config.document_commit = true

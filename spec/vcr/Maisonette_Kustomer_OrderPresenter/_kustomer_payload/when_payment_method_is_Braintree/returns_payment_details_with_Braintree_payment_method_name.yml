@@ -1,0 +1,92 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.sandbox.braintreegateway.com/merchants/hyfrbrzhzb9jzngd/customers
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <customer>
+          <payment-method-nonce>fake-valid-visa-nonce</payment-method-nonce>
+          <email>email2@example.com</email>
+          <first-name>John</first-name>
+          <last-name>Smith</last-name>
+          <phone>555-555-0199</phone>
+          <credit-card>
+            <billing-address>
+              <first-name>John</first-name>
+              <last-name>Smith</last-name>
+              <street-address>PO Box 1337 Northwest</street-address>
+              <locality>Herndon</locality>
+              <postal-code>10003</postal-code>
+              <region>Alabama</region>
+              <country-code-alpha2>US</country-code-alpha2>
+            </billing-address>
+          </credit-card>
+        </customer>
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept:
+      - application/xml
+      User-Agent:
+      - Braintree Ruby Gem 2.96.0
+      X-Apiversion:
+      - '5'
+      Content-Type:
+      - application/xml
+      Authorization:
+      - "<Authorization Code>"
+  response:
+    status:
+      code: 201
+      message: ''
+    headers:
+      Date:
+      - Wed, 13 Jan 2021 10:18:34 GMT
+      Content-Type:
+      - application/xml; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Authentication:
+      - basic_auth
+      X-User:
+      - vpr2hxsd2x4rnntd
+      Vary:
+      - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
+      Etag:
+      - W/"72e0bfe8eb805345fb0d8591aa99517d"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.478005'
+      X-Request-Id:
+      - 93bde6a0-1159-45fd-abc6-363238dbe630
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      X-Broxyid:
+      - 93bde6a0-1159-45fd-abc6-363238dbe630
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAPrI/l8AA6xWS1PjOBC+8ytcuRvHdgIJZcwwtQW7c2C2isfucJmSrU6siSx5JRni/PqV/M4LApkDKfrrr9tSv9TB1TKl1gsISTi7HLinw4EFLOaYsPnl4PHhxp4MrsKTIM6l4imI8MSyAoLD8fh84vnn47PA0ZIBtTJOEFO2lpNiJiKxSlbR9NeKzXHg9LWGPSNCKpuhFMJvPGGB0wOMnqJGuk+JSgKnA4w65mmGWGExQi8HSuQwcEocUkRoWP56X2CJ0ozCqSYHTqUxnCzhDPQFxrb5G7rTaeBUWHkwtNzy+gqRJAq28FgAUoBtpCxVZHA5wFpUJIVB6A09V/u2Xf/BHV64kwt/9Bw4nUFpn2f4Y/adQfX9Min2jADFsjrSnPIIURPlH/7TCt9O1fO/32Z3D4/+9z/+Wt2tHr3A6Tj1JTBRdowElvUxkBCoGBjtur5CNBYRSnWB2AhjAVI2eFUaatnURI01tWOv100f7sjvFEbNers8mu/uLpJaK5UAUO0V/v5ufeVLy/X9c+uOC5W8glSBs8HqzGGpgGGTi0q15yuUx4gSVYR/gmCY6/u0SEcSMNfdF15TFKEUBU4td4SMS6UzptsSQnc4HPq6YntQ/8o5U6IoYRvRLEFe+HivY70Df8vK11bXu8z8fWYs16kkcTgZDTfsGs22YZmvR6ZbC1v3Sle2tPjMui7pqPOykdayV43XCMSeqB/ZmLWXI9uz9OHsaRXdQiwcDV1vMjGcNtmB6TPbfC58ItIEoZX7jIRTrDvHRGZXCEzpm4lLENXxXTD+ykw4W6yjVRHmM5tImSMWQ5+/rWwNjw/wB8ZCRz1kvO0gb/kxTahMj5XNsYU2fAwRUV1EKrFTzlBOmwBEnFNAbBCaTBhqqezIudBZtnVn59QEoud0U9OYwDIjojyPnXKmktDVl9sCd7ALQMKkYZ1eomts3XUbZ58hKqG26p2kC2R8ezOO/nnK8a1L8W3y8nwz/fXDnYo7Rsexn7GNx6W0TgBRleiq7dVWD2toJEVzsHNBw0SpTF44DpISlDyNBCLMjOG5Ds8rKsx77mSoSIGpnymohOOflM+586Ib5jRj8ytgL0RwZgiXEjEccfMktf7bL+qqNq0ZIbbojraGNtTyeRmF7mTi1m/NqNXpowhOe43WAC1BQIZ0QO641tX/dzqO87hcizr7DmtoMo9kLEhmMrn+Snc9r/gCWLg4Kwq5mgdOJTbKnJH/8mZqas86NETvDSJ0xyj24ng2PfcmZ94sPpudR2g68nw/9tAQYj3V9pm2vn/DnHwBlnJb4sWekmz1PQuhj1E17L6QEGkzUK9cLOwyHGS1t+Z3UesNyNlYgdaAcqIH9XSHnRvU5ujf2pE+MgoP2I8O2I7e2o2O2owO2osO2Ire2YkO3Ig+sw99ahv65C50zCb07h70Wx7po3s7cHoV0gqgxa6+w5P/AQAA//8DAAc6NAmHDgAA
+    http_version:
+  recorded_at: Wed, 13 Jan 2021 10:18:35 GMT
+recorded_with: VCR 5.0.0

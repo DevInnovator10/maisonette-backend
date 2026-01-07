@@ -2,6 +2,7 @@
 
 module Narvar
   module Api
+
     module Commands
       class CreateOrderInteractor < ApplicationInteractor
         include Base

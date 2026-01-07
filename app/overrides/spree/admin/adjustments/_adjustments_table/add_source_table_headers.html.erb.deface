@@ -1,0 +1,4 @@
+<!-- insert_before "th.actions" -->
+
+<th>Source Type</th>
+<th>Source Email</th>

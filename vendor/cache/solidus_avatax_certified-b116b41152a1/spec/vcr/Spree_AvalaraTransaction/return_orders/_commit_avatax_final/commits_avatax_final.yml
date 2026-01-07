@@ -151,6 +151,7 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Connection:
+
       - keep-alive
       Server:
       - Kestrel

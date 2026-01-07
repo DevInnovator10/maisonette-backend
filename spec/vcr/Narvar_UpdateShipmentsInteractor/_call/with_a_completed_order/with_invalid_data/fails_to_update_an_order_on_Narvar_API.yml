@@ -1,0 +1,121 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ws-st01.narvar.qa/api/v1/orders
+    body:
+        encoding: UTF-8
+      string: '{"order_info":{"order_number":"R00080001","order_date":"2019-11-20T11:43:13-05:00","status":"READY","currency_code":"USD","attributes":{"checkout_brand":null,"checkout_language":"EN","checkout_country":"US","checkout_locale":"en_US"},"order_items":[{"item_id":7,"sku":"SKU-13","name":"Product
+        #7 - 3218","description":"As seen on TV!","quantity":1,"unit_price":"10.0","discount_amount":0.0,"discount_percent":null,"is_backordered":false,"estimated_del":null,"categories":[],"item_image":null,"item_url":"http://localhost:7777/product/product-7-3218","is_final_sale":false,"fulfillment_status":"PENDING","is_gift":false,"final_sale_date":null,"line_number":0,"events":[{"event":null,"quantity":null,"sequence":null}],"attributes":{"color_id":null,"color":null,"size":null,"side_id":null,"style":"Size-7","custom_attribute1":null,"custom_attribute2":null},"dimensions":{"uom":null,"length":0.0,"width":0.0,"height":0.0,"weight":0.0,"weight_uom":"lbs"},"vendors":[{"email":null,"name":"NY
+        Warehouse","phone":"(202) 456-1111","type":"VND-3","address":{"street_1":"1600
+        Pennsylvania Ave NW","street_2":null,"city":"Washington","state":"AL","zip":"20500","country":"US"}}],"item_promise_date":null},{"item_id":8,"sku":"SKU-15","name":"Product
+        #8 - 99","description":"As seen on TV!","quantity":1,"unit_price":"10.0","discount_amount":0.0,"discount_percent":null,"is_backordered":false,"estimated_del":null,"categories":[],"item_image":null,"item_url":"http://localhost:7777/product/product-8-99","is_final_sale":false,"fulfillment_status":"PENDING","is_gift":false,"final_sale_date":null,"line_number":1,"events":[{"event":null,"quantity":null,"sequence":null}],"attributes":{"color_id":null,"color":null,"size":null,"side_id":null,"style":"Size-8","custom_attribute1":null,"custom_attribute2":null},"dimensions":{"uom":null,"length":0.0,"width":0.0,"height":0.0,"weight":0.0,"weight_uom":"lbs"},"vendors":[{"email":null,"name":"NY
+        Warehouse","phone":"(202) 456-1111","type":"VND-3","address":{"street_1":"1600
+        Pennsylvania Ave NW","street_2":null,"city":"Washington","state":"AL","zip":"20500","country":"US"}}],"item_promise_date":null},{"item_id":9,"sku":"SKU-17","name":"Product
+        #9 - 1098","description":"As seen on TV!","quantity":1,"unit_price":"10.0","discount_amount":0.0,"discount_percent":null,"is_backordered":false,"estimated_del":null,"categories":[],"item_image":null,"item_url":"http://localhost:7777/product/product-9-1098","is_final_sale":false,"fulfillment_status":"PENDING","is_gift":false,"final_sale_date":null,"line_number":2,"events":[{"event":null,"quantity":null,"sequence":null}],"attributes":{"color_id":null,"color":null,"size":null,"side_id":null,"style":"Size-9","custom_attribute1":null,"custom_attribute2":null},"dimensions":{"uom":null,"length":0.0,"width":0.0,"height":0.0,"weight":0.0,"weight_uom":"lbs"},"vendors":[{"email":null,"name":"NY
+        Warehouse","phone":"(202) 456-1111","type":"VND-3","address":{"street_1":"1600
+        Pennsylvania Ave NW","street_2":null,"city":"Washington","state":"AL","zip":"20500","country":"US"}}],"item_promise_date":null}],"billing":{"billed_to":{"first_name":"John","last_name":null,"phone":"555-555-0199","phone_extension":null,"email":"email3@example.com","fax":null,"address":{"street_1":"PO
+        Box 1337","street_2":"Northwest","city":"Herndon","state":"AL","zip":"10005","country":"US"}},"amount":130.0,"tax_rate":null,"tax_amount":0.0,"shipping_handling":100.0,"payments":[]},"customer":{"first_name":"John","last_name":null,"phone":"555-555-0199","phone_extension":null,"email":"email3@example.com","fax":null,"address":{"street_1":"PO
+        Box 1337","street_2":"Northwest","city":"Herndon","state":"AL","zip":"10005","country":"US"},"customer_id":null,"customer_tier":null,"customer_type":null,"notification_preferences":[]}}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.5.0 x86_64) ruby/2.5.3p105
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '3781'
+      Authorization:
+      - <Authorization Code>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Nov 2019 16:43:27 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      X-Xss-Protection:
+      - 1; mode=block
+      Pragma:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Application-Context:
+      - application
+    body:
+      encoding: UTF-8
+      string: '{"status":"SUCCESS","messages":[{"code":"response.status.success","message":"Order
+        information saved for order number R00080001"}]}'
+    http_version:
+  recorded_at: Wed, 20 Nov 2019 16:43:15 GMT
+- request:
+    method: put
+    uri: https://ws-st01.narvar.qa/api/v1/orders/R00080001/shipments
+    body:
+      encoding: UTF-8
+      string: '{"order_info":{"shipments":[{"attributes":{"signature_required":null,"custom_attribute1":null,"custom_attribute2":null},"ship_source":null,"carrier":"UPSN","tracking_number":"","ship_method":null,"carrier_service":"UPSN","promise_date":null,"items_info":[{"quantity":1,"sku":"SKU-13","item_id":7},{"quantity":1,"sku":"SKU-15","item_id":8},{"quantity":1,"sku":"SKU-17","item_id":9}],"shipped_to":{"first_name":"John","last_name":null,"phone":"555-555-0199","phone_extension":null,"email":"email3@example.com","fax":null,"address":{"street_1":"A
+        Different Road","street_2":"Northwest","city":"Herndon","state":"AL","zip":"10006","country":"US"}},"shipped_from":{"first_name":"NY
+        Warehouse","last_name":null,"phone":"(202) 456-1111","email":null,"fax":null,"address":{"street_1":"1600
+        Pennsylvania Ave NW","street_2":null,"city":"Washington","state":"AL","zip":"20500","country":"US"}},"ship_discount":null,"ship_total":null,"ship_tax":null,"ship_date":"2019-11-20T11:43:15-05:00"}]}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.5.0 x86_64) ruby/2.5.3p105
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '981'
+      Authorization:
+      - <Authorization Code>
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Date:
+      - Wed, 20 Nov 2019 16:43:28 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      X-Xss-Protection:
+      - 1; mode=block
+      Pragma:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      X-Content-Type-Options:
+      - nosniff
+      X-Application-Context:
+      - application
+    body:
+      encoding: UTF-8
+      string: '{"status":"FAILURE","messages":[{"code":"message.invalid.order.shipments.tracking","message":"Invalid
+        Tracking number for shipment"}]}'
+    http_version:
+  recorded_at: Wed, 20 Nov 2019 16:43:16 GMT
+recorded_with: VCR 5.0.0

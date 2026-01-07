@@ -1,0 +1,5 @@
+<!-- insert_before "[data-hook='prices_row'] td.actions"  -->
+
+<td><%= price.vendor&.name %></td>
+<td><%= price.final_sale? ? Spree::Price.human_attribute_name(:final_sale) : '' %></td>
+<td><%= price.mirakl_offer&.offer_id %></td>

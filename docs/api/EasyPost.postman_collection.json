@@ -1,0 +1,703 @@
+{
+	"info": {
+		"_postman_id": "3fc0f22f-19c0-46e9-bb47-84c4faf2e8bc",
+		"name": "EasyPost",
+		"description": "Some tests with EasyPost",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST /v2/addresses (from)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"from_address_id\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "address[street1]",
+							"value": "Via Giuseppe Mazzini, 1",
+							"type": "text"
+						},
+						{
+							"key": "address[street2]",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "address[city]",
+							"value": "Trento",
+							"type": "text"
+						},
+						{
+							"key": "address[zip]",
+							"value": "38122",
+							"type": "text"
+						},
+						{
+							"key": "address[phone]",
+							"value": "123123123",
+							"type": "text"
+						},
+						{
+							"key": "address[company]",
+							"value": "Some Company",
+							"type": "text"
+						},
+						{
+							"key": "address[state]",
+							"value": "Trentino-Alto Adige",
+							"type": "text"
+						},
+						{
+							"key": "address[country]",
+							"value": "IT",
+							"type": "text"
+						},
+						{
+							"key": "address[federal_tax_id]",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API_HOST}}/v2/addresses",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"v2",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /v2/addresses (to)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"to_address_id\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "address[street1]",
+							"value": "55 Washington St",
+							"type": "text"
+						},
+						{
+							"key": "address[street2]",
+							"value": "Suite 620",
+							"type": "text"
+						},
+						{
+							"key": "address[city]",
+							"value": "Brooklyn",
+							"type": "text"
+						},
+						{
+							"key": "address[zip]",
+							"value": "11201",
+							"type": "text"
+						},
+						{
+							"key": "address[phone]",
+							"value": "18446247663",
+							"type": "text"
+						},
+						{
+							"key": "address[name]",
+							"value": "Maisonette",
+							"type": "text"
+						},
+						{
+							"key": "address[state]",
+							"value": "NY",
+							"type": "text"
+						},
+						{
+							"key": "address[country]",
+							"value": "US",
+							"type": "text"
+						},
+						{
+							"key": "address[federal_tax_id]",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API_HOST}}/v2/addresses",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"v2",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /v2/parcels",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"parcel_id\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "parcel[width]",
+							"value": "8.0",
+							"type": "text"
+						},
+						{
+							"key": "parcel[length]",
+							"value": "12.0",
+							"type": "text"
+						},
+						{
+							"key": "parcel[height]",
+							"value": "3.0",
+							"type": "text"
+						},
+						{
+							"key": "parcel[weight]",
+							"value": "80.0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API_HOST}}/v2/parcels",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"v2",
+						"parcels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /v2/customs_items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"custom_item_id\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "customs_item[description]",
+							"value": "\"Artist\" Storage Pillow, Pink/Cream",
+							"type": "text"
+						},
+						{
+							"key": "customs_item[quantity]",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "customs_item[value]",
+							"value": "53.35",
+							"type": "text"
+						},
+						{
+							"key": "customs_item[weight]",
+							"value": "80.0",
+							"type": "text"
+						},
+						{
+							"key": "customs_item[hs_tariff_number]",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "customs_item[origin_country]",
+							"value": "IT",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API_HOST}}/v2/customs_items",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"v2",
+						"customs_items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /v2/customs_infos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"custom_info_id\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "customs_info[eel_pfc]",
+							"value": "NOEEI 30.37(a)",
+							"type": "text"
+						},
+						{
+							"key": "customs_info[customs_certify]",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "customs_info[customs_signer]",
+							"value": "John Doe",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "customs_info[contents_type]",
+							"value": "merchandise",
+							"type": "text"
+						},
+						{
+							"key": "customs_info[contents_explanation]",
+							"value": "Sale of Home/Pillows",
+							"type": "text"
+						},
+						{
+							"key": "customs_info[customs_items][0][id]",
+							"value": "{{custom_item_id}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API_HOST}}/v2/customs_infos",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"v2",
+						"customs_infos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /v2/shipments",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"shipment_id\", jsonData.id);",
+							"postman.setEnvironmentVariable(\"rate_id\", jsonData.rates[1].id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "shipment[from_address][id]",
+							"value": "{{from_address_id}}",
+							"type": "text"
+						},
+						{
+							"key": "shipment[to_address][id]",
+							"value": "{{to_address_id}}",
+							"type": "text"
+						},
+						{
+							"key": "shipment[return_address][id]",
+							"value": "{{to_address_id}}",
+							"type": "text"
+						},
+						{
+							"key": "shipment[parcel][id]",
+							"value": "{{parcel_id}}",
+							"type": "text"
+						},
+						{
+							"key": "shipment[carrier_accounts][0][id]",
+							"value": "{{carrier_account_id}}",
+							"type": "text"
+						},
+						{
+							"key": "shipment[customs_info][id]",
+							"value": "{{custom_info_id}}",
+							"type": "text"
+						},
+						{
+							"key": "shipment[options][import_control]",
+							"value": "PRINT",
+							"type": "text"
+						},
+						{
+							"key": "shipment[options][import_control_description]",
+							"value": "string of no more than 35 characters",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API_HOST}}/v2/shipments",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"v2",
+						"shipments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /v2/shipments/:id/buy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"shipment_buy_id\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "rate[id]",
+							"value": "{{rate_id}}",
+							"type": "text"
+						},
+						{
+							"key": "insurance",
+							"value": "100",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API_HOST}}/v2/shipments/{{shipment_id}}/buy",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"v2",
+						"shipments",
+						"{{shipment_id}}",
+						"buy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /v2/orders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"order_id\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "order[reference]",
+							"value": "{{order_number}}",
+							"type": "text"
+						},
+						{
+							"key": "order[from_address][id]",
+							"value": "{{from_address_id}}",
+							"type": "text"
+						},
+						{
+							"key": "order[to_address][id]",
+							"value": "{{to_address_id}}",
+							"type": "text"
+						},
+						{
+							"key": "order[shipments][0][parcel][id]",
+							"value": "{{parcel_id}}",
+							"type": "text"
+						},
+						{
+							"key": "order[shipments][0][options][label_format]",
+							"value": "PNG",
+							"type": "text"
+						},
+						{
+							"key": "order[shipments][0][options][print_custom_1]",
+							"value": "{{order_number}}",
+							"type": "text"
+						},
+						{
+							"key": "order[shipments][0][options][print_custom_2]",
+							"value": "Maisonette Order",
+							"type": "text"
+						},
+						{
+							"key": "order[shipments][0][options][carrier_notification_email]",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "order[shipments][0][options][carrier_notification_sms]",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "order[carrier_accounts][0][id]",
+							"value": "{{carrier_account_id}}",
+							"type": "text"
+						},
+						{
+							"key": "order[is_return]",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "order[customs_info][id]",
+							"value": "{{custom_info_id}}",
+							"type": "text"
+						},
+						{
+							"key": "order[shipments][0][options][import_control]",
+							"value": "PRINT",
+							"type": "text"
+						},
+						{
+							"key": "order[shipments][0][options][import_control_description]",
+							"value": "string of no more than 35 characters",
+							"type": "text"
+						},
+						{
+							"key": "order[return_address][id]",
+							"value": "{{to_address_id}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API_HOST}}/v2/orders",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"v2",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /v2/orders/:id/buy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"order_buy_id\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "carrier",
+							"value": "UPS",
+							"type": "text"
+						},
+						{
+							"key": "service",
+							"value": "Express",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{API_HOST}}/v2/orders/{{order_id}}/buy",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"v2",
+						"orders",
+						"{{order_id}}",
+						"buy"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{AUTH_TOKEN}}",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{AUTH_TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_HOST",
+			"value": "https://api.easypost.com"
+		},
+		{
+			"key": "AUTH_TOKEN",
+			"value": ""
+		},
+		{
+			"key": "carrier_account_id",
+			"value": ""
+		},
+		{
+			"key": "from_address_id",
+			"value": ""
+		},
+		{
+			"key": "to_address_id",
+			"value": ""
+		},
+		{
+			"key": "parcel_id",
+			"value": ""
+		},
+		{
+			"key": "order_number",
+			"value": "M515877359"
+		}
+	]
+}

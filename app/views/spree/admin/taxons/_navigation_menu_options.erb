@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-10"><hr></div>
+  <div class="col-5">
+    <label><strong>Navigation Menu Options:</strong></label>
+    <br />
+
+    <% if f.object.depth == 1 %>
+      <label>
+
+        <%= f.check_box :add_flair %>
+        Add Flair
+      </label>
+      <br />
+
+    <% end %>
+
+    <% if f.object.depth == 2 %>
+      <label>
+        <%= f.check_box :header_link %>
+        Make Header Linkable
+      </label>
+      <br />
+    <% end %>
+
+    <label>
+      <%= f.check_box :highlight %>
+      Highlight In Navigation Menu
+    </label>
+  </div>
+
+  <div class="col-5">
+    <%= f.field_container :url_override, class: ['form-group'] do %>
+      <%= f.label :url_override, 'Permalink Override' %>
+      <%= f.text_field :url_override, class: 'form-control', rows: 6 %>
+    <% end %>
+
+    <%= f.field_container :view_all_url_override, class: ['form-group'] do %>
+      <%= f.label :view_all_url_override,  'View All Url Override'%>
+      <%= f.text_field :view_all_url_override, class: 'form-control', rows: 6 %>
+    <% end %>
+  </div>
+
+  <div class="col-10"><hr></div>
+</div>

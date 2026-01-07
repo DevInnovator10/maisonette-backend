@@ -1,0 +1,41 @@
+{
+  "result": {
+    "carrier_detail": {
+      "origin_location": "Far away",
+      "service": "UPS SurePost",
+      "destination_location": "Whatever destination 01234",
+      "object": "CarrierDetail"
+    },
+    "created_at": "2021-02-01T16:06:41Z",
+    "weight": 32,
+    "tracking_details": [
+      {
+        "tracking_location": {
+          "country": "US",
+          "object": "TrackingLocation"
+        },
+        "datetime": "2021-02-01T11:06:40Z",
+        "description": "Shipper created a label, UPS has not received the package yet.",
+        "source": "UPSSurePost",
+        "message": "Shipper created a label, UPS has not received the package yet.",
+        "object": "TrackingDetail",
+        "status": "in_transit",
+        "status_detail": "label_created",
+        "carrier_code": "M"
+      }
+    ],
+    "shipment_id": "shp_123",
+    "tracking_code": "1TRACKINGCODE2",
+    "status_detail": "arrived_at_facility",
+    "mode": "test",
+    "finalized": false,
+    "public_url": "https://track.easypost.com/123",
+    "est_delivery_date": "2021-02-04T00:00:00Z",
+    "carrier": "UPSSurePost",
+    "is_return": false,
+    "updated_at": "2021-02-02T10:10:48Z",
+    "id": "trk_123",
+    "object": "Tracker",
+    "status": "in_transit"
+  }
+}
